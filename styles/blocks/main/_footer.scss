@@ -1,0 +1,65 @@
+@use "../helpers" as *;
+
+.footer {
+    padding: rem(67)rem(130);
+    margin-top: rem(50);
+    background: var(--gradient-footer);
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    row-gap: rem(105);
+
+    &__logo {
+        font-weight: 800;
+        font-size: rem(34);
+        background: var(--gradient-accent);
+        @include gradient-color;
+    }
+
+    &__navigation {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        column-gap: rem(84);
+    }
+
+    &__th-link {
+        color: var(--color-gray);
+        font-weight: 500;
+        font-size: rem(18);
+    }
+
+    &__link {
+       color: var(--color-gray-2); 
+    }
+
+    &__table {
+        border-collapse: separate;
+        border-spacing: rem(15) 0;
+        text-align: left;
+    } 
+
+    &__td-margin {
+        width: rem(100);
+    }
+    
+    &__connection {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__popular-messengers {
+        @include flex-center;
+        column-gap: rem(5);
+    }
+
+    &__phone {
+        font-size: rem(21);
+        font-weight: 500;
+        background: var(--gradient-accent);
+        @include gradient-color;
+    }
+    
+}
+

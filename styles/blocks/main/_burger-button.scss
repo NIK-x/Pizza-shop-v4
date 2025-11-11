@@ -1,0 +1,43 @@
+@use "../helpers" as *;
+
+.burger-button {
+    display: flex;
+    flex-direction: column;
+    row-gap: rem(4);
+    background-color: transparent;
+    border: none;
+    transition: box-shadow 0.2s ease 0s;
+    width: rem(34);
+
+    &__line {
+        width: 100%;
+        height: rem(3);
+        background: var(--gradient-accent);
+        border-radius: 100px;
+    }
+
+    @include hover {
+        & {
+            .burger-button__line {
+                box-shadow: 0 0 20px 1px orange;
+                transition: box-shadow 0.2s ease 0s;
+            }
+        }
+    }
+
+    &.is-active {
+        .burger-button__line:first-child {
+            rotate: 45deg;  
+            translate: -0.2em 0.38em;
+        }
+
+        .burger-button__line:nth-child(2) {
+            opacity: 0;
+        }
+
+        .burger-button__line:last-child {
+            rotate: -45deg;  
+            transform-origin: 0;
+        }
+    }
+}

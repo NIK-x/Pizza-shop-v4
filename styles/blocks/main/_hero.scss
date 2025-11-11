@@ -1,0 +1,176 @@
+@use "../helpers" as *;
+
+.hero {
+    border-bottom: rem(2) dashed var(--color-light);
+    padding-inline: rem(130);
+    padding-top: rem(61);
+    padding-bottom: rem(90);
+    display: flex;
+    flex-direction: row;
+
+    &__inner {
+        display: flex;
+        flex-direction: column;
+        row-gap: rem(18);
+    }
+
+    &__box {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        column-gap: rem(10);
+    }
+    &__title {
+        max-width: rem(538);
+        line-height: 1.2;
+        position: relative;
+
+        &::after {
+            content: url("../icons/vector.svg");
+            position: absolute;
+            right: 0.4em;
+            top: 0;
+        }
+    }
+
+    &__description-block {
+        display: flex;
+        flex-direction: column;
+        row-gap: rem(25);
+    }
+
+    &__description {
+        font-size: rem(20);
+        max-width: rem(419);
+        color: var(--color-gray);
+    }
+
+    &__highlighting {
+        color: var(--color-light);
+    }
+
+    &__video {
+        background-image: url("../images/pizza-video.jpg");
+        background-repeat: no-repeat;
+        object-fit: cover;
+        background-position: center;
+        border-radius: 23px;
+        max-width: 272px;
+        height: 184px;
+        @include flex-center;
+        transition: scale 0.4s ease-in 0s;
+    }
+
+    &__open-video {
+        background-color: transparent;
+        border: none;
+        transition: scale 0.3s ease-in 0s;
+
+        @include hover {
+            & {
+                transition: scale 0.2s ease-in 0s;
+                scale: 1.2;
+            }
+        }
+
+        &:active {
+            scale: 1.1;
+            transition: none;
+        }
+
+        &-icon {
+            width: 150px;
+            height: 150px;
+        }
+    }
+
+    &__coocking-block {
+        display: flex;
+        flex-direction: column;
+        row-gap: rem(12);
+    }
+
+    &__coocking-box {
+        display: flex;
+        flex-direction: column;
+        row-gap: rem(80);
+    }
+
+    &__button {
+        border: rem(2) dotted var(--color-light);
+        border-radius: 100px;
+        max-width: rem(240);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding-block: rem(10);
+        color: var(--color-brown);
+        font-size: rem(25);
+        -webkit-text-stroke: rem(0.3) var(--color-light);
+        cursor: pointer;
+        transition: all 0.4s ease 0s;
+
+        @include hover {
+            -webkit-text-stroke: 0 transparent;
+            color: var(--color-oranged);
+            transition: all 0.4s ease 0s;
+            border: rem(2) dotted var(--color-oranged);
+            box-shadow: inset 0px 0px 20px 0px var(--color-dark);
+        }     
+
+
+        &::after {
+            content: url("../icons/vector-2.svg");
+            position: absolute;
+            margin-left: 23%;
+            margin-top: 10%;
+            pointer-events: none;
+        }
+
+        // &:hover::after {
+        //     animation-name: vector;
+        //     animation-duration: 500ms;
+        //     animation-timing-function: ease;
+        //     animation-iteration-count: 1;
+        //     animation-fill-mode: forwards;
+        // }
+
+        // @keyframes vector {
+        //     0% {
+        //         opacity: 0;
+        //     }
+        //     100% {
+        //         opacity: 1;
+        //     }
+        // }
+    
+    }
+
+    &__design-text {
+
+        &-1 {
+            margin-left: rem(45);
+            margin-top: rem(-120);
+        }
+
+        &-2 {
+            margin-left: rem(1200);
+            margin-top: rem(-180);
+        }
+
+        &-3 {
+            margin-left: rem(970);
+            margin-top: rem(150);
+        }
+    }
+
+    &__pizza-poster {
+        margin-top: rem(-160);
+        margin-left: rem(1100);
+        position: absolute;
+    }
+
+    // &__line {
+    //     margin-top: 60px;
+    // }
+}

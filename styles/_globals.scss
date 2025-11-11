@@ -1,0 +1,34 @@
+@use "helpers" as *;
+
+html {
+    &.is-lock {
+        overflow: hidden;
+    }
+}
+
+body {
+    background: var(--fon-gradient) no-repeat center center fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: var(--color-light);
+    font-family: "Muller";
+    font-weight: 400;
+}
+
+h1, .h1 {
+    @include fluid-text(69, 48);
+}
+
+h2, .h2 {
+    @include fluid-text(69, 48);
+}
+
+// h3, .h3 {
+//     @include fluid-text(44, 27);
+// }
+
+// h4, .h4 {
+//     @include fluid-text(25, 16);
+// }
+
+

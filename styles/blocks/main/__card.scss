@@ -1,0 +1,224 @@
+@use "../helpers" as *;
+
+
+.pizza-menu {
+
+    &__card {
+        width: fluid(297, 250);
+        height: fluid(500, 453);
+        background-color: var(--color-orange-1);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        row-gap: fluid(20, 17);
+        border-radius: 30px;
+        padding-inline: fluid(30, 25);
+        padding-bottom: flid(10, 7);
+    }
+
+    &__card-hero {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        row-gap: fluid(20, 17);
+    }
+
+    &__name-pizza {
+        margin-top: rem(-27);
+        font-size: fluid(25, 22);
+        font-weight: 500;
+    }
+
+    &__description {
+        color: var(--color-gray);
+        max-width: rem(209);
+        font-size: fluid(14.32, 12);
+    }
+
+    &__image-pizza {
+        margin-top: rem(-80);
+    }
+
+    &__text {
+        background: var(--gradient-accent);
+        @include gradient-color;
+        font-size: fluid(16, 15);
+        transition: color 0.6s ease 0s, text-shadow 0.4s ease 0s;
+    }
+
+    &__button-add-ingredients {
+        border: none;
+        font-size: fluid(16, 15);
+        @include gradient-color;
+        border-image: linear-gradient(30deg, #FF6432 12.12%, #FFA228 86.72%) 1;
+        border-style: solid;
+        border-width: rem(2);
+        color: var(--gradient-accent);
+        padding: fluid(10, 7) fluid(50, 40);
+        position: relative;
+        
+        @include hover {
+            
+            & .pizza-menu__text {
+                -webkit-background-clip: border-box;
+                -webkit-text-fill-color: currentColor;
+                background-clip: border-box;
+                color: white;
+                text-shadow: var(--text-shadow);
+                background: transparent;
+                transition: color 0.1s ease 0s, text-shadow 0.2s ease 0s;
+            }
+        }
+
+        &:active {
+            .pizza-menu__text {
+                text-shadow: none;
+                transition: none;
+            }
+        }
+
+    }
+
+
+
+    &__block-checkbox {
+        @include flex-center;
+        column-gap: rem(37);
+    }
+
+    // &__field {
+    //     display: flex;
+    //     align-items: center;
+    //     justify-content: center;
+    //     flex-direction: column;
+    // }
+
+    // &__label {
+    //     color: var(--color-gray);
+    //     position: absolute;
+    // }
+
+    &__checkbox {
+        cursor: pointer;
+        appearance: none;
+        width: rem(40);
+        height: rem(40);
+        border-radius: 100px;
+        border: rem(2) solid var(--color-gray);
+        position: relative;
+        
+        &::after {
+            content: "";
+            color: var(--color-gray);
+            font-size: rem(15);
+            @include abs-center;
+            margin-top: rem(2);
+        }
+
+        &-smal {
+            &::after {
+                content: "22";
+            }
+        }
+
+        &-normal {
+            &::after {
+                content: "28";
+            }
+        }
+
+        &-big {
+            &::after {
+                content: "33";
+            }
+        }
+        
+        &:checked {
+            background: var(--gradient-accent);
+            border: none;
+
+            &::after {
+                color: var(--color-light);
+            }
+        }
+    }
+
+    &__box {
+        @include flex-center;
+        column-gap: rem(46);
+    }
+
+    &__price {
+        font-weight: 500;
+        font-size: rem(25);
+    }
+
+    &__in-total {
+        @include flex-center;
+        column-gap: rem(13);
+    }
+
+    &__button-reduce-the-number {
+        filter: brightness(70%);
+        // @include flex-center(true);
+        // border: rem(2) solid var(--color-gray);
+        // width: rem(25);
+        // height: rem(25);
+        // border-radius: 100px;
+        // color: var(--color-gray);
+        // text-align: center;
+        // font-size: rem(18);
+        border: none;
+        background-color: transparent;     
+        transition: filter 0.4s ease 0s;
+
+        @include hover {
+            & {
+                filter: brightness(100%);
+                transition: filter 0.4s ease 0s;
+            }
+        }
+
+        &:active {
+            scale: 1.06;
+            transition: none;
+        }
+    }
+
+    &__button-increase-the-number {
+        // @include flex-center(true);
+        // font-size: rem(18);
+        border: none;
+        background: transparent;
+        // color: var(--color-light);
+        // width: rem(25);
+        // height: rem(25);
+        // border-radius: 100px;
+        transition: filter 0.4s ease 0s;
+        
+        @include hover {
+            & {
+                filter: hue-rotate(-40deg);
+                transition: filter 0.4s ease 0s;
+            }
+        }
+
+        &:active {
+            scale: 1.06;
+            transition: none;
+        }
+    }
+
+    &__count {
+        font-size: rem(23);
+        color: var(--color-gray);
+    }
+
+    &__add-to-favorites {
+        padding: rem(12) rem(55);
+        font-size: rem(18);
+        border-radius: 100px;
+    }
+}

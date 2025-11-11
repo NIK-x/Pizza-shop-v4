@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PizzaShop</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <script src="scripts/main.js" defer></script>
+</head>
+
+<body class="">
+    <header class="header header--sticky">
+        <a href="#" class="header__logo">pizzashop</a>
+        <div class="header__overlay hidden-mobile">
+            <nav class="header__nav-menu">
+                <ul class="header__menu-list" data-js-menu-list>
+                    <li class="header__menu-item"><a href="#" class="header__menu-link" data-js-menu-link>Home</a></li>
+                    <li class="header__menu-item"><a href="#menu" class="header__menu-link" data-js-menu-link>Menu</a>
+                    </li>
+                    <li class="header__menu-item"><a href="#events" class="header__menu-link header__events"
+                            data-js-menu-link>Events</a></li>
+                    <li class="header__menu-item"><a href="#about-us" class="header__menu-link" data-js-menu-link>About
+                            us</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="header__box">
+            <button type="button" class="header__button-login accent-button" data-js-login-button>Log in</button>
+            <a href="favourites.html" class="header__button-favourites" aria-label="Add to Cart"
+                title="Add to Cart"><img src="icons/favorites.svg" alt="Add to Cart" loading="lazy" width="45"
+                    height="45" class="header__icon-favorites" data-js-favourites-button></a>
+            <button type="button" class="burger-button visible-mobile" aria-label="View the site navigation"
+                title="View the site navigation" data-js-burger-button>
+                <span class="burger-button__line burger-button__line-1"></span>
+                <span class="burger-button__line burger-button__line-2"></span>
+                <span class="burger-button__line burger-button__line-3"></span>
+            </button>
+        </div>
+    </header>
+    <main class="main">
+        <section class="hero" aria-labelledby="hero__title">
+            <div class="hero__inner">
+                <div class="hero__description-block">
+                    <span class="hero__design-text-1 design-text">Pizza</span>
+                    <span class="hero__design-text-2 design-text">Pizza</span>
+                    <h1 class="hero__title">The Fastest<span class="hero__box">Pizza<img src="icons/Lightning.svg"
+                                loading="lazy" alt="" width="49" height="85">Delivery</span></h1>
+                    <p class="hero__description">We will deliver juicy pizza for your family in 30 minutes, if the
+                        courier is late - <span class="hero__highlighting">pizza is free!</span></p>
+                </div>
+                <div class="hero__coocking-box">
+                    <div class="hero__coocking-block">
+                        <p class="hero__description">Cooking process:</p>
+                        <div class="hero__video">
+                            <button type="button" class="hero__open-video" title="Watch a pizza cooking video"
+                                aria-label="Watch a pizza cooking video"><img src="icons/open-video.svg"
+                                    class="hero__open-video-icon" loading="lazy" alt="Watch a pizza cooking video"
+                                    width="81" height="81"></button>
+                        </div>
+                    </div>
+                    <a href="#menu" class="hero__button">View the menu</a>
+                    <span class="hero__design-text-3 design-text">Pizza</span>
+                </div>
+            </div>
+            <img src="images/hero-pizza.png" loading="lazy" alt="" width="640" height="905" class="hero__pizza-poster">
+        </section>
+        <section class="pizza-menu" aria-labelledby="pizza-menu__title">
+            <div class="pizza-menu__block">
+                <span class="pizza-menu__design-text-1 design-text">Menu</span>
+                <h2 class="pizza-menu__title" id="menu">Menu</h2>
+                <header class="pizza-menu__header">
+                    <button type="button" class="pizza-menu__button-show-all pizza-menu__button is-active">Show
+                        all</button>
+                    <button type="button" class="pizza-menu__button-meat pizza-menu__button">Meat</button>
+                    <button type="button" class="pizza-menu__button-vegetarian pizza-menu__button">Vegetarian</button>
+                    <button type="button" class="pizza-menu__button-sea-products pizza-menu__button">Sea
+                        products</button>
+                    <button type="button" class="pizza-menu__button-mushroom pizza-menu__button">Mushroom</button>
+                </header>
+            </div>
+            <div class="pizza-menu__cards">
+                <!-- card1 -->
+                <article class="pizza-menu__card">
+                    <div class="pizza-menu__card-hero">
+                        <img src="images/italian-pizza.png" loading="lazy" alt="" width="159" height="157"
+                            class="pizza-menu__image-pizza">
+                        <h3 class="pizza-menu__name-pizza">Italian</h3>
+                        <p class="pizza-menu__description">Filling: onion, potato, tomato, mushrooms, cheese, olives,
+                            meat...</p>
+                    </div>
+                    <div class="pizza-menu__block-checkbox">
+                        <p class="pizza-menu__field">
+                            <!-- <label for="italian-small" class="pizza-menu__label">22</label> -->
+                            <input type="checkbox" name="italian-small" id="italian-small"
+                                class="pizza-menu__checkbox-smal pizza-menu__checkbox" aria-label="Pizza 22 cm">
+                        </p>
+
+                        <p class="pizza-menu__field">
+                            <!-- <label for="italian-normal" class="pizza-menu__label">28</label> -->
+                            <input type="checkbox" name="italian-normal" id="italian-normal"
+                                class="pizza-menu__checkbox-normal pizza-menu__checkbox" aria-label="Pizza 28 cm">
+                        </p>
+                        <p class="pizza-menu__field">
+                            <!-- <label for="italian-big" class="pizza-menu__label">33</label> -->
+                            <input type="checkbox" name="italian-big" id="italian-big"
+                                class="pizza-menu__checkbox-big pizza-menu__checkbox" aria-label="Pizza 33 cm">
+                        </p>
+                    </div>
+                    <button type="button" class="pizza-menu__button-add-ingredients"><span class="pizza-menu__text">+
+                            Ingredients</span></button>
+                    <div class="pizza-menu__box">
+                        <p class="pizza-menu__price">8,35 <sup>$</sup></p>
+                        <div class="pizza-menu__in-total">
+                            <button type="button" class="pizza-menu__button-reduce-the-number"
+                                title="Reduce by one pizza" aria-label="Reduce by one pizza"><img
+                                    src="icons/remove-icon.svg" alt="" loading="lazy" width="23"
+                                    height="23"></button></button>
+                            <p class="pizza-menu__count">1</p>
+                            <button type="button" class="pizza-menu__button-increase-the-number"
+                                aria-label="Add another pizza" title="Add another pizza"><img src="icons/add-icon.svg"
+                                    alt="" loading="lazy" width="23" height="23"></button>
+                        </div>
+                    </div>
+                    <button type="button" class="pizza-menu__add-to-favorites accent-button">Order Now</button>
+                </article>
+                <!-- card2 -->
+                <article class="pizza-menu__card">
+                    <div class="pizza-menu__card-hero">
+                        <img src="images/venecia-pizza.png" loading="lazy" alt="" width="159" height="157"
+                            class="pizza-menu__image-pizza">
+                        <h3 class="pizza-menu__name-pizza">Venecia</h3>
+                        <p class="pizza-menu__description">Filling: onion, potato, tomato, mushrooms, cheese, olives,
+                            meat...</p>
+                    </div>
+                    <div class="pizza-menu__block-checkbox">
+                        <p class="pizza-menu__field">
+                            <!-- <label for="venecia-small" class="pizza-menu__label">22</label> -->
+                            <input type="checkbox" name="venecia-small" id="venecia-small"
+                                class="pizza-menu__checkbox-smal pizza-menu__checkbox" aria-label="Pizza 22 cm">
+                        </p>
+
+                        <p class="pizza-menu__field">
+                            <!-- <label for="venecia-normal" class="pizza-menu__label">28</label> -->
+                            <input type="checkbox" name="venecia-normal" id="venecia-normal"
+                                class="pizza-menu__checkbox-normal pizza-menu__checkbox" aria-label="Pizza 28 cm">
+                        </p>
+                        <p class="pizza-menu__field">
+                            <!-- <label for="venecia-big" class="pizza-menu__label">33</label> -->
+                            <input type="checkbox" name="venecia-big" id="venecia-big"
+                                class="pizza-menu__checkbox-big pizza-menu__checkbox" aria-label="Pizza 33 cm">
+                        </p>
+                    </div>
+                    <button type="button" class="pizza-menu__button-add-ingredients"><span class="pizza-menu__text">+
+                            Ingredients</span></button>
+                    <div class="pizza-menu__box">
+                        <p class="pizza-menu__price">7,35 <sup>$</sup></p>
+                        <div class="pizza-menu__in-total">
+                            <button type="button" class="pizza-menu__button-reduce-the-number"
+                                title="Reduce by one pizza" aria-label="Reduce by one pizza"><img
+                                    src="icons/remove-icon.svg" alt="" loading="lazy" width="23"
+                                    height="23"></button></button>
+                            <p class="pizza-menu__count">1</p>
+                            <button type="button" class="pizza-menu__button-increase-the-number"
+                                aria-label="Add another pizza" title="Add another pizza"><img src="icons/add-icon.svg"
+                                    alt="" loading="lazy" width="23" height="23"></button>
+                        </div>
+                    </div>
+                    <button type="button" class="pizza-menu__add-to-favorites accent-button">Order Now</button>
+                </article>
+                <!-- card3 -->
+                <article class="pizza-menu__card">
+                    <div class="pizza-menu__card-hero">
+                        <img src="images/meat-pizza.png" loading="lazy" alt="" width="159" height="157"
+                            class="pizza-menu__image-pizza">
+                        <h3 class="pizza-menu__name-pizza">Meat</h3>
+                        <p class="pizza-menu__description">Filling: onion, potato, tomato, mushrooms, cheese, olives,
+                            meat...</p>
+                    </div>
+                    <div class="pizza-menu__block-checkbox">
+                        <p class="pizza-menu__field">
+                            <!-- <label for="meat-small" class="pizza-menu__label">22</label> -->
+                            <input type="checkbox" name="meat-small" id="meat-small"
+                                class="pizza-menu__checkbox-smal pizza-menu__checkbox" aria-label="Pizza 22 cm">
+                        </p>
+
+                        <p class="pizza-menu__field">
+                            <!-- <label for="meat-normal" class="pizza-menu__label">28</label> -->
+                            <input type="checkbox" name="meat-normal" id="meat-normal"
+                                class="pizza-menu__checkbox-normal pizza-menu__checkbox" aria-label="Pizza 28 cm">
+                        </p>
+                        <p class="pizza-menu__field">
+                            <!-- <label for="meat-big" class="pizza-menu__label">33</label> -->
+                            <input type="checkbox" name="meat-big" id="meat-big"
+                                class="pizza-menu__checkbox-big pizza-menu__checkbox" aria-label="Pizza 33 cm">
+                        </p>
+                    </div>
+                    <button type="button" class="pizza-menu__button-add-ingredients"><span class="pizza-menu__text">+
+                            Ingredients</span></button>
+                    <div class="pizza-menu__box">
+                        <p class="pizza-menu__price">9,35 <sup>$</sup></p>
+                        <div class="pizza-menu__in-total">
+                            <button type="button" class="pizza-menu__button-reduce-the-number"
+                                title="Reduce by one pizza" aria-label="Reduce by one pizza"><img
+                                    src="icons/remove-icon.svg" alt="" loading="lazy" width="23"
+                                    height="23"></button></button>
+                            <p class="pizza-menu__count">1</p>
+                            <button type="button" class="pizza-menu__button-increase-the-number"
+                                aria-label="Add another pizza" title="Add another pizza"><img src="icons/add-icon.svg"
+                                    alt="" loading="lazy" width="23" height="23"></button>
+                        </div>
+                    </div>
+                    <button type="button" class="pizza-menu__add-to-favorites accent-button">Order Now</button>
+                </article>
+                <!-- card4 -->
+                <article class="pizza-menu__card">
+                    <div class="pizza-menu__card-hero">
+                        <img src="images/cheese-pizza.png" loading="lazy" alt="" width="159" height="157"
+                            class="pizza-menu__image-pizza">
+                        <h3 class="pizza-menu__name-pizza">Cheese</h3>
+                        <p class="pizza-menu__description">Filling: onion, potato, tomato, mushrooms, cheese, olives,
+                            meat...</p>
+                    </div>
+                    <div class="pizza-menu__block-checkbox">
+                        <p class="pizza-menu__field">
+                            <!-- <label for="cheese-small" class="pizza-menu__label">22</label> -->
+                            <input type="checkbox" name="cheese-small" id="cheese-small"
+                                class="pizza-menu__checkbox-smal pizza-menu__checkbox" aria-label="Pizza 22 cm">
+                        </p>
+
+                        <p class="pizza-menu__field">
+                            <!-- <label for="cheese-normal" class="pizza-menu__label">28</label> -->
+                            <input type="checkbox" name="cheese-normal" id="cheese-normal"
+                                class="pizza-menu__checkbox-normal pizza-menu__checkbox" aria-label="Pizza 28 cm">
+                        </p>
+                        <p class="pizza-menu__field">
+                            <!-- <label for="cheese-big" class="pizza-menu__label">33</label> -->
+                            <input type="checkbox" name="cheese-big" id="cheese-big"
+                                class="pizza-menu__checkbox-big pizza-menu__checkbox" aria-label="Pizza 33 cm"> 
+                        </p>
+                    </div>
+                    <button type="button" class="pizza-menu__button-add-ingredients"><span class="pizza-menu__text">+
+                            Ingredients</span></button>
+                    <div class="pizza-menu__box">
+                        <p class="pizza-menu__price">8,35 <sup>$</sup></p>
+                        <div class="pizza-menu__in-total">
+                            <button type="button" class="pizza-menu__button-reduce-the-number"
+                                title="Reduce by one pizza" aria-label="Reduce by one pizza"><img
+                                    src="icons/remove-icon.svg" alt="" loading="lazy" width="23"
+                                    height="23"></button></button>
+                            <p class="pizza-menu__count">1</p>
+                            <button type="button" class="pizza-menu__button-increase-the-number"
+                                aria-label="Add another pizza" title="Add another pizza"><img src="icons/add-icon.svg"
+                                    alt="" loading="lazy" width="23" height="23"></button>
+                        </div>
+                    </div>
+                    <button type="button" class="pizza-menu__add-to-favorites accent-button">Order Now</button>
+                </article>
+            </div>
+            <article class="popular-block">
+                <span class="pizza-menu__design-text-2 design-text">Menu</span>
+                <h3 class="popular-block__title">most popular pizza</h3>
+            </article>
+            <!--              most popular pizza              -->
+
+            <div class="pizza-menu__cards pizza-menu__popular-cards">
+                <!-- card1 -->
+                <article class="pizza-menu__card">
+                    <span class="pizza-menu__design-text-3 design-text">Menu</span>
+                    <div class="pizza-menu__card-hero">
+                        <img src="images/argentina-pizza.png" loading="lazy" alt="" width="159" height="157"
+                            class="pizza-menu__image-pizza">
+                        <h3 class="pizza-menu__name-pizza">Argentina</h3>
+                        <p class="pizza-menu__description">Filling: onion, potato, tomato, mushrooms, cheese, olives,
+                            meat...</p>
+                    </div>
+                    <div class="pizza-menu__block-checkbox">
+                        <p class="pizza-menu__field">
+                            <!-- <label for="argentina-small" class="pizza-menu__label">22</label> -->
+                            <input type="checkbox" name="argentina-small" id="argentina-small"
+                                class="pizza-menu__checkbox-smal pizza-menu__checkbox" aria-label="Pizza 22 cm">
+                        </p>
+
+                        <p class="pizza-menu__field">
+                            <!-- <label for="argentina-normal" class="pizza-menu__label">28</label> -->
+                            <input type="checkbox" name="argentina-normal" id="argentina-normal"
+                                class="pizza-menu__checkbox-normal pizza-menu__checkbox" aria-label="Pizza 28 cm">
+                        </p>
+                        <p class="pizza-menu__field">
+                            <!-- <label for="argentina-big" class="pizza-menu__label">33</label> -->
+                            <input type="checkbox" name="big" id="argentina-big"
+                                class="pizza-menu__checkbox-big pizza-menu__checkbox" aria-label="Pizza 33 cm">
+                        </p>
+                    </div>
+                    <button type="button" class="pizza-menu__button-add-ingredients"><span class="pizza-menu__text">+
+                            Ingredients</span></button>
+                    <div class="pizza-menu__box">
+                        <p class="pizza-menu__price">7,35 <sup>$</sup></p>
+                        <div class="pizza-menu__in-total">
+                            <button type="button" class="pizza-menu__button-reduce-the-number"
+                                title="Reduce by one pizza" aria-label="Reduce by one pizza"><img
+                                    src="icons/remove-icon.svg" alt="" loading="lazy" width="23"
+                                    height="23"></button></button>
+                            <p class="pizza-menu__count">1</p>
+                            <button type="button" class="pizza-menu__button-increase-the-number"
+                                aria-label="Add another pizza" title="Add another pizza"><img src="icons/add-icon.svg"
+                                    alt="" loading="lazy" width="23" height="23"></button>
+                        </div>
+                    </div>
+                    <button type="button" class="pizza-menu__add-to-favorites accent-button">Order Now</button>
+                </article>
+                <!-- card2 -->
+                <article class="pizza-menu__card">
+                    <div class="pizza-menu__card-hero">
+                        <img src="images/gribnaya-pizza.png" loading="lazy" alt="" width="159" height="157"
+                            class="pizza-menu__image-pizza">
+                        <h3 class="pizza-menu__name-pizza">Gribnaya</h3>
+                        <p class="pizza-menu__description">Filling: onion, potato, tomato, mushrooms, cheese, olives,
+                            meat...</p>
+                    </div>
+                    <div class="pizza-menu__block-checkbox">
+                        <p class="pizza-menu__field">
+                            <!-- <label for="gribnaya-small" class="pizza-menu__label">22</label> -->
+                            <input type="checkbox" name="gribnaya-small" id="gribnaya-small"
+                                class="pizza-menu__checkbox-smal pizza-menu__checkbox" aria-label="Pizza 22 cm">
+                        </p>
+
+                        <p class="pizza-menu__field">
+                            <!-- <label for="gribnaya-normal" class="pizza-menu__label">28</label> -->
+                            <input type="checkbox" name="gribnaya-normal" id="gribnaya-normal"
+                                class="pizza-menu__checkbox-normal pizza-menu__checkbox" aria-label="Pizza 28 cm">
+                        </p>
+                        <p class="pizza-menu__field">
+                            <!-- <label for="gribnaya-big" class="pizza-menu__label">33</label> -->
+                            <input type="checkbox" name="gribnaya-big" id="gribnaya-big"
+                                class="pizza-menu__checkbox-big pizza-menu__checkbox" aria-label="Pizza 33 cm">
+                        </p>
+                    </div>
+                    <button type="button" class="pizza-menu__button-add-ingredients"><span class="pizza-menu__text">+
+                            Ingredients</span></button>
+                    <div class="pizza-menu__box">
+                        <p class="pizza-menu__price">6,35 <sup>$</sup></p>
+                        <div class="pizza-menu__in-total">
+                            <button type="button" class="pizza-menu__button-reduce-the-number"
+                                title="Reduce by one pizza" aria-label="Reduce by one pizza"><img
+                                    src="icons/remove-icon.svg" alt="" loading="lazy" width="23"
+                                    height="23"></button></button>
+                            <p class="pizza-menu__count">1</p>
+                            <button type="button" class="pizza-menu__button-increase-the-number"
+                                aria-label="Add another pizza" title="Add another pizza"><img src="icons/add-icon.svg"
+                                    alt="" loading="lazy" width="23" height="23"></button>
+                        </div>
+                    </div>
+                    <button type="button" class="pizza-menu__add-to-favorites accent-button">Order Now</button>
+                </article>
+                <!-- card3 -->
+                <article class="pizza-menu__card">
+                    <div class="pizza-menu__card-hero">
+                        <img src="images/tomato-pizza.png" loading="lazy" alt="" width="159" height="157"
+                            class="pizza-menu__image-pizza">
+                        <h3 class="pizza-menu__name-pizza">Tomato</h3>
+                        <p class="pizza-menu__description">Filling: onion, potato, tomato, mushrooms, cheese, olives,
+                            meat...</p>
+                    </div>
+                    <div class="pizza-menu__block-checkbox">
+                        <p class="pizza-menu__field">
+                            <!-- <label for="tomato-small" class="pizza-menu__label">22</label> -->
+                            <input type="checkbox" name="tomato-small" id="tomato-small"
+                                class="pizza-menu__checkbox-smal pizza-menu__checkbox" aria-label="Pizza 22 cm">
+                        </p>
+
+                        <p class="pizza-menu__field">
+                            <!-- <label for="tomato-normal" class="pizza-menu__label">28</label> -->
+                            <input type="checkbox" name="tomato-normal" id="tomato-normal"
+                                class="pizza-menu__checkbox-normal pizza-menu__checkbox" aria-label="Pizza 28 cm">
+                        </p>
+                        <p class="pizza-menu__field">
+                            <!-- <label for="tomato-big" class="pizza-menu__label">33</label> -->
+                            <input type="checkbox" name="tomato-big" id="tomato-big"
+                                class="pizza-menu__checkbox-big pizza-menu__checkbox" aria-label="Pizza 33 cm">
+                        </p>
+                    </div>
+                    <button type="button" class="pizza-menu__button-add-ingredients"><span class="pizza-menu__text">+
+                            Ingredients</span></button>
+                    <div class="pizza-menu__box">
+                        <p class="pizza-menu__price">7,35 <sup>$</sup></p>
+                        <div class="pizza-menu__in-total">
+                            <button type="button" class="pizza-menu__button-reduce-the-number"
+                                title="Reduce by one pizza" aria-label="Reduce by one pizza"><img
+                                    src="icons/remove-icon.svg" alt="" loading="lazy" width="23"
+                                    height="23"></button></button>
+                            <p class="pizza-menu__count">1</p>
+                            <button type="button" class="pizza-menu__button-increase-the-number"
+                                aria-label="Add another pizza" title="Add another pizza"><img src="icons/add-icon.svg"
+                                    alt="" loading="lazy" width="23" height="23"></button>
+                        </div>
+                    </div>
+                    <button type="button" class="pizza-menu__add-to-favorites accent-button">Order Now</button>
+                </article>
+                <!-- card4 -->
+                <article class="pizza-menu__card">
+                    <div class="pizza-menu__card-hero">
+                        <img src="images/italian-x2-pizza.png" loading="lazy" alt="" width="159" height="157"
+                            class="pizza-menu__image-pizza">
+                        <h3 class="pizza-menu__name-pizza">Italian x2</h3>
+                        <p class="pizza-menu__description">Filling: onion, potato, tomato, mushrooms, cheese, olives,
+                            meat...</p>
+                    </div>
+                    <div class="pizza-menu__block-checkbox">
+                        <p class="pizza-menu__field">
+                            <!-- <label for="italian-two-small" class="pizza-menu__label">22</label> -->
+                            <input type="checkbox" name="italian-two-small" id="italian-two-small"
+                                class="pizza-menu__checkbox-smal pizza-menu__checkbox" aria-label="Pizza 22 cm">
+                        </p>
+
+                        <p class="pizza-menu__field">
+                            <!-- <label for="italian-two-normal" class="pizza-menu__label">28</label> -->
+                            <input type="checkbox" name="italian-two-normal" id="italian-two-normal"
+                                class="pizza-menu__checkbox-normal pizza-menu__checkbox" aria-label="Pizza 28 cm">
+                        </p>
+                        <p class="pizza-menu__field">
+                            <!-- <label for="italian-two-big" class="pizza-menu__label">33</label> -->
+                            <input type="checkbox" name="italian-two-big" id="italian-two-big"
+                                class="pizza-menu__checkbox-big pizza-menu__checkbox" aria-label="Pizza 33 cm">
+                        </p>
+                    </div>
+                    <button type="button" class="pizza-menu__button-add-ingredients"><span class="pizza-menu__text">+
+                            Ingredients</span></button>
+                    <div class="pizza-menu__box">
+                        <p class="pizza-menu__price">8,35 <sup>$</sup></p>
+                        <div class="pizza-menu__in-total">
+                            <button type="button" class="pizza-menu__button-reduce-the-number"
+                                title="Reduce by one pizza" aria-label="Reduce by one pizza"><img
+                                    src="icons/remove-icon.svg" alt="" loading="lazy" width="23"
+                                    height="23"></button></button>
+                            <p class="pizza-menu__count">1</p>
+                            <button type="button" class="pizza-menu__button-increase-the-number"
+                                aria-label="Add another pizza" title="Add another pizza"><img src="icons/add-icon.svg"
+                                    alt="" loading="lazy" width="23" height="23"></button>
+                        </div>
+                    </div>
+                    <button type="button" class="pizza-menu__add-to-favorites accent-button">Order Now</button>
+                </article>
+            </div>
+        </section>
+        <section class="events" aria-labelledby="events__main-title">
+            <span class="events__design-text design-text">Events</span>
+            <div class="events__first-box events__box">
+                <article class="events__how-coockig-container events__event">
+                    <h3 class="events__title">How we<br>coocking</h3>
+                    <button type="button" class="events__button-more accent-button">More</button>
+                </article>
+                <article class="events__our-blog-container events__event">
+                    <h3 class="events__title">Our blog</h3>
+                    <button type="button" class="events__button-more accent-button">More</button>
+                </article>
+                <div class="events__hero">
+                    <h2 class="events__main-title" id="events">Events</h2>
+                    <p class="events__description">There are regular events in our pizzeria that will allow you to eat
+                        delicious food for a lower price!</p>
+                </div>
+            </div>
+            <div class="events__second-box events__box">
+                <article class="events__two-pizza-container events__event">
+                    <h3 class="events__title">two pizza<br>for 1 price</h3>
+                    <button type="button" class="events__button-more accent-button">More</button>
+                </article>
+                <article class="events__kitchen-tour-container events__event">
+                    <h3 class="events__title">Kitchen<br>tour</h3>
+                    <button type="button" class="events__button-more accent-button">More</button>
+                </article>
+            </div>
+            <div class="events__third-box events__box">
+                <article class="events__free-coffe-container events__event">
+                    <h3 class="events__title">Free coffe<br>for 3 pizza</h3>
+                    <button type="button" class="events__button-more accent-button">More</button>
+                </article>
+                <article class="events__our-instagram-container events__event">
+                    <h3 class="events__title">our<br>instagram</h3>
+                    <button type="button" class="events__button-more accent-button">More</button>
+                </article>
+                <article class="events__choose-container events__event">
+                    <h3 class="events__title">Where are<br>you choose<br>us?</h3>
+                    <button type="button" class="events__button-more accent-button">More</button>
+                </article>
+            </div>
+        </section>
+        <section class="about-us" aria-labelledby="about-us__title">
+            <div class="about-us__container">
+                <span class="about-us__design-text-1 design-text">About</span>
+                <h2 class="about-us__title" id="about-us">About us</h2>
+                <div class="about-us__inner">
+                    <p class="about-us__description">In just a couple of years, we have opened 6 outlets in different
+                        cities: Kazan, Chelyabinsk, Ufa, Samara, Izhevsk, and in the future we plan to develop the
+                        network in other major cities of Russia.</p>
+                    <img src="images/pizzas.png" alt="" loading="lazy" width="490" height="189"
+                        class="about-us__pizzas">
+                </div>
+                <p class="about-us__description">The kitchen of each point is at least: 400-500 sq. m. meters, hundreds
+                    of employees, smoothly performing work in order to receive / prepare / form / deliver customer
+                    orders on time.</p>
+            </div>
+            <img src="icons/vector.svg" loading="lazy" alt="" aria-hidden="true" class="about-us__vector" width="88"
+                height="55">
+            <img src="images/about-pizza-poster.png" alt="" loading="lazy" width="812" height="783"
+                class="about-us__pizza-poster">
+            <span class="about-us__design-text-2 design-text">About</span>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="footer__navigation">
+            <a href="#" class="footer__logo">pizzashop</a>
+            <table class="footer__table" id="footer">
+                <thead>
+                    <tr class="footer__tr">
+                        <th class="footer__th"><a href="#" class="footer__link-home footer__th-link">Home</a></th>
+                        <td class="footer__td-margin"></td>
+                        <th class="footer__th"><a href="#menu" class="footer__link-menu footer__th-link">Menu</a></th>
+                        <td class="footer__td-margin"></td>
+                        <th class="footer__th"><a href="#events" class="footer__link-events footer__th-link">Events</a>
+                        </th>
+                        <td class="footer__td-margin"></td>
+                        <th class="footer__th"><a href="#about-us" class="footer__link-about-us footer__th-link">About
+                                us</a></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="footer__tr">
+                        <td><a href="#" class="footer__link">To Order</a></td>
+                        <td class="footer__td-margin"></td>
+                        <td><a href="#" class="footer__link">3 Pizza 1 Free Coffee</a></td>
+                        <td class="footer__td-margin"></td>
+                        <td><a href="#" class="footer__link">Show all</a></td>
+                        <td class="footer__td-margin"></td>
+                        <td><a href="#" class="footer__link">Our History</a></td>
+                    </tr>
+                    <tr></tr>
+                    <tr class="footer__tr">
+                        <td><a href="#about-us" class="footer__link">About us</a></td>
+                        <td class="footer__td-margin"></td>
+                        <td><a href="#" class="footer__link">2 Pizza for 1 Price</a></td>
+                        <td class="footer__td-margin"></td>
+                        <td><a href="#" class="footer__link">Seaproducts</a></td>
+                        <td class="footer__td-margin"></td>
+                        <td><a href="#" class="footer__link">Why We?</a></td>
+                    </tr>
+                    <tr></tr>
+                    <tr class="footer__tr">
+                        <td><a href="#events" class="footer__link">Events</a></td>
+                        <td class="footer__td-margin"></td>
+                        <td><a href="#" class="footer__link">Kitchen Tour</a></td>
+                        <td class="footer__td-margin"></td>
+                        <td><a href="#" class="footer__link">Vegan</a></td>
+                    </tr>
+                    <tr class="footer__tr">
+                        <td><a href="#menu" class="footer__link">Menu</a></td>
+                        <td class="footer__td-margin"></td>
+                        <td><a href="#" class="footer__link">Meat</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="footer__connection">
+            <a href="tel:+79373335533" class="footer__phone">+7 (937) 333-55-33</a>
+            <div class="footer__popular-messengers">
+                <a href="#" class="footer__button-messenger" title="go to instagram" aria-label="go to instagram"><img
+                        src="icons/instagram.svg" alt="instagram" loading="lazy" width="30" height="30"></a>
+                <a href="#" class="footer__link-messenger" title="go to twitter" aria-label="go to twitter"><img
+                        src="icons/twiter.svg" alt="twitter" loading="lazy" width="30" height="30"></a>
+                <a href="#" class="footer__link-messenger" title="go to facebook" aria-label="go to facebook"><img
+                        src="icons/facebook.svg" alt="facebook" loading="lazy" width="30" height="30"></a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

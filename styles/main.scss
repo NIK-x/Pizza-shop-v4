@@ -1,0 +1,18 @@
+@use "fonts";
+@use "globals";
+@use "normalize";
+@use "utils";
+@use "variables";
+
+
+@use "../../blocks/main/header";
+@use "../../blocksmain/hero";
+@use "../../blocksmain/pizza-menu";
+@use "../../blocksmain/events";
+@use "../../blocksmain/about-us";
+@use "../../blocksmain/footer";
+@use "../../blocksmain/card";
+// @use "../../blocks/main";
+
+@use "../../blocks/main/accent-button";
+@use "../../blocks/main/burger-button";
