@@ -320,16 +320,19 @@ svg * {
   --color-black-1: #1D0800;
   --color-orange-1: #210A01;
   --color-gray: #A3A3A3;
+  --color-gray-3: #dadada;
   --color-gray-2: #515151;
   --color-brown: rgb(22, 10, 2);
   --color-brown-2: #0a0500;
-  --border: 0.0625rem solid var(--color-gray);
   --color-oranged: #FF4500;
+  --color-red: #d12e2e;
+  --border: 0.0625rem solid var(--color-gray);
   --text-shadow: 1px 1px 10px orange, 2px 1px 10px orangered;
   --fon-gradient: linear-gradient(245.71deg, #1E0C00 4.96%, #1F0700 33.7%, #170A00 68.41%, #1E0D00 96.42%);
   --gradient-accent: linear-gradient(261.69deg, #FF6432 12.12%, #FFA228 86.72%);
   --gradient-footer: linear-gradient(245.71deg, #170A00 4.96%, #170600 33.7%, #0F0700 68.41%, #170A00 96.42%);
   --gradinet-stroke-text: linear-gradient(180deg, rgba(255, 101, 51, 0.33) 0%, #FFA733 100%);
+  --font-basic: "Muller";
 }
 
 .header {

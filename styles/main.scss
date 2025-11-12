@@ -5,14 +5,14 @@
 @use "variables";
 
 
-@use "../../blocks/main/header";
-@use "../../blocksmain/hero";
-@use "../../blocksmain/pizza-menu";
-@use "../../blocksmain/events";
-@use "../../blocksmain/about-us";
-@use "../../blocksmain/footer";
-@use "../../blocksmain/card";
-// @use "../../blocks/main";
+@use "blocks/header";
+@use "blocks/hero";
+@use "blocks/pizza-menu";
+@use "blocks/events";
+@use "blocks/about-us";
+@use "blocks/footer";
+@use "blocks/card";
 
-@use "../../blocks/main/accent-button";
-@use "../../blocks/main/burger-button";
+
+@use "blocks/accent-button";
+@use "blocks/burger-button";

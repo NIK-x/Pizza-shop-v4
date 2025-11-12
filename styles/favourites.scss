@@ -1,8 +1,7 @@
 @use "fonts";
-@use "globals";
+// @use "globals";
 @use "normalize";
 @use "utils";
 @use "variables";
 
-
-@use "../../blocks/favourites/header"
+@use "blocks/favourites";
