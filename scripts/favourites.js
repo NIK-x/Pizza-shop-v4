@@ -15,10 +15,10 @@ class Order {
         isShow: "is-show",
     }
 
-    promocodes = {
-        one: "1",
-        free: "FREE PIZZA",
-    }
+    // promocodes = {
+    //     one: "1",
+    //     free: "FREE PIZZA",
+    // }
 
     constructor() {
         this.buttonAdd = document.querySelector(this.selectors.buttonAdd);
@@ -32,15 +32,16 @@ class Order {
         this.currentCount = 1;
         this.basePrice = 0;
         this.finalPrice = 0;
-
+        this.promocode = 1;
         this.init();
     }
 
     init() {
         this.changeTheNumber();
         this.updatePrice();
-        this.usePromocode();
-        this.culcBasePrice();
+        // this.usePromocode();
+        this.getPromocode();
+   
     }
 
     changeTheNumber() {        
@@ -59,39 +60,51 @@ class Order {
         });
     }
 
-    usePromocode(resultCurrent) {
-        this.inputPromocode.addEventListener("change", () => {                 
-            if (this.inputPromocode.value === this.promocodes.one) {
-                resultCurrent * 0,5;
-                this.inputPromocode.value = "";
-                this.inputPromocode.placeholder = "Успешно!";
+    // usePromocode(resultCurrent) {
+    //     this.inputPromocode.addEventListener("change", () => {                 
+    //         if (this.inputPromocode.value === this.promocodes.one) {
+    //             resultCurrent * 0,5;
+    //             this.inputPromocode.value = "";
+    //             this.inputPromocode.placeholder = "Успешно!";
                 
-            } else if (this.inputPromocode.value === this.promocodes.free) {
-                resultCurrent = 1;
+    //         } else if (this.inputPromocode.value === this.promocodes.free) {
+    //             resultCurrent = 1;
+    //             this.inputPromocode.value = "";
+    //             this.inputPromocode.placeholder = "Успешно!";
+    //         } else {
+    //             this.inputPromocode.value = "";
+    //             this.inputPromocode.placeholder = "Промокод не найден";
+    //         }
+    //         this.updatePrice();
+    //     });
+        
+    // }
+    getPromocode() {
+        this.inputPromocode.addEventListener("change", () => {
+            let value = this.inputPromocode.value.trim();
+            if (value == "50") {
+                this.promocode = 0.5;
                 this.inputPromocode.value = "";
-                this.inputPromocode.placeholder = "Успешно!";
+                this.inputPromocode.placeholder = "Применён";
+                this.updatePrice();
             } else {
                 this.inputPromocode.value = "";
-                this.inputPromocode.placeholder = "Промокод не найден";
+                this.inputPromocode.placeholder = "Ошибка";
             }
-            this.updatePrice();
         });
-        
     }
     
-    culcBasePrice() {
+    culcPrice() {
         this.basePrice = 0;
         this.pricePizzas.forEach((element) => {
-            
-            this.basePrice += Number(element.textContent);
+            let textElement = element.textContent.replace("$", "");
+            this.basePrice += Number(textElement);
         })
-        this.result.textContent = this.basePrice + "$";
+        this.result.textContent = this.basePrice * this.promocode + "$";
     }
 
     updatePrice() {
-        this.culcBasePrice();
-        this.usePromocode(this.basePrice);
-       
+        this.culcPrice();
     }
 
 
