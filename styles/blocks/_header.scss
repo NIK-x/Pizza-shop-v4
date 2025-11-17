@@ -161,8 +161,9 @@
         border: none;
         border-radius: 100px;
         color: var(--color-light);
-        padding: rem(10) rem(56);
+        padding: clamp(rem(5), rem(9), rem(10)) clamp(rem(20), rem(46), rem(56));
         background: var(--gradient-accent);
+        white-space: nowrap;
 
         @include tablet {
             display: none;

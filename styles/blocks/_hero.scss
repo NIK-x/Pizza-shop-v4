@@ -2,11 +2,13 @@
 
 .hero {
     border-bottom: rem(2) dashed var(--color-light);
-    padding-inline: rem(130);
-    padding-top: rem(61);
-    padding-bottom: rem(90);
+    padding-inline: fluid(130, 40);
+    padding-top: fluid(61, 31);
+    padding-bottom: fluid(90, 40);
     display: flex;
     flex-direction: row;
+
+
 
     &__inner {
         display: flex;
@@ -165,8 +167,11 @@
     }
 
     &__pizza-poster {
+        pointer-events: none;
+        width: 640px;
+        height: 844px;
         margin-top: rem(-160);
-        margin-left: rem(1100);
+        margin-left: 58%;
         position: absolute;
     }
 

@@ -39,4 +39,8 @@
             margin-top: rem(550);
         }
     }
+
+    &__pizza-poster {
+        pointer-events: none;
+    }
 }
