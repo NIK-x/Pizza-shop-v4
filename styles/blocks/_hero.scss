@@ -8,6 +8,15 @@
     display: flex;
     flex-direction: row;
 
+    @include custom-tablet {
+        justify-content: center;
+        align-items: center;
+        flex-direction: column-reverse;
+        row-gap: rem(40);
+        padding-top: fluid(25, 20);
+
+    }
+
 
 
     &__inner {
@@ -20,12 +29,20 @@
         display: inline-flex;
         justify-content: center;
         align-items: center;
-        column-gap: rem(10);
+        // column-gap: fluid(10, 7);
     }
     &__title {
         max-width: rem(538);
         line-height: 1.2;
         position: relative;
+
+        @include custom-tablet {
+            text-align: center;
+
+            &::after {
+                display: none;
+            }
+        }
 
         &::after {
             content: url("../icons/vector.svg");
@@ -39,12 +56,20 @@
         display: flex;
         flex-direction: column;
         row-gap: rem(25);
+
+        @include custom-tablet {
+            @include flex-center;
+        }
     }
 
     &__description {
         font-size: rem(20);
         max-width: rem(419);
         color: var(--color-gray);
+
+        @include custom-tablet {
+            text-align: center1;
+        }
     }
 
     &__highlighting {
@@ -63,10 +88,19 @@
         transition: scale 0.4s ease-in 0s;
     }
 
+    &__coocking-block {
+        
+        @include custom-tablet {
+            @include flex-center;
+        }
+    }
+
     &__open-video {
         background-color: transparent;
         border: none;
         transition: scale 0.3s ease-in 0s;
+
+        
 
         @include hover {
             & {
@@ -129,6 +163,15 @@
             pointer-events: none;
         }
 
+        @include custom-tablet {
+            padding-inline: fluid(20, 15);
+            margin-inline: auto;
+
+            &::after {
+                display: none;
+            }
+        }
+
         // &:hover::after {
         //     animation-name: vector;
         //     animation-duration: 500ms;
@@ -168,14 +211,43 @@
 
     &__pizza-poster {
         pointer-events: none;
-        width: 640px;
-        height: 844px;
-        margin-top: rem(-160);
-        margin-left: 58%;
+        width: clamp(440px, 610px, 670px);
+        height: fluid(844, 644);
+        top: 7%;
+        left: 67%;
         position: absolute;
+        background-size: cover;
+
+        @include custom-tablet {
+            position: relative;
+            left: 4%;
+            top: 0;
+            margin: 0;
+            width: rem(686);
+            height: rem(379);
+        }
     }
 
     // &__line {
     //     margin-top: 60px;
     // }
+}
+
+
+
+@media (min-width: rem(1450)) and (max-width: rem(1625)) {
+  .hero__pizza-poster  {
+    left: 62%;
+    top: 6%;
+  }
+}
+
+
+
+
+@media (min-width: rem($castom-tablet)) and (max-width: rem(1450)) {
+  .hero__pizza-poster  {
+    left: 56%;
+    top: 5%;
+  }
 }

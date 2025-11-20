@@ -4,6 +4,21 @@ $laptop: 1440.98;
 $tablet: 1023.98;
 $mobile: 767.98;
 $mobile-s: 480.98;
+$castom-tablet: 1199.98;
+$custom-mobile: 619.98;
+
+@mixin custom-tablet {
+  @media (width <= rem($castom-tablet)) {
+    @content;
+  }
+}
+
+@mixin custom-mobile {
+  @media (width <= rem($custom-mobile)) {
+    @content;
+  }
+}
+
 
 @mixin laptop-above {
   @media (width > rem($laptop)) {

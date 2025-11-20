@@ -11,7 +11,7 @@
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        row-gap: fluid(20, 17);
+        row-gap: rem(20);
         border-radius: 30px;
         padding-inline: fluid(30, 25);
         padding-bottom: flid(10, 7);
@@ -22,7 +22,7 @@
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        row-gap: fluid(20, 17);
+        row-gap: fluid(20, 18);
     }
 
     &__name-pizza {
@@ -49,6 +49,7 @@
     }
 
     &__button-add-ingredients {
+        white-space: nowrap;
         border: none;
         font-size: fluid(16, 15);
         @include gradient-color;
@@ -56,7 +57,7 @@
         border-style: solid;
         border-width: rem(2);
         color: var(--gradient-accent);
-        padding: fluid(10, 7) fluid(50, 40);
+        padding: fluid(10, 7) fluid(50, 30);
         position: relative;
         
         @include hover {
@@ -152,7 +153,8 @@
 
     &__price {
         font-weight: 500;
-        font-size: rem(25);
+        font-size: fluid(25, 20);
+        white-space: nowrap;
     }
 
     &__in-total {
@@ -212,13 +214,13 @@
     }
 
     &__count {
-        font-size: rem(23);
+        font-size: fluid(23, 18);
         color: var(--color-gray);
     }
 
     &__add-to-favorites {
-        padding: rem(12) rem(55);
-        font-size: rem(18);
+        padding: fluid(12, 7) fluid(55, 30);
+        font-size: fluid(18, 16);
         border-radius: 100px;
     }
 }

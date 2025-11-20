@@ -254,6 +254,12 @@ svg * {
   }
 }
 
+@media (width <= 74.99875rem) {
+  .hidden-custom-tablet {
+    display: none !important;
+  }
+}
+
 @media (width > 47.99875rem) {
   .visible-mobile {
     display: none !important;

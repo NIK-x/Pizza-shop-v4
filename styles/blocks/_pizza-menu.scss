@@ -8,7 +8,11 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    row-gap: rem(70);
+    row-gap: fluid(120, 110);
+
+    &__title {
+        padding-top: rem(10);
+    }
 
     &__block {
         @include flex-center;
@@ -19,19 +23,36 @@
     &__header {
         @include flex-center;
         column-gap: rem(24);
+
+        
+        @include tablet {
+            display: grid;
+            gap: fluid(60, 20);
+            grid-template-columns: repeat(2, auto);
+            justify-content: center;
+            align-items: center;
+        }
     }
 
     &__button {
+        white-space: nowrap;
         border: none;
-        padding: rem(20) rem(75);
+        padding: fluid(20, 10) fluid(75, 15);
         background-color: var(--color-orange-1);
         color: var(--color-light);
-        font-size: rem(20);
+        font-size: fluid(20, 14);
         font-weight: 500;
         border-radius: 100px;
         box-shadow: 0px 1px 5px black;
         transition: box-shadow 0.2s ease 0s;
-        
+
+        &:last-child {
+            @include tablet {
+                grid-column: 1 / -1;
+                justify-self: center;
+            }
+        }
+
         &.is-active {
             background: var(--gradient-accent);
             box-shadow: none;
@@ -43,12 +64,22 @@
                 box-shadow: 0px 0px 10px 0px var(--color-oranged);
             }
         }
+
     }
 
     &__cards {
         display: grid;
         grid-template-columns: repeat(4, auto);
-        column-gap: rem(44);
+        column-gap: fluid(44, 24);
+        row-gap: rem(120);
+
+        @include tablet {
+            grid-template-columns: repeat(2, auto);
+        }
+
+        @include custom-mobile {
+            grid-template-columns: repeat(1, auto);
+        }
     }
 
     
@@ -77,13 +108,20 @@
 .popular-block {
     background-image: url("../images/most-popular-pizza.png");
     background-repeat: no-repeat;
-    width: 1248px;
+    width: 67vw;
     height: 286px;
+    padding-inline: fluid(10, 5);
     @include flex-center;
+    border-radius: 25px;
+    text-align: center;
+
+    @include tablet {
+        background-position: center;
+    }
 
     &__title {
         text-transform: uppercase;
-        font-size: rem(44);
+        font-size: fluid(44, 22);
         font-weight: 500;
     }
 }
