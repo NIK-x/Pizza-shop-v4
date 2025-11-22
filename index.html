@@ -45,7 +45,7 @@
                     <span class="hero__design-text-1 design-text">Pizza</span>
                     <span class="hero__design-text-2 design-text">Pizza</span>
                     <h1 class="hero__title">The Fastest<span class="hero__box">Pizza<img src="icons/Lightning.svg"
-                    loading="lazy" alt="" width="49" height="85">Delivery</span></h1>
+                    loading="lazy" alt="" width="49" height="85" class="hero__icon">Delivery</span></h1>
                     <p class="hero__description">We will deliver juicy pizza for your family in 30 minutes, if the
                         courier is late - <span class="hero__highlighting">pizza is free!</span></p>
                 </div>
@@ -510,54 +510,40 @@
     <footer class="footer">
         <div class="footer__navigation">
             <a href="#" class="footer__logo">pizzashop</a>
-            <table class="footer__table" id="footer">
-                <thead>
-                    <tr class="footer__tr">
-                        <th class="footer__th"><a href="#" class="footer__link-home footer__th-link">Home</a></th>
-                        <td class="footer__td-margin"></td>
-                        <th class="footer__th"><a href="#menu" class="footer__link-menu footer__th-link">Menu</a></th>
-                        <td class="footer__td-margin"></td>
-                        <th class="footer__th"><a href="#events" class="footer__link-events footer__th-link">Events</a>
-                        </th>
-                        <td class="footer__td-margin"></td>
-                        <th class="footer__th"><a href="#about-us" class="footer__link-about-us footer__th-link">Aboutus</a></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="footer__tr">
-                        <td><a href="#" class="footer__link">To Order</a></td>
-                        <td class="footer__td-margin"></td>
-                        <td><a href="#" class="footer__link">3 Pizza 1 Free Coffee</a></td>
-                        <td class="footer__td-margin"></td>
-                        <td><a href="#" class="footer__link">Show all</a></td>
-                        <td class="footer__td-margin"></td>
-                        <td><a href="#" class="footer__link">Our History</a></td>
-                    </tr>
-                    <tr></tr>
-                    <tr class="footer__tr">
-                        <td><a href="#about-us" class="footer__link">About us</a></td>
-                        <td class="footer__td-margin"></td>
-                        <td><a href="#" class="footer__link">2 Pizza for 1 Price</a></td>
-                        <td class="footer__td-margin"></td>
-                        <td><a href="#" class="footer__link">Seaproducts</a></td>
-                        <td class="footer__td-margin"></td>
-                        <td><a href="#" class="footer__link">Why We?</a></td>
-                    </tr>
-                    <tr></tr>
-                    <tr class="footer__tr">
-                        <td><a href="#events" class="footer__link">Events</a></td>
-                        <td class="footer__td-margin"></td>
-                        <td><a href="#" class="footer__link">Kitchen Tour</a></td>
-                        <td class="footer__td-margin"></td>
-                        <td><a href="#" class="footer__link">Vegan</a></td>
-                    </tr>
-                    <tr class="footer__tr">
-                        <td><a href="#menu" class="footer__link">Menu</a></td>
-                        <td class="footer__td-margin"></td>
-                        <td><a href="#" class="footer__link">Meat</a></td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="footer__links-block">
+                <div class="footer__inner">
+                    <a href="#" class="footer__main-title">Home</a>
+                    <ul class="footer__home-list">
+                        <li class="footer__home-list__item"><a href="#" class="footer__home-list-link footer__link">To Order</a></li>
+                        <li class="footer__home-list__item"><a href="#" class="footer__home-list-link footer__link">About us</a></li>
+                        <li class="footer__home-list__item"><a href="#" class="footer__home-list-link footer__link">Events</a></li>
+                    </ul>
+                </div>
+                <div class="footer__inner">
+                    <a href="#menu" class="footer__main-title">Menu</a>   
+                    <ul class="footer__menu-list">
+                        <li class="footer__menu-list-item"><a href="#" class="footer__menu-list-link footer__link">3 Pizza 1 Free Coffee</a></li>
+                        <li class="footer__menu-list-item"><a href="#" class="footer__menu-list-link footer__link">2 Pizza for 1 Price</a></li>
+                        <li class="footer__menu-list-item"><a href="#" class="footer__menu-list-link footer__link">Kitchen Tour</a></li>
+                    </ul>
+                </div>
+                <div class="footer__inner">
+                    <a href="#events" class="footer__main-title">Events</a> 
+                    <ul class="footer__events-list">
+                        <li class="footer__events-list-item"><a href="#" class="footer__events-link footer__link">Show All</a></li>
+                        <li class="footer__events-list-item"><a href="#" class="footer__events-link footer__link">Seaproducts</a></li>
+                        <li class="footer__events-list-item"><a href="#" class="footer__events-link footer__link">Vegan</a></li>
+                        <li class="footer__events-list-item"><a href="#" class="footer__events-link footer__link">Meat</a></li>
+                    </ul>   
+                </div>
+                <div class="footer__inner">
+                   <a href="#about-us" class="footer__main-title">About us</a> 
+                    <ul class="footer__about-us-list">
+                        <li class="footer__about-us-list-item"><a href="#" class="footer__about-us-list-link footer__link">Our History</a></li>
+                        <li class="footer__about-us-list-item"><a href="#" class="footer__about-us-list-link footer__link">Why We?</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
         <div class="footer__connection">
             <a href="tel:+79373335533" class="footer__phone">+7 (937) 333-55-33</a>

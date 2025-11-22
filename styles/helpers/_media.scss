@@ -8,6 +8,13 @@ $castom-tablet: 1199.98;
 $custom-mobile: 619.98;
 $custom-laptop: 1499.98;
 $custom-laptop-s: 1299.98;
+$custom-mobile-s: 379.98;
+
+@mixin custom-mobile-s {
+  @media (width <= rem($custom-mobile-s)) {
+    @content;
+  }
+}
 
 
 @mixin custom-laptop-s {

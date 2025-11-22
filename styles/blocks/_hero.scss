@@ -31,6 +31,13 @@
         align-items: center;
         // column-gap: fluid(10, 7);
     }
+
+    &__icon {
+        @include custom-mobile-s {
+            width: fluid(89, 79);
+            height: fluid(49, 39);
+        }
+    }
     &__title {
         max-width: rem(538);
         line-height: 1.2;
@@ -42,6 +49,10 @@
             &::after {
                 display: none;
             }
+        }
+
+        @include custom-mobile-s {
+            font-size: fluid(45, 35);
         }
 
         &::after {
@@ -68,7 +79,7 @@
         color: var(--color-gray);
 
         @include custom-tablet {
-            text-align: center1;
+            text-align: center;
         }
     }
 

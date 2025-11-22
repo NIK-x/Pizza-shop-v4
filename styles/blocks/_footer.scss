@@ -4,50 +4,87 @@
     padding: rem(67) rem(130);
     margin-top: rem(50);
     background: var(--gradient-footer);
-    height: 400px;
+    min-height: 20vh;
     display: flex;
     flex-direction: column;
     row-gap: rem(105);
 
+    @include mobile {
+        @include flex-center;
+    }
+
     &__logo {
+        
         font-weight: 800;
         font-size: fluid(34, 24);
         background: var(--gradient-accent);
         @include gradient-color;
+
+        @include mobile {
+            margin-inline: auto;
+        }
     }
+
 
     &__navigation {
         display: flex;
         justify-content: flex-start;
         align-items: flex-start;
-        column-gap: rem(84);
+        column-gap: fluid(224, 100);
+
+        @include mobile {
+            flex-direction: column;
+            row-gap: rem(60);
+        }
     }
 
-    &__th-link {
+    &__links-block {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        column-gap: fluid(122, 40);
+
+        @include custom-tablet {
+            display: grid;
+            grid-template-columns: repeat(2, auto);
+            row-gap: rem(40);
+        }
+    }
+
+    &__inner {
+        display: flex;
+        flex-direction: column;
+        row-gap: fluid(20, 16);
+    }
+
+    &__main-title {
+        white-space: nowrap;
         color: var(--color-gray);
         font-weight: 500;
-        font-size: rem(18);
+        font-size: fluid(18, 16);  
     }
 
     &__link {
         white-space: nowrap;
-       color: var(--color-gray-2); 
-    }
+        color: var(--color-gray-2); 
+        font-size: fluid(16, 14); 
 
-    &__table {
-        border-collapse: separate;
-        border-spacing: rem(15) 0;
-        text-align: left;
-    } 
 
-    &__td-margin {
-        width: rem(100);
     }
     
     &__connection {
         display: flex;
         align-items: center;
         justify-content: space-between;
+
+        @include mobile {
+            column-gap: fluid(300, 40)
+        }
+
+        @include custom-mobile {
+            flex-direction: column;
+            row-gap: rem(20);
+        }
     }
 
     &__popular-messengers {
@@ -56,7 +93,8 @@
     }
 
     &__phone {
-        font-size: rem(21);
+        white-space: nowrap;
+        font-size: fluid(21, 18);
         font-weight: 500;
         background: var(--gradient-accent);
         @include gradient-color;
