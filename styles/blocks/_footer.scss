@@ -1,7 +1,7 @@
 @use "../helpers" as *;
 
 .footer {
-    padding: rem(67)rem(130);
+    padding: rem(67) rem(130);
     margin-top: rem(50);
     background: var(--gradient-footer);
     height: 400px;
@@ -11,7 +11,7 @@
 
     &__logo {
         font-weight: 800;
-        font-size: rem(34);
+        font-size: fluid(34, 24);
         background: var(--gradient-accent);
         @include gradient-color;
     }
@@ -30,6 +30,7 @@
     }
 
     &__link {
+        white-space: nowrap;
        color: var(--color-gray-2); 
     }
 

@@ -73,8 +73,9 @@
         column-gap: fluid(44, 24);
         row-gap: rem(120);
 
-        @include tablet {
+        @include custom-laptop-s {
             grid-template-columns: repeat(2, auto);
+            column-gap: fluid(144, 24);
         }
 
         @include custom-mobile {

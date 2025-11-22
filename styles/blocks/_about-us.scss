@@ -1,10 +1,19 @@
 @use "../helpers" as *;
 
 .about-us {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    column-gap: rem(249);
+    padding-block: rem(70);
+    padding-inline: fluid(130, 40);
+    @include flex-center;
+    column-gap: fluid(249, 50);
+
+
+    &__title {
+        white-space: nowrap;
+
+        @include custom-tablet {
+            text-align: center;
+        }
+    }
 
 
     &__container {
@@ -17,11 +26,21 @@
         display: flex;
         flex-direction: column;
         row-gap: rem(1);
+
+        @include custom-tablet {
+            align-items: center;
+            justify-content: center;
+        }
     }
     &__description {
         color: var(--color-gray);
-        font-size: rem(20);
-        max-width: rem(465);
+        font-size: fluid(20, 16);
+        max-width: fluid(465, 300);
+
+        @include custom-tablet {
+            margin-inline: auto;
+            text-align: center;
+        }
     }
 
     &__vector {
@@ -33,6 +52,11 @@
         &-1 {
             margin-left: rem(-100);
             margin-top: rem(-120);
+
+            @include custom-tablet {
+                margin-left: 0;
+                @include abs-x;
+            }
         }
         &-2 {
             margin-left: rem(1200);
@@ -41,6 +65,13 @@
     }
 
     &__pizza-poster {
+        object-fit: cover;
+        width: fluid(720, 390);
+        height: fluid(720, 390);
         pointer-events: none;
+
+        @include custom-tablet {
+            display: none;
+        }
     }
 }
