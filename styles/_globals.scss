@@ -1,11 +1,5 @@
 @use "helpers" as *;
 
-html {
-    &.is-lock {
-        overflow: hidden;
-    }
-}
-
 body {
     background: var(--fon-gradient) no-repeat center center fixed;
     background-repeat: no-repeat;
@@ -13,6 +7,11 @@ body {
     color: var(--color-light);
     font-family: "Muller";
     font-weight: 400;
+
+    &.is-lock {
+        overflow: hidden;
+    }
+
 }
 
 h1, .h1 {

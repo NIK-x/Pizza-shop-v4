@@ -12,7 +12,7 @@
 <body class="">
     <header class="header header--sticky">
         <a href="#" class="header__logo">pizzashop</a>
-        <div class="header__overlay hidden-mobile">
+        <div class="header__overlay"> <!-- Desctop: hidden-mobile -->
             <nav class="header__nav-menu">
                 <ul class="header__menu-list" data-js-menu-list>
                     <li class="header__menu-item"><a href="#" class="header__menu-link" data-js-menu-link>Home</a></li>
@@ -63,7 +63,13 @@
                     <span class="hero__design-text-3 design-text">Pizza</span>
                 </div>
             </div>
-            <img src="images/hero-pizza.png" loading="lazy" alt="" width="640" height="905" class="hero__pizza-poster">
+            <img 
+            srcset="images/hero-pizza.png 1200w, images/pizza-poster-mobile.png 600w"
+            sizes="(min-width: 1200px) 1200px, 100vw"
+            src="images/hero-pizza.png"
+            loading="lazy" 
+            alt="Вкусная пицца" 
+            class="hero__pizza-poster">
         </section>
         <section class="pizza-menu" aria-labelledby="pizza-menu__title">
             <div class="pizza-menu__block">
@@ -513,7 +519,7 @@
             <div class="footer__links-block">
                 <div class="footer__inner">
                     <a href="#" class="footer__main-title">Home</a>
-                    <ul class="footer__home-list">
+                    <ul class="footer__home-list footer__list">
                         <li class="footer__home-list__item"><a href="#" class="footer__home-list-link footer__link">To Order</a></li>
                         <li class="footer__home-list__item"><a href="#" class="footer__home-list-link footer__link">About us</a></li>
                         <li class="footer__home-list__item"><a href="#" class="footer__home-list-link footer__link">Events</a></li>
@@ -521,15 +527,15 @@
                 </div>
                 <div class="footer__inner">
                     <a href="#menu" class="footer__main-title">Menu</a>   
-                    <ul class="footer__menu-list">
-                        <li class="footer__menu-list-item"><a href="#" class="footer__menu-list-link footer__link">3 Pizza 1 Free Coffee</a></li>
-                        <li class="footer__menu-list-item"><a href="#" class="footer__menu-list-link footer__link">2 Pizza for 1 Price</a></li>
-                        <li class="footer__menu-list-item"><a href="#" class="footer__menu-list-link footer__link">Kitchen Tour</a></li>
+                    <ul class="footer__menu-list footer__list">
+                        <li class="footer__menu-list-item"><a href="#" class="footer__menu-list-link footer__link long">3 Pizza 1 Free Coffee</a></li>
+                        <li class="footer__menu-list-item"><a href="#" class="footer__menu-list-link footer__link long">2 Pizza for 1 Price</a></li>
+                        <li class="footer__menu-list-item"><a href="#" class="footer__menu-list-link footer__link long">Kitchen Tour</a></li>
                     </ul>
                 </div>
                 <div class="footer__inner">
                     <a href="#events" class="footer__main-title">Events</a> 
-                    <ul class="footer__events-list">
+                    <ul class="footer__events-list footer__list">
                         <li class="footer__events-list-item"><a href="#" class="footer__events-link footer__link">Show All</a></li>
                         <li class="footer__events-list-item"><a href="#" class="footer__events-link footer__link">Seaproducts</a></li>
                         <li class="footer__events-list-item"><a href="#" class="footer__events-link footer__link">Vegan</a></li>
@@ -538,7 +544,7 @@
                 </div>
                 <div class="footer__inner">
                    <a href="#about-us" class="footer__main-title">About us</a> 
-                    <ul class="footer__about-us-list">
+                    <ul class="footer__about-us-list footer__list">
                         <li class="footer__about-us-list-item"><a href="#" class="footer__about-us-list-link footer__link">Our History</a></li>
                         <li class="footer__about-us-list-item"><a href="#" class="footer__about-us-list-link footer__link">Why We?</a></li>
                     </ul>
@@ -557,6 +563,68 @@
             </div>
         </div>
     </footer>
+    <div class="block" style="display: none;">
+        <div class="container">
+            <input type="checkbox" id="flip">
+            <div class="cover">
+                <div class="front">
+                    <img src="images\pizza-poster-login.jpg" alt="">
+                </div>
+                <div class="back">
+                    <img class="backImg" src="images/pizza-poster-login2.png" alt="">
+                </div>
+            </div>
+            <div class="forms">
+                <div class="form-content">
+                    <div class="login-form">
+                        <h2 class="title">Login</h2>
+                        <form action="#">
+                            <div class="input-boxes">
+                                <div class="input-box">
+                                    <i class="fas fa-envelope"></i>
+                                    <input type="text" placeholder="Enter your email" required>
+                                </div>
+                                <div class="input-box">
+                                    <i class="fas fa-lock"></i>
+                                    <input type="password" placeholder="Enter your password" required>
+                                </div>
+                                <div class="text"><a href="#">Forgot password?</a></div>
+                                <div class="button input-box">
+                                    <input type="submit" value="Sumbit">
+                                </div>
+                                <div class="text sign-up-text">Don't have an account? <label for="flip">Sing up now</label>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="signup-form">
+                        <div class="title">Sign up</div>
+                        <form action="#">
+                            <div class="input-boxes">
+                                <div class="input-box">
+                                    <i class="fas fa-user"></i>
+                                    <input type="text" placeholder="Enter your name" required>
+                                </div>
+                                <div class="input-box">
+                                    <i class="fas fa-envelope"></i>
+                                    <input type="text" placeholder="Enter your email" required>
+                                </div>
+                                <div class="input-box">
+                                    <i class="fas fa-lock"></i>
+                                    <input type="password" placeholder="Enter your password" required>
+                                </div>
+                                <div class="button input-box">
+                                    <input type="submit" value="Sumbit">
+                                </div>
+                                <div class="text sign-up-text">Already have an account? <label for="flip">Login now</label>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>

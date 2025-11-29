@@ -38,7 +38,13 @@
     &__description {
         color: var(--color-gray);
         max-width: rem(427);
-        font-size: rem(19);
+        font-size: fluid(19, 16);
+
+        @include custom-tablet {
+            margin-inline: auto;
+            width: fluid(500, 200);
+            text-align: center;
+        }
     }
 
     &__title {
@@ -211,7 +217,7 @@
     }
 
     &__design-text {
-        margin-left: rem(-1100);
+        margin-left: -50%;
         margin-top: rem(-180);
     }
 }

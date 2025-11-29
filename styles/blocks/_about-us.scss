@@ -46,6 +46,10 @@
     &__vector {
         position: absolute;
         margin-left: -200px;
+
+        @include custom-tablet {
+            display: none;
+        }
     }
 
     &__design-text {
@@ -59,7 +63,7 @@
             }
         }
         &-2 {
-            margin-left: rem(1200);
+            margin-left: 65%;
             margin-top: rem(550);
         }
     }

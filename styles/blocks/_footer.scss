@@ -54,7 +54,7 @@
     &__inner {
         display: flex;
         flex-direction: column;
-        row-gap: fluid(20, 16);
+        row-gap: rem(5);
     }
 
     &__main-title {
@@ -64,12 +64,21 @@
         font-size: fluid(18, 16);  
     }
 
+    &__list {
+        display: flex;
+        flex-direction: column;
+        row-gap: rem(3);
+    }
+
     &__link {
         white-space: nowrap;
         color: var(--color-gray-2); 
         font-size: fluid(16, 14); 
 
-
+        @include mobile {
+            white-space: normal;
+            width: rem(90);
+        }
     }
     
     &__connection {

@@ -86,13 +86,17 @@
     
     &__design-text {
         &-1 {
-            margin-left: rem(-1100);
+            margin-left: -55%;
             margin-top: rem(400);
+
+            @include custom-laptop-s {
+                margin-top: rem(600);
+            }
         }
 
         &-2 {
             margin-top: rem(-320);
-            margin-left: rem(1000);
+            margin-left: 60%;
         }
 
         &-3 {

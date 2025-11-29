@@ -144,15 +144,17 @@
     }
 
     &__button {
+        white-space: nowrap;
         border: rem(2) dotted var(--color-light);
         border-radius: 100px;
-        max-width: rem(240);
+        max-width: fluid(240, 160);
+        padding-inline: fluid(10, 5);
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        padding-block: rem(10);
+        padding-block: fluid(10, 7);
         color: var(--color-brown);
-        font-size: rem(25);
+        font-size: fluid(25, 20);
         -webkit-text-stroke: rem(0.3) var(--color-light);
         cursor: pointer;
         transition: all 0.4s ease 0s;
@@ -205,24 +207,32 @@
     &__design-text {
 
         &-1 {
-            margin-left: rem(45);
+            margin-left: -5%;
             margin-top: rem(-120);
         }
 
         &-2 {
-            margin-left: rem(1200);
+            margin-left: 65%;
             margin-top: rem(-180);
+
+            @include custom-tablet {
+                display: none;
+            }
         }
 
         &-3 {
-            margin-left: rem(970);
-            margin-top: rem(150);
+            margin-left: 55%;
+            margin-top: rem(170);
+
+            @include custom-tablet {
+                display: none;
+            }
         }
     }
 
     &__pizza-poster {
         pointer-events: none;
-        width: clamp(440px, 610px, 670px);
+        width: clamp(440px, 630px, 670px);
         height: fluid(844, 644);
         top: 7%;
         left: 67%;
@@ -234,8 +244,13 @@
             left: 4%;
             top: 0;
             margin: 0;
-            width: rem(686);
-            height: rem(379);
+            // width: rem(686);
+            // height: rem(379);
+        }
+
+        @include custom-mobile {
+            width: fluid(600, 300);
+            height: fluid(600, 300);
         }
     }
 

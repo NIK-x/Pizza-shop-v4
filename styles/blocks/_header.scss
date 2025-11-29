@@ -1,5 +1,7 @@
 @use "../helpers" as *;
 
+
+
 .header {
     padding: fluid(48, 38) fluid(129, 15);
     display: flex;
@@ -50,8 +52,19 @@
                 flex-direction: column;
                 justify-content: center;
                 row-gap: rem(50);
-                z-index: 2;
+                z-index: 42;
                 padding-block: rem(40);
+                transform: translateX(-100%); // Начальное положение за экраном
+                transition: transform 0.4s ease-in-out; // Плавная анимация
+                opacity: 0; // Начальная прозрачность
+                visibility: hidden; // Скрываем элемент
+
+
+                &.active {
+                    transform: translateX(0); // Конечное положение
+                    opacity: 1; // Полная видимость
+                    visibility: visible; // Показываем элемент
+                }
             }
         }
 
@@ -63,15 +76,41 @@
         column-gap: clamp(rem(20), 5vw, rem(80));
 
         @include mobile {
-            display: flex;
-            flex-direction: column;
-            row-gap: rem(35);
+            display: none;
+            opacity: 0;
+
+            .active & { //x
+                @include flex-center;
+                flex-direction: column;
+                row-gap: rem(55);
+               
+                opacity: 1; // Полная видимость //x
+            } //x
         }
+
     }
 
     &__menu-item {
         display: inline-flex;
         position: relative;
+
+        @include mobile {
+            transform: translateY(-10px); // Начальное смещение для каждого пункта
+            opacity: 0; // Начальная прозрачность
+            transition: transform 0.3s ease, opacity 0.3s ease;
+
+            // Stagger анимация для пунктов меню
+            @for $i from 1 through 4 {
+                &:nth-child(#{$i}) {
+                    transition-delay: 0.2s + ($i * 0.1s);
+                }
+            }
+
+            .active & {
+                transform: translateY(0); // Конечное положение
+                opacity: 1; // Полная видимость
+            }
+        }
     }
 
 
@@ -82,7 +121,11 @@
         white-space: nowrap;
         
         @include mobile {
-            font-size: rem(25);
+            font-size: rem(30);
+            padding: rem(10);
+            border: rem(2) solid var(--color-light);
+            width: 45vw;
+            @include flex-center(true);
         }
 
 
@@ -172,7 +215,7 @@
 
     &__button-login, &__button-favourites {
         position: relative;
-        z-index: 100;
+        z-index: 27;
     }
 }
 
