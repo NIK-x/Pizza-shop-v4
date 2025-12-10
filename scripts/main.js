@@ -1,25 +1,57 @@
-// import Header from "./Header";
 
-// Получаем элементы
-const burgerButton = document.querySelector('[data-js-burger-button]');
-const overlay = document.querySelector('.header__overlay');
-const menuLinks = document.querySelectorAll('[data-js-menu-link]');
 
-// Функция для переключения меню
-function toggleMenu() {
-    burgerButton.classList.toggle('active');
-    overlay.classList.toggle('active');
-    document.html.classList.toggle('is.lock'); 
+class Header {
+    selectors = {
+        burgerButton: "[data-js-burger-button]",
+        loginButton: "[data-js-login-button]",
+        popUp: "[data-js-popUp]",
+        headerOverlay: "[data-js-header-overlay]",
+        menuList: "[data-js-menu-list]",
+        items: "[data-js-item]"
+    }
+
+    // states = {
+    //     active: "is-active"
+    // }
+
+    constructor() {
+        this.menuList = document.querySelector(this.selectors.menuList);
+        this.headerOverlay = document.querySelector(this.selectors.headerOverlay);
+        this.popUp = document.querySelector(this.selectors.popUp);
+        this.loginButton = document.querySelector(this.selectors.loginButton);
+        this.burgerButton = document.querySelector(this.selectors.burgerButton);
+        this.items = document.querySelector(this.selectors.items);
+        this.init();
+    }
+
+    init() {
+        this.burgerMenu();
+    }
+
+    // toggleClass(element) {
+    //     element.classList.toggle("is-active");
+    // }
+
+
+    
+
+    burgerMenu() {
+        this.burgerButton.addEventListener("click", () => {
+            this.headerOverlay.classList.add("is-active");
+            this.menuList.classList.add("is-active");
+            this.items.forEach((item) => {
+                item.classList.add("click");
+            });
+
+            this.headerOverlay.classList.add("click");
+        });
+
+        this.headerOverlay.addEventListener("click", () => {
+            this.headerOverlay.classList.remove("is-active");
+            this.menuList.classList.remove("is-active")
+        })
+    }
 }
 
 
-burgerButton.addEventListener('click', toggleMenu);
-
-// Закрытие меню при клике на ссылку
-menuLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        if (overlay.classList.contains('active')) {
-            toggleMenu();
-        }
-    });
-});
+new Header().init();

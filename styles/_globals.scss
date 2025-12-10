@@ -1,5 +1,9 @@
 @use "helpers" as *;
 
+html {
+    overflow-x: hidden;
+}
+
 body {
     background: var(--fon-gradient) no-repeat center center fixed;
     background-repeat: no-repeat;
@@ -7,6 +11,13 @@ body {
     color: var(--color-light);
     font-family: "Muller";
     font-weight: 400;
+
+    &.click {
+        @include mobile {
+            background-color: red !important;
+        }
+    }
+
 
     &.is-lock {
         overflow: hidden;

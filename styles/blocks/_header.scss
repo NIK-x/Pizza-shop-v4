@@ -9,6 +9,7 @@
     align-items: center;
     column-gap: fluid(196, 5);
 
+
     // &--sticky {
     //     position: sticky;
     //     z-index: 100;
@@ -43,29 +44,29 @@
         }
 
         @include mobile {
-            &.active {
+            &.is-active {
+                animation: shadow 0.9s 1 ease-in 0.3s both;
                 width: 100vw;
-                height: 100vh;
+                height: 102vh;
                 inset: 0;
                 background: var(--gradient-footer);
                 position: fixed;
                 flex-direction: column;
-                justify-content: center;
                 row-gap: rem(50);
                 z-index: 42;
-                padding-block: rem(40);
-                transform: translateX(-100%); // Начальное положение за экраном
-                transition: transform 0.4s ease-in-out; // Плавная анимация
-                opacity: 0; // Начальная прозрачность
-                visibility: hidden; // Скрываем элемент
 
-
-                &.active {
-                    transform: translateX(0); // Конечное положение
-                    opacity: 1; // Полная видимость
-                    visibility: visible; // Показываем элемент
-                }
             }
+
+            @keyframes shadow {
+                    from {
+                        box-shadow: none;
+
+                    }
+
+                    to {
+                        box-shadow: inset 0 0 50px 20px var(--color-dark);
+                    }
+                }
         }
 
     }
@@ -79,10 +80,10 @@
             display: none;
             opacity: 0;
 
-            .active & { //x
+            &.is-active {
                 @include flex-center;
                 flex-direction: column;
-                row-gap: rem(55);
+                row-gap: rem(105);
                
                 opacity: 1; // Полная видимость //x
             } //x
@@ -93,26 +94,47 @@
     &__menu-item {
         display: inline-flex;
         position: relative;
+    }
 
-        @include mobile {
-            transform: translateY(-10px); // Начальное смещение для каждого пункта
-            opacity: 0; // Начальная прозрачность
-            transition: transform 0.3s ease, opacity 0.3s ease;
-
-            // Stagger анимация для пунктов меню
-            @for $i from 1 through 4 {
-                &:nth-child(#{$i}) {
-                    transition-delay: 0.2s + ($i * 0.1s);
-                }
+    @include mobile {
+        .item {
+            &:nth-child(odd) {
+                // transform: translateX(-110vw);
+                animation: odd-animation  0.4s 1 ease-in 0.2s both;
             }
 
-            .active & {
-                transform: translateY(0); // Конечное положение
-                opacity: 1; // Полная видимость
+            &:nth-child(even) {
+                transform: translateX(110vw);
+                animation: even-animation  0.4s 1 ease-in 0.3s both;
+
+            }
+
+            .click {
+
+                @keyframes odd-animation {
+                    from {
+                        opacity: 0;
+                        transform: translateX(-110vw);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: translateX(0);
+                    }
+                }
+
+                @keyframes even-animation {
+                    from {
+                        opacity: 0;
+                        transform: translateX(110vw);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: translateX(0);
+                    }
+                }
             }
         }
     }
-
 
     &__menu-link {
         @include fluid-text(18, 16);
@@ -121,11 +143,20 @@
         white-space: nowrap;
         
         @include mobile {
-            font-size: rem(30);
+            font-size: rem(35);
             padding: rem(10);
             border: rem(2) solid var(--color-light);
             width: 45vw;
             @include flex-center(true);
+            transition: color 0.2s ease 0s;
+
+
+            @include hover {
+                & {
+                    transition: color 0.2s ease 0s;
+                    color: var(--color-light);
+                }
+            }
         }
 
 
@@ -140,6 +171,10 @@
             background: var(--gradient-accent); 
             content: "";
             transition: width 0.3s ease-out;
+
+            @include mobile {
+                display: none;
+            }
         }
 
         &:hover::after {
@@ -172,8 +207,8 @@
     &__button-favourites {
         background-color: transparent;
         border: none;
-        aspect-ratio: 1/1; /* Сохраняем квадратную форму */
-        width: clamp(45px, 5vw, 60px); /* Адаптивная ширина */
+        aspect-ratio: 1/1; 
+        width: clamp(45px, 5vw, 60px); 
         height: auto; 
 
         @include hover {
@@ -182,7 +217,7 @@
                 filter: hue-rotate(-20deg);
                 transition: filter 0.2s ease-in 0s;
             }
-
+        }
     }
     &__icon-favourites {
         width: 100%;
@@ -194,8 +229,6 @@
     //     width: rem(45);
     //     height: rem(45);
     // }
-
-    }
 
 
     &__button-login {

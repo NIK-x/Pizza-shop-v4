@@ -9,19 +9,19 @@
     <script src="scripts/main.js" defer></script>
 </head>
 
-<body class="">
+<body>
     <header class="header header--sticky">
         <a href="#" class="header__logo">pizzashop</a>
-        <div class="header__overlay"> <!-- Desctop: hidden-mobile -->
+        <div class="header__overlay" data-js-header-overlay> <!-- Desctop: hidden-mobile -->
             <nav class="header__nav-menu">
                 <ul class="header__menu-list" data-js-menu-list>
-                    <li class="header__menu-item"><a href="#" class="header__menu-link" data-js-menu-link>Home</a></li>
-                    <li class="header__menu-item"><a href="#menu" class="header__menu-link" data-js-menu-link>Menu</a>
+                    <li class="header__menu-item item item-home" data-js-item><a href="#" class="header__menu-link">Home</a></li>
+                    <li class="header__menu-item item item-menu" data-js-item><a href="#menu" class="header__menu-link">Menu</a>
                     </li>
-                    <li class="header__menu-item"><a href="#events" class="header__menu-link header__events"
-                            data-js-menu-link>Events</a></li>
-                    <li class="header__menu-item"><a href="#about-us" class="header__menu-link" data-js-menu-link>About
-                            us</a></li>
+                    <li class="header__menu-item item item-events" data-js-item><a href="#events" class="header__menu-link header__events"
+                    >Events</a></li>
+                    <li class="header__menu-item item item-about" data-js-item><a href="#about-us" class="header__menu-link">About
+                    us</a></li>
                 </ul>
             </nav>
         </div>
@@ -29,7 +29,7 @@
             <button type="button" class="header__button-login accent-button" data-js-login-button>Log in</button>
             <a href="favourites.html" class="header__button-favourites" aria-label="Add to Cart"
                 title="Add to Cart"><img src="icons/favorites.svg" alt="Add to Cart" loading="lazy" width="45"
-                    height="45" class="header__icon-favorites" data-js-favourites-button></a>
+                    height="45" class="header__icon-favorites"></a>
             <button type="button" class="burger-button visible-mobile" aria-label="View the site navigation"
                 title="View the site navigation" data-js-burger-button>
                 <span class="burger-button__line burger-button__line-1"></span>
@@ -563,7 +563,7 @@
             </div>
         </div>
     </footer>
-    <div class="block" style="display: none;">
+    <div class="block" data-js-popUp>
         <div class="container">
             <input type="checkbox" id="flip">
             <div class="cover">
