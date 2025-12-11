@@ -76,24 +76,23 @@
                 <span class="pizza-menu__design-text-1 design-text">Menu</span>
                 <h2 class="pizza-menu__title" id="menu">Menu</h2>
                 <header class="pizza-menu__header">
-                    <button type="button" class="pizza-menu__button-show-all pizza-menu__button is-active">Show
+                    <button type="button" class="pizza-menu__button-show-all pizza-menu__button is-active" data-filter="all" data-js-button-filter>Show
                         all</button>
-                    <button type="button" class="pizza-menu__button-meat pizza-menu__button">Meat</button>
-                    <button type="button" class="pizza-menu__button-vegetarian pizza-menu__button">Vegetarian</button>
-                    <button type="button" class="pizza-menu__button-sea-products pizza-menu__button">Sea
+                    <button type="button" class="pizza-menu__button-meat pizza-menu__button" data-filter="meat" data-js-button-filter>Meat</button>
+                    <button type="button" class="pizza-menu__button-vegetarian pizza-menu__button" data-filter="vegetarian" data-js-button-filter>Vegetarian</button>
+                    <button type="button" class="pizza-menu__button-sea-products pizza-menu__button" data-filter="sea" data-js-button-filter>Sea
                         products</button>
-                    <button type="button" class="pizza-menu__button-mushroom pizza-menu__button">Mushroom</button>
+                    <button type="button" class="pizza-menu__button-mushroom pizza-menu__button" data-filter="mushroom" data-js-button-filter>Mushroom</button>
                 </header>
             </div>
             <div class="pizza-menu__cards">
                 <!-- card1 -->
-                <article class="pizza-menu__card">
+                <article class="pizza-menu__card" data-category="meat" data-js-pizza-card>
                     <div class="pizza-menu__card-hero">
                         <img src="images/italian-pizza.png" loading="lazy" alt="" width="159" height="157"
                             class="pizza-menu__image-pizza">
                         <h3 class="pizza-menu__name-pizza">Italian</h3>
-                        <p class="pizza-menu__description">Filling: onion, potato, tomato, mushrooms, cheese, olives,
-                            meat...</p>
+                        <p class="pizza-menu__description">Filling: pepperoni, salami, mozzarella, tomato sauce, Italian herbs</p>
                     </div>
                     <div class="pizza-menu__block-checkbox">
                         <p class="pizza-menu__field">
@@ -131,13 +130,12 @@
                     <button type="button" class="pizza-menu__add-to-favorites accent-button">Order Now</button>
                 </article>
                 <!-- card2 -->
-                <article class="pizza-menu__card">
+                <article class="pizza-menu__card" data-category="sea" data-js-pizza-card>
                     <div class="pizza-menu__card-hero">
                         <img src="images/venecia-pizza.png" loading="lazy" alt="" width="159" height="157"
                             class="pizza-menu__image-pizza">
                         <h3 class="pizza-menu__name-pizza">Venecia</h3>
-                        <p class="pizza-menu__description">Filling: onion, potato, tomato, mushrooms, cheese, olives,
-                            meat...</p>
+                        <p class="pizza-menu__description">Filling: shrimp, mussels, calamari, gorgonzola cheese, pesto sauce</p>
                     </div>
                     <div class="pizza-menu__block-checkbox">
                         <p class="pizza-menu__field">
@@ -175,13 +173,12 @@
                     <button type="button" class="pizza-menu__add-to-favorites accent-button">Order Now</button>
                 </article>
                 <!-- card3 -->
-                <article class="pizza-menu__card">
+                <article class="pizza-menu__card" data-category="meat" data-js-pizza-card> 
                     <div class="pizza-menu__card-hero">
                         <img src="images/meat-pizza.png" loading="lazy" alt="" width="159" height="157"
                             class="pizza-menu__image-pizza">
                         <h3 class="pizza-menu__name-pizza">Meat</h3>
-                        <p class="pizza-menu__description">Filling: onion, potato, tomato, mushrooms, cheese, olives,
-                            meat...</p>
+                        <p class="pizza-menu__description">Filling: bacon, ham, pepperoni, chicken, cheddar cheese, BBQ sauce</p>
                     </div>
                     <div class="pizza-menu__block-checkbox">
                         <p class="pizza-menu__field">
@@ -219,13 +216,12 @@
                     <button type="button" class="pizza-menu__add-to-favorites accent-button">Order Now</button>
                 </article>
                 <!-- card4 -->
-                <article class="pizza-menu__card">
+                <article class="pizza-menu__card" data-category="vegetarian" data-js-pizza-card>
                     <div class="pizza-menu__card-hero">
                         <img src="images/cheese-pizza.png" loading="lazy" alt="" width="159" height="157"
                             class="pizza-menu__image-pizza">
                         <h3 class="pizza-menu__name-pizza">Cheese</h3>
-                        <p class="pizza-menu__description">Filling: onion, potato, tomato, mushrooms, cheese, olives,
-                            meat...</p>
+                        <p class="pizza-menu__description">Filling: 4-cheese blend: mozzarella, parmesan, gorgonzola, cheddar</p>
                     </div>
                     <div class="pizza-menu__block-checkbox">
                         <p class="pizza-menu__field">
@@ -263,7 +259,7 @@
                     <button type="button" class="pizza-menu__add-to-favorites accent-button">Order Now</button>
                 </article>
             </div>
-            <article class="popular-block">
+            <article class="popular-block" data-js-popular>
                 <span class="pizza-menu__design-text-2 design-text">Menu</span>
                 <h3 class="popular-block__title">most popular pizza</h3>
             </article>
@@ -271,14 +267,13 @@
 
             <div class="pizza-menu__cards pizza-menu__popular-cards">
                 <!-- card1 -->
-                <article class="pizza-menu__card">
+                <article class="pizza-menu__card" data-category="meat" data-js-pizza-card>
                     <span class="pizza-menu__design-text-3 design-text">Menu</span>
                     <div class="pizza-menu__card-hero">
                         <img src="images/argentina-pizza.png" loading="lazy" alt="" width="159" height="157"
                             class="pizza-menu__image-pizza">
                         <h3 class="pizza-menu__name-pizza">Argentina</h3>
-                        <p class="pizza-menu__description">Filling: onion, potato, tomato, mushrooms, cheese, olives,
-                            meat...</p>
+                        <p class="pizza-menu__description">Filling: grilled beef, jalapeño peppers, corn, tomato sauce</p>
                     </div>
                     <div class="pizza-menu__block-checkbox">
                         <p class="pizza-menu__field">
@@ -316,13 +311,12 @@
                     <button type="button" class="pizza-menu__add-to-favorites accent-button">Order Now</button>
                 </article>
                 <!-- card2 -->
-                <article class="pizza-menu__card">
+                <article class="pizza-menu__card" data-category="mushroom" data-js-pizza-card>
                     <div class="pizza-menu__card-hero">
                         <img src="images/gribnaya-pizza.png" loading="lazy" alt="" width="159" height="157"
                             class="pizza-menu__image-pizza">
                         <h3 class="pizza-menu__name-pizza">Gribnaya</h3>
-                        <p class="pizza-menu__description">Filling: onion, potato, tomato, mushrooms, cheese, olives,
-                            meat...</p>
+                        <p class="pizza-menu__description">Filling: champignon, oyster mushrooms, mozzarella, cream sauce, dill</p>
                     </div>
                     <div class="pizza-menu__block-checkbox">
                         <p class="pizza-menu__field">
@@ -360,13 +354,12 @@
                     <button type="button" class="pizza-menu__add-to-favorites accent-button">Order Now</button>
                 </article>
                 <!-- card3 -->
-                <article class="pizza-menu__card">
+                <article class="pizza-menu__card" data-category="vegetarian" data-js-pizza-card>
                     <div class="pizza-menu__card-hero">
                         <img src="images/tomato-pizza.png" loading="lazy" alt="" width="159" height="157"
                             class="pizza-menu__image-pizza">
                         <h3 class="pizza-menu__name-pizza">Tomato</h3>
-                        <p class="pizza-menu__description">Filling: onion, potato, tomato, mushrooms, cheese, olives,
-                            meat...</p>
+                        <p class="pizza-menu__description">Filling: sun-dried tomatoes, fresh tomatoes, basil, mozzarella, olive oil</p>
                     </div>
                     <div class="pizza-menu__block-checkbox">
                         <p class="pizza-menu__field">
@@ -404,13 +397,12 @@
                     <button type="button" class="pizza-menu__add-to-favorites accent-button">Order Now</button>
                 </article>
                 <!-- card4 -->
-                <article class="pizza-menu__card">
+                <article class="pizza-menu__card" data-category="meat mushroom" data-js-pizza-card>
                     <div class="pizza-menu__card-hero">
                         <img src="images/italian-x2-pizza.png" loading="lazy" alt="" width="159" height="157"
                             class="pizza-menu__image-pizza">
                         <h3 class="pizza-menu__name-pizza">Italian x2</h3>
-                        <p class="pizza-menu__description">Filling: onion, potato, tomato, mushrooms, cheese, olives,
-                            meat...</p>
+                        <p class="pizza-menu__description">Filling: Salami, portobello mushrooms, olives, cheese, tomato sauce</p>
                     </div>
                     <div class="pizza-menu__block-checkbox">
                         <p class="pizza-menu__field">

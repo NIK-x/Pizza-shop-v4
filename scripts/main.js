@@ -1,5 +1,3 @@
-
-
 class Header {
     selectors = {
         burgerButton: "[data-js-burger-button]",
@@ -53,5 +51,64 @@ class Header {
     }
 }
 
-
 new Header().init();
+
+
+class FilterPizza {
+    selectors = {
+        filterButtons: "[data-js-button-filter]",
+        pizzaCard: "[data-js-pizza-card]",
+        pizzaPopularBox: "[data-js-popular]",
+    }
+
+    states = {
+        isHidden: "hidden",
+        isShow: "show",
+    }
+
+    constructor() {
+        this.pizzaCard = document.querySelectorAll(this.selectors.pizzaCard)
+        this.filterButtons = document.querySelectorAll(this.selectors.filterButtons);
+        this.pizzaPopularBox = document.querySelector(this.selectors.pizzaPopularBox);
+
+        this.getFilterPizza();
+    }
+
+    showAll() {
+        this.pizzaCard.forEach((pizza) => {
+            if (pizza.classList.contains(this.states.isHidden)) {
+                pizza.classList.remove(this.states.isHidden);
+            }
+        })
+    }
+
+    showFilterPizza(filterValue) {
+        this.pizzaCard.forEach((pizza) => {
+            const pizzaCategoryValue = pizza.dataset.category;
+            
+            if (!(pizzaCategoryValue.includes(filterValue))) {
+                pizza.classList.add(this.states.isHidden);
+            } else {
+                pizza.classList.remove(this.states.isHidden);
+            }
+            this.pizzaPopularBox.classList.add(this.states.isHidden);
+        })
+    }
+
+    getFilterPizza() {
+        this.filterButtons.forEach((button) => {
+            button.addEventListener("click", () => {
+                const buttonFilterValue = button.dataset.filter;
+                if (buttonFilterValue == "all") {
+                    this.showAll();
+                } else {
+                    
+                    this.showFilterPizza(buttonFilterValue);
+                }
+            })
+
+        })
+    }
+
+}
+new FilterPizza();
