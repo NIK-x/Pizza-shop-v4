@@ -85,7 +85,8 @@
                     <button type="button" class="pizza-menu__button-mushroom pizza-menu__button" data-filter="mushroom" data-js-button-filter>Mushroom</button>
                 </header>
             </div>
-            <div class="pizza-menu__cards">
+            <div class="all-pizza" data-js-all-pizza>
+                <div class="pizza-menu__cards all-cards" data-js-block-pizza>
                 <!-- card1 -->
                 <article class="pizza-menu__card" data-category="meat" data-js-pizza-card>
                     <div class="pizza-menu__card-hero">
@@ -265,7 +266,7 @@
             </article>
             <!--              most popular pizza              -->
 
-            <div class="pizza-menu__cards pizza-menu__popular-cards">
+            <div class="pizza-menu__cards pizza-menu__popular-cards all-cards" data-js-block-pizza>
                 <!-- card1 -->
                 <article class="pizza-menu__card" data-category="meat" data-js-pizza-card>
                     <span class="pizza-menu__design-text-3 design-text">Menu</span>
@@ -440,6 +441,7 @@
                     <button type="button" class="pizza-menu__add-to-favorites accent-button">Order Now</button>
                 </article>
             </div>
+            </div>  
         </section>
         <section class="events" aria-labelledby="events__main-title">
             <span class="events__design-text design-text">Events</span>

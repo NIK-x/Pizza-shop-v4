@@ -59,11 +59,15 @@ class FilterPizza {
         filterButtons: "[data-js-button-filter]",
         pizzaCard: "[data-js-pizza-card]",
         pizzaPopularBox: "[data-js-popular]",
+        allPizza: "[data-js-all-pizza]",
+        blockPizza: "[data-js-block-pizza]",
     }
 
     states = {
+        isActive: "is-active",
         isHidden: "hidden",
         isShow: "show",
+        isFilter: "filter",
     }
 
     constructor() {
@@ -71,10 +75,22 @@ class FilterPizza {
         this.filterButtons = document.querySelectorAll(this.selectors.filterButtons);
         this.pizzaPopularBox = document.querySelector(this.selectors.pizzaPopularBox);
 
+        this.blockPizza = document.querySelectorAll(this.selectors.blockPizza);
+        this.allPizza = document.querySelector(this.selectors.allPizza);
+
         this.getFilterPizza();
     }
 
+    updateButton(activeButton) {
+        this.filterButtons.forEach((button) => button.classList.remove(this.states.isActive));
+        activeButton.classList.add(this.states.isActive)
+    }
+
     showAll() {
+        this.allPizza.classList.remove(this.states.isFilter);
+        this.blockPizza.forEach(element => element.classList.remove("display-contents"));
+        this.pizzaPopularBox.classList.remove(this.states.isHidden);
+
         this.pizzaCard.forEach((pizza) => {
             if (pizza.classList.contains(this.states.isHidden)) {
                 pizza.classList.remove(this.states.isHidden);
@@ -85,7 +101,8 @@ class FilterPizza {
     showFilterPizza(filterValue) {
         this.pizzaCard.forEach((pizza) => {
             const pizzaCategoryValue = pizza.dataset.category;
-            
+            this.allPizza.classList.add(this.states.isFilter);
+            this.blockPizza.forEach(element => element.classList.add("display-contents"));
             if (!(pizzaCategoryValue.includes(filterValue))) {
                 pizza.classList.add(this.states.isHidden);
             } else {
@@ -99,15 +116,16 @@ class FilterPizza {
         this.filterButtons.forEach((button) => {
             button.addEventListener("click", () => {
                 const buttonFilterValue = button.dataset.filter;
+                this.updateButton(button)
+
                 if (buttonFilterValue == "all") {
                     this.showAll();
                 } else {
-                    
                     this.showFilterPizza(buttonFilterValue);
                 }
-            })
+            });
 
-        })
+        });
     }
 
 }

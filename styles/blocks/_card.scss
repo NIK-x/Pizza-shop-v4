@@ -1,6 +1,20 @@
 @use "../helpers" as *;
 
 
+.all-pizza {
+    display: contents;
+
+    &.filter {
+        display: flex;
+        gap: fluid(40, 22);
+    }
+}
+.all-cards {
+    &.display-contents {
+        display: contents;
+    }
+}
+
 .pizza-menu {
 
     &__card {
