@@ -171,8 +171,8 @@
         &::after {
             content: url("../icons/vector-2.svg");
             position: absolute;
-            margin-left: 23%;
-            margin-top: 10%;
+            margin-left: rem(390);
+            margin-top: rem(200);
             pointer-events: none;
         }
 

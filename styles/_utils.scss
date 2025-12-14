@@ -41,6 +41,10 @@
 }
 
 
+
+
+
+
 .hidden {
   opacity: 0;
   visibility: hidden;
@@ -52,6 +56,11 @@
   opacity: 1 !important;
   visibility: visible !important;
   transition: all 0.4s ease 0s;
+}
+
+.no-scroll {
+  height: 100vh;
+  position: fixed;
 }
 
 .design-text {

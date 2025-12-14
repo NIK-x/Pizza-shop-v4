@@ -1,13 +1,15 @@
 @use "../helpers" as *;
-.block {
+
+
+// .backdrop {
+//     background-color: rgba(0, 0, 0, 0.5);
+//     backdrop-filter: blur(5px);
+// }
+.block-popup {
     @include abs-center;
-}
-
-.container {
-    display: none;
 
 
-    &.is-active {
+    .container {
         position: relative;
         width: fluid(850, 350);
         background: #fff;
@@ -15,53 +17,64 @@
         box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
         perspective: 2700px;
 
-        .cover {
+        &__button-close {
+            position: absolute;
+            background-color: transparent;
+            border: none;
+            top:  -30px;
+            left: -40px;
+            background-color: rgb(207, 108, 108);
+        }
+    }
+
+
+    .cover {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        height: 100%;
+        width: 50%;
+        z-index: 98;
+        transition: all 1s ease;
+        transform-origin: left;
+        transform-style: preserve-3d;
+        backface-visibility: hidden;
+
+        .front,
+        .back {
             position: absolute;
             top: 0;
-            left: 50%;
+            left: 0;
             height: 100%;
-            width: 50%;
-            z-index: 98;
-            transition: all 1s ease;
-            transform-origin: left;
-            transform-style: preserve-3d;
-            backface-visibility: hidden;
-
-            .front,
-            .back {
-                position: absolute;
-                top: 0;
-                left: 0;
-                height: 100%;
-                width: 100%;
-            }
-
-            .back {
-                transform: rotateY(180deg);
-            }
-
-            img {
-                position: absolute;
-                height: 100%;
-                width: 100%;
-                object-fit: cover;
-                z-index: 10;
-            }
+            width: 100%;
         }
 
-        #flip {
-            display: none;
+        .back {
+            transform: rotateY(180deg);
+        }
 
-            &:checked {
-                &~.cover {
-                    transform: rotateY(-180deg);
-                }
+        img {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            z-index: 10;
+        }
+    }
 
-                &~.forms .login-form {
-                    pointer-events: none;
-                }
+    #flip {
+        display: none;
+
+        &:checked {
+            &~.cover {
+                transform: rotateY(-180deg);
+            }
+
+            &~.forms .login-form {
+                pointer-events: none;
             }
         }
+    }
 
         .forms {
             height: 100%;
@@ -215,4 +228,3 @@
         }
 
     }
-}

@@ -291,6 +291,11 @@ svg * {
   transition: all 0.4s ease 0s;
 }
 
+.no-scroll {
+  height: 100vh;
+  position: fixed;
+}
+
 .design-text {
   font-family: "AlexBrush";
   font-weight: 400;

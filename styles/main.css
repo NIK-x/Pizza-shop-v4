@@ -44,9 +44,6 @@ body {
     background-color: red !important;
   }
 }
-body.is-lock {
-  overflow: hidden;
-}
 
 h1, .h1 {
   font-size: clamp(3rem, 2.5769628099rem + 1.7355371901vw, 4.3125rem);
@@ -318,6 +315,11 @@ svg * {
   opacity: 1 !important;
   visibility: visible !important;
   transition: all 0.4s ease 0s;
+}
+
+.no-scroll {
+  height: 100vh;
+  position: fixed;
 }
 
 .design-text {
@@ -756,8 +758,8 @@ svg * {
 .hero__button::after {
   content: url("../icons/vector-2.svg");
   position: absolute;
-  margin-left: 23%;
-  margin-top: 10%;
+  margin-left: 24.375rem;
+  margin-top: 12.5rem;
   pointer-events: none;
 }
 @media (width <= 74.99875rem) {
@@ -1574,17 +1576,13 @@ svg * {
   border-radius: 100px;
 }
 
-.block {
+.block-popup {
   position: absolute;
   top: 50%;
   left: 50%;
   translate: -50% -50%;
 }
-
-.container {
-  display: none;
-}
-.container.is-active {
+.block-popup .container {
   position: relative;
   width: clamp(21.875rem, 11.8026859504rem + 41.3223140496vw, 53.125rem);
   background: #fff;
@@ -1592,7 +1590,15 @@ svg * {
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
   perspective: 2700px;
 }
-.container.is-active .cover {
+.block-popup .container__button-close {
+  position: absolute;
+  background-color: transparent;
+  border: none;
+  top: -30px;
+  left: -40px;
+  background-color: rgb(207, 108, 108);
+}
+.block-popup .cover {
   position: absolute;
   top: 0;
   left: 50%;
@@ -1604,18 +1610,18 @@ svg * {
   transform-style: preserve-3d;
   backface-visibility: hidden;
 }
-.container.is-active .cover .front,
-.container.is-active .cover .back {
+.block-popup .cover .front,
+.block-popup .cover .back {
   position: absolute;
   top: 0;
   left: 0;
   height: 100%;
   width: 100%;
 }
-.container.is-active .cover .back {
+.block-popup .cover .back {
   transform: rotateY(180deg);
 }
-.container.is-active .cover img {
+.block-popup .cover img {
   position: absolute;
   height: 100%;
   width: 100%;
@@ -1623,42 +1629,42 @@ svg * {
      object-fit: cover;
   z-index: 10;
 }
-.container.is-active #flip {
+.block-popup #flip {
   display: none;
 }
-.container.is-active #flip:checked ~ .cover {
+.block-popup #flip:checked ~ .cover {
   transform: rotateY(-180deg);
 }
-.container.is-active #flip:checked ~ .forms .login-form {
+.block-popup #flip:checked ~ .forms .login-form {
   pointer-events: none;
 }
-.container.is-active .forms {
+.block-popup .forms {
   height: 100%;
   width: 100%;
   background: var(--color-light);
 }
-.container.is-active .forms .form-content {
+.block-popup .forms .form-content {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.container.is-active .forms .form-content .login-form,
-.container.is-active .forms .form-content .signup-form {
+.block-popup .forms .form-content .login-form,
+.block-popup .forms .form-content .signup-form {
   width: calc(50% - 25px);
 }
-.container.is-active .forms .form-content .title {
+.block-popup .forms .form-content .title {
   position: relative;
   font-size: 1.5rem;
   font-weight: 500;
   color: var(--color-gray-4);
 }
-.container.is-active .forms .form-content .signup-form .title:before {
+.block-popup .forms .form-content .signup-form .title:before {
   width: 20px;
 }
-.container.is-active .forms .form-content .input-boxes {
+.block-popup .forms .form-content .input-boxes {
   margin-top: 30px;
 }
-.container.is-active .forms .form-content .input-box {
+.block-popup .forms .form-content .input-box {
   display: flex;
   align-items: center;
   height: 50px;
@@ -1666,7 +1672,7 @@ svg * {
   margin: 10px 0;
   position: relative;
 }
-.container.is-active .forms .form-content .input-box input {
+.block-popup .forms .form-content .input-box input {
   height: 100%;
   width: 100%;
   outline: none;
@@ -1677,25 +1683,25 @@ svg * {
   border-bottom: 2px solid rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease;
 }
-.container.is-active .forms .form-content .input-box input:focus, .container.is-active .forms .form-content .input-box input:valid {
+.block-popup .forms .form-content .input-box input:focus, .block-popup .forms .form-content .input-box input:valid {
   border-color: var(--color-orange);
 }
-.container.is-active .forms .form-content .text {
+.block-popup .forms .form-content .text {
   font-size: 14px;
   font-weight: 500;
   color: var(--color-gray-4);
 }
-.container.is-active .forms .form-content .text a {
+.block-popup .forms .form-content .text a {
   text-decoration: none;
 }
-.container.is-active .forms .form-content .text a:hover {
+.block-popup .forms .form-content .text a:hover {
   text-decoration: underline;
 }
-.container.is-active .forms .form-content .button {
+.block-popup .forms .form-content .button {
   color: var(--color-light);
   margin-top: 40px;
 }
-.container.is-active .forms .form-content .button input {
+.block-popup .forms .form-content .button input {
   color: var(--color-light);
   background: rgb(151, 49, 2);
   border-radius: 6px;
@@ -1703,51 +1709,51 @@ svg * {
   cursor: pointer;
   transition: all 0.4s ease;
 }
-.container.is-active .forms .form-content .button input:hover {
+.block-popup .forms .form-content .button input:hover {
   transition: filter 0.4s ease 0s;
   filter: hue-rotate(-40deg);
 }
-.container.is-active .forms .form-content label {
+.block-popup .forms .form-content label {
   color: #5b13b9;
   cursor: pointer;
 }
-.container.is-active .forms .form-content label:hover {
+.block-popup .forms .form-content label:hover {
   text-decoration: underline;
 }
-.container.is-active .forms .form-content .login-text,
-.container.is-active .forms .form-content .sign-up-text {
+.block-popup .forms .form-content .login-text,
+.block-popup .forms .form-content .sign-up-text {
   text-align: center;
   margin-top: 25px;
 }
+
 @media (max-width: 45.625rem) {
-  .container .container .forms .form-content .title {
+  .container .forms .form-content .title {
     display: flex;
     justify-content: center;
     align-items: center;
   }
-  .container .container .forms .form-content {
+  .container .forms .form-content {
     display: flex;
     justify-content: center;
     align-items: center;
   }
-  .container .container .cover {
+  .container .cover {
     display: none;
   }
-  .container .container #flip:checked ~ .forms .signup-form {
+  .container #flip:checked ~ .forms .signup-form {
     display: block;
   }
-  .container .container #flip:checked ~ .forms .login-form {
+  .container #flip:checked ~ .forms .login-form {
     display: none;
   }
-  .container .form-content .login-form,
-  .container .form-content .signup-form {
+  .form-content .login-form,
+  .form-content .signup-form {
     width: clamp(12.5rem, 4.4421487603rem + 33.0578512397vw, 37.5rem) !important;
   }
-  .container .form-content .signup-form {
+  .form-content .signup-form {
     display: none;
   }
 }
-
 .accent-button {
   color: var(--color-light);
   font-weight: 500;

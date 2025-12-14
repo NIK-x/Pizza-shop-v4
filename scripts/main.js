@@ -5,17 +5,23 @@ class Header {
         popUp: "[data-js-popUp]",
         headerOverlay: "[data-js-header-overlay]",
         menuList: "[data-js-menu-list]",
-        items: "[data-js-item]"
+        items: "[data-js-item]",
+        closeButton: "[data-js-close-button]",
     }
 
-    // states = {
-    //     active: "is-active"
-    // }
+    states = {
+        show: "show",
+        hidden: "hidden",
+        noScroll: "no-scroll",
+        blur: "blur",
+        click: "click"
+    }
 
     constructor() {
         this.menuList = document.querySelector(this.selectors.menuList);
         this.headerOverlay = document.querySelector(this.selectors.headerOverlay);
         this.popUp = document.querySelector(this.selectors.popUp);
+        this.closeButton = this.popUp.querySelector(this.selectors.closeButton);
         this.loginButton = document.querySelector(this.selectors.loginButton);
         this.burgerButton = document.querySelector(this.selectors.burgerButton);
         this.items = document.querySelector(this.selectors.items);
@@ -24,6 +30,7 @@ class Header {
 
     init() {
         this.burgerMenu();
+        this.login();
     }
 
     // toggleClass(element) {
@@ -42,11 +49,25 @@ class Header {
             });
 
             this.headerOverlay.classList.add("click");
+            this.headerOverlay.classList.add(this.states.noScroll);
         });
 
         this.headerOverlay.addEventListener("click", () => {
             this.headerOverlay.classList.remove("is-active");
             this.menuList.classList.remove("is-active")
+            document.body.classList.remove(this.states.noScroll);
+        })
+    }
+
+    login() {
+        this.loginButton.addEventListener("click", () => {
+            this.popUp.classList.remove(this.states.hidden);
+            document.body.classList.add(this.states.noScroll);
+            // document.body.classList.add(this.states.blur);
+        });
+        this.closeButton.addEventListener("click", () => {
+            this.popUp.classList.add(this.states.hidden);
+            document.body.classList.remove(this.states.noScroll);
         })
     }
 }
@@ -130,3 +151,6 @@ class FilterPizza {
 
 }
 new FilterPizza();
+
+
+
