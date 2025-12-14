@@ -1,10 +1,11 @@
 @use "../helpers" as *;
 
 
-// .backdrop {
-//     background-color: rgba(0, 0, 0, 0.5);
-//     backdrop-filter: blur(5px);
-// }
+.backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    position: fixed;
+}
 .block-popup {
     @include abs-center;
 
