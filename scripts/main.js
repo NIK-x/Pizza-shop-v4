@@ -7,13 +7,13 @@ class Header {
         menuList: "[data-js-menu-list]",
         items: "[data-js-item]",
         closeButton: "[data-js-close-button]",
+        backDrop: "[data-js-backdrop]"
     }
 
     states = {
         show: "show",
         hidden: "hidden",
         noScroll: "no-scroll",
-        blur: "blur",
         click: "click"
     }
 
@@ -25,6 +25,7 @@ class Header {
         this.loginButton = document.querySelector(this.selectors.loginButton);
         this.burgerButton = document.querySelector(this.selectors.burgerButton);
         this.items = document.querySelector(this.selectors.items);
+        this.backDrop = document.querySelector(this.selectors.backDrop);
         this.init();
     }
 
@@ -50,6 +51,7 @@ class Header {
 
             this.headerOverlay.classList.add("click");
             this.headerOverlay.classList.add(this.states.noScroll);
+            this.m
         });
 
         this.headerOverlay.addEventListener("click", () => {
@@ -63,11 +65,12 @@ class Header {
         this.loginButton.addEventListener("click", () => {
             this.popUp.classList.remove(this.states.hidden);
             document.body.classList.add(this.states.noScroll);
-            // document.body.classList.add(this.states.blur);
+            this.backDrop.classList.remove(this.states.hidden);
         });
         this.closeButton.addEventListener("click", () => {
             this.popUp.classList.add(this.states.hidden);
             document.body.classList.remove(this.states.noScroll);
+            this.backDrop.classList.add(this.states.hidden);
         })
     }
 }

@@ -1581,6 +1581,9 @@ svg * {
   -webkit-backdrop-filter: blur(5px);
           backdrop-filter: blur(5px);
   position: fixed;
+  inset: 0;
+  overflow: hidden;
+  z-index: 100;
 }
 
 .block-popup {

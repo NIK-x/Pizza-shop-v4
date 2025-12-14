@@ -5,6 +5,9 @@
     background-color: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(5px);
     position: fixed;
+    inset: 0;
+    overflow: hidden;
+    z-index: 100;
 }
 .block-popup {
     @include abs-center;
