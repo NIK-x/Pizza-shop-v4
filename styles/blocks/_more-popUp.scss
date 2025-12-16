@@ -1,0 +1,57 @@
+@use "../helpers" as *;
+
+
+.wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
+
+    z-index: 20;    
+    overflow: hidden;
+}
+
+.more-popUp {
+    row-gap: rem(120);
+    padding: fluid(15, 10) fluid(20, 15);
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+
+
+    &__title {
+        position: relative;
+        z-index: 2;
+        font-size: fluid(60, 22);
+        background: var(--gradient-accent);
+        @include gradient-color;
+        margin-inline: auto;
+    }
+
+    &__description {
+        border-inline: rem(2) solid var(--color-light);
+        padding-inline: fluid(50, 35);
+        position: relative;
+        z-index: 2;
+        font-size: fluid(22, 16);
+        max-width: fluid(600, 300);
+        text-align: center;
+    }
+
+    &::before {
+        position: absolute;
+        content: '';
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        background: inherit;
+        box-shadow: inset 0 0 0 3000px rgba(0, 0, 0, 0.856);
+        filter: blur(1px);
+    }
+}

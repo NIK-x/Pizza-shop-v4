@@ -1764,6 +1764,57 @@ svg * {
     display: none;
   }
 }
+.wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 20;
+  overflow: hidden;
+}
+
+.more-popUp {
+  row-gap: 7.5rem;
+  padding: clamp(0.625rem, 0.5242768595rem + 0.4132231405vw, 0.9375rem) clamp(0.9375rem, 0.8367768595rem + 0.4132231405vw, 1.25rem);
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.more-popUp__title {
+  position: relative;
+  z-index: 2;
+  font-size: clamp(1.375rem, 0.6095041322rem + 3.1404958678vw, 3.75rem);
+  background: var(--gradient-accent);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-inline: auto;
+}
+.more-popUp__description {
+  border-inline: 0.125rem solid var(--color-light);
+  padding-inline: clamp(2.1875rem, 1.8853305785rem + 1.2396694215vw, 3.125rem);
+  position: relative;
+  z-index: 2;
+  font-size: clamp(1rem, 0.8791322314rem + 0.4958677686vw, 1.375rem);
+  max-width: clamp(18.75rem, 12.7066115702rem + 24.7933884298vw, 37.5rem);
+  text-align: center;
+}
+.more-popUp::before {
+  position: absolute;
+  content: "";
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: inherit;
+  box-shadow: inset 0 0 0 3000px rgba(0, 0, 0, 0.856);
+  filter: blur(1px);
+}
+
 .accent-button {
   color: var(--color-light);
   font-weight: 500;

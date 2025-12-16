@@ -157,3 +157,84 @@ new FilterPizza();
 
 
 
+
+
+class More {
+    selectors = {
+        popUp: "[data-js-more-popUp]",
+        title: "[data-js-title]",
+        description: "[data-js-description]",
+        moreButtons: "[data-js-more-buttons]",
+    }
+
+    states = {
+        hidden: "hidden"
+    }
+
+    categoryes = {
+        coocking: "Learn the secrets behind our perfect pizza! Join our interactive cooking sessions where our chefs demonstrate traditional techniques, share tips on dough fermentation, and guide you through crafting your own delicious creation. A fun, hands-on experience for pizza lovers of all ages.",
+        ourBlog: "Dive into stories, recipes, and behind-the-scenes moments from our pizzeria! From seasonal specials to chef interviews and cooking hacks, our blog is your go-to spot for everything cheesy, crispy, and fresh.",
+        twoPizza: "Double the delight! Every Thursday, enjoy our signature Two-for-One deal—order any large pizza and get another one of equal or lesser value absolutely free. Perfect for sharing with friends or saving for later.",
+        kitchenTour: "Ever wondered what goes on behind the counter? Take a guided tour of our kitchen! See where the magic happens, learn about our ingredients, and watch our team craft your pizza from scratch. A great experience for families and curious foodies.",
+        freeCoffe: "Order three pizzas and receive a complimentary cup of our freshly brewed artisan coffee. The perfect pairing to round off your meal—warm, rich coffee alongside our hot, flavorful pizza.",
+        instagram: "Follow us for daily mouth-watering photos, event announcements, and special offers! Stay connected, tag us in your pizza moments, and get a chance to be featured on our page.",
+        chooseUs: "We love hearing your stories! Share how you discovered our pizzeria—whether through a friend, a food blog, or just by walking by—and get a chance to win a free dessert on your next visit.",
+    }
+
+    constructor() {
+        this.popUp = document.querySelector(this.selectors.popUp);
+        this.title = this.popUp.querySelector(this.selectors.title);
+        this.description = this.popUp.querySelector(this.selectors.description);
+        this.moreButtons = document.querySelectorAll(this.selectors.moreButtons);
+    }
+
+
+    init() {
+        this.getMoreInformation();
+    }
+
+    getMoreInformation() {
+        this.moreButtons.forEach((button) => {
+            const buttonCategoryValue = button.dataset.category;
+            button.addEventListener("click", () => {
+                switch(buttonCategoryValue) {
+                    case "coocking":
+                        this.title.textContent = "How we coocking";
+                        this.description.textContent = this.categoryes.coocking;
+                        break;
+                    case "our-blog":
+                        this.title.textContent = "Our blog";
+                        this.description.textContent = this.categoryes.ourBlog;
+                        break;
+                    case "two-pizza":
+                        this.title.textContent = "Two pizza for 1 price";
+                        this.description.textContent = this.categoryes.twoPizza;
+                        break;
+                    case "kitchen-tour":
+                        this.title.textContent = "Kitchen tour";
+                        this.description.textContent = this.categoryes.kitchenTour;
+                        break;
+                    case "free-coffe":
+                        this.title.textContent = "Free coffe for 3 pizza";
+                        this.description.textContent = this.categoryes.freeCoffe;
+                        break;
+                    case "instagram":
+                        this.title.textContent = "Our instagram";
+                        this.description.textContent = this.categoryes.instagram;
+                        break;
+                    case "choose-us":
+                        this.title.textContent = "Where are you choose us?";
+                        this.description.textContent = this.categoryes.chooseUs;
+                        break;
+                }
+                this.popUp.classList.remove(this.states.hidden);
+            });
+        });
+
+        this.popUp.addEventListener("click", () => {
+            this.popUp.classList.add(this.states.hidden);
+        });
+    }
+}
+
+new More().init();
