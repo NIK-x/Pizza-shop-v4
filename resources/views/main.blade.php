@@ -177,7 +177,7 @@
                 <!-- card3 -->
                 <article class="pizza-menu__card" data-category="meat" data-js-pizza-card> 
                     <div class="pizza-menu__card-hero">
-                        <img src="{{ asset('images/meat-pizza.png') }}}" loading="lazy" alt="" width="159" height="157"
+                        <img src="{{ asset('images/meat-pizza.png') }}" loading="lazy" alt="" width="159" height="157"
                             class="pizza-menu__image-pizza">
                         <h3 class="pizza-menu__name-pizza">Meat</h3>
                         <p class="pizza-menu__description">Filling: bacon, ham, pepperoni, chicken, cheddar cheese, BBQ sauce</p>
@@ -592,7 +592,7 @@
             <a href="tel:+79373335533" class="footer__phone">+7 (937) 333-55-33</a>
             <div class="footer__popular-messengers">
                 <a href="#" class="footer__button-messenger" title="go to instagram" aria-label="go to instagram"><img
-                        src="i{{ asset('icons/instagram.svg') }}" alt="instagram" loading="lazy" width="30" height="30"></a>
+                        src="{{ asset('icons/instagram.svg') }}" alt="instagram" loading="lazy" width="30" height="30"></a>
                 <a href="#" class="footer__link-messenger" title="go to twitter" aria-label="go to twitter"><img
                         src="{{ asset('icons/twiter.svg') }}" alt="twitter" loading="lazy" width="30" height="30"></a>
                 <a href="#" class="footer__link-messenger" title="go to facebook" aria-label="go to facebook"><img
