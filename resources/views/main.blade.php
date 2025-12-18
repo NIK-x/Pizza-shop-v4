@@ -5,8 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
     <title>PizzaShop</title>
-    <link rel="stylesheet" href="styles/main.css">
-    <script src="scripts/main.js" defer></script>
+    {{-- <link rel="stylesheet" href="styles/main.css">
+    <script src="scripts/main.js" defer></script> --}}
+    @vite(['resources/scss/main.scss'])
 </head>
 
 <body>
@@ -28,7 +29,7 @@
         <div class="header__box">
             <button type="button" class="header__button-login accent-button" data-js-login-button>Log in</button>
             <a href="favourites.html" class="header__button-favourites" aria-label="Add to Cart"
-                title="Add to Cart"><img src="icons/favorites.svg" alt="Add to Cart" loading="lazy" width="45"
+                title="Add to Cart"><img src="{{ asset('icons/favorites.svg') }}" alt="Add to Cart" loading="lazy" width="45"
                     height="45" class="header__icon-favorites"></a>
             <button type="button" class="burger-button visible-mobile" aria-label="View the site navigation"
                 title="View the site navigation" data-js-burger-button>
@@ -44,7 +45,7 @@
                 <div class="hero__description-block">
                     <span class="hero__design-text-1 design-text">Pizza</span>
                     <span class="hero__design-text-2 design-text">Pizza</span>
-                    <h1 class="hero__title">The Fastest<span class="hero__box">Pizza<img src="icons/Lightning.svg"
+                    <h1 class="hero__title">The Fastest<span class="hero__box">Pizza<img src="{{ asset('icons/Lightning.svg') }}"
                     loading="lazy" alt="" width="49" height="85" class="hero__icon">Delivery</span></h1>
                     <p class="hero__description">We will deliver juicy pizza for your family in 30 minutes, if the
                         courier is late - <span class="hero__highlighting">pizza is free!</span></p>
@@ -54,7 +55,7 @@
                         <p class="hero__description">Cooking process:</p>
                         <div class="hero__video">
                             <button type="button" class="hero__open-video" title="Watch a pizza cooking video"
-                                aria-label="Watch a pizza cooking video"><img src="icons/open-video.svg"
+                                aria-label="Watch a pizza cooking video"><img src="{{ asset('icons/open-video.svg') }}"
                                     class="hero__open-video-icon" loading="lazy" alt="Watch a pizza cooking video"
                                     width="81" height="81"></button>
                         </div>
@@ -64,9 +65,9 @@
                 </div>
             </div>
             <img 
-            srcset="images/hero-pizza.png 1200w, images/pizza-poster-mobile.png 600w"
+            srcset="{{ asset('images/hero-pizza.png') }} 1200w, {{ asset('images/pizza-poster-mobile.png') }} 600w"
             sizes="(min-width: 1200px) 1200px, 100vw"
-            src="images/hero-pizza.png"
+            src="{{ asset('images/hero-pizza.png') }}"
             loading="lazy" 
             alt="Вкусная пицца" 
             class="hero__pizza-poster">
@@ -90,7 +91,7 @@
                 <!-- card1 -->
                 <article class="pizza-menu__card" data-category="meat" data-js-pizza-card>
                     <div class="pizza-menu__card-hero">
-                        <img src="images/italian-pizza.png" loading="lazy" alt="" width="159" height="157"
+                        <img src="{{ asset('images/italian-pizza.png') }}" loading="lazy" alt="" width="159" height="157"
                             class="pizza-menu__image-pizza">
                         <h3 class="pizza-menu__name-pizza">Italian</h3>
                         <p class="pizza-menu__description">Filling: pepperoni, salami, mozzarella, tomato sauce, Italian herbs</p>
@@ -120,11 +121,11 @@
                         <div class="pizza-menu__in-total">
                             <button type="button" class="pizza-menu__button-reduce-the-number"
                                 title="Reduce by one pizza" aria-label="Reduce by one pizza"><img
-                                    src="icons/remove-icon.svg" alt="" loading="lazy" width="23"
+                                    src="{{ asset('icons/remove-icon.svg') }}" alt="" loading="lazy" width="23"
                                     height="23"></button></button>
                             <p class="pizza-menu__count">1</p>
                             <button type="button" class="pizza-menu__button-increase-the-number"
-                                aria-label="Add another pizza" title="Add another pizza"><img src="icons/add-icon.svg"
+                                aria-label="Add another pizza" title="Add another pizza"><img src="{{ asset('icons/add-icon.svg') }}"
                                     alt="" loading="lazy" width="23" height="23"></button>
                         </div>
                     </div>
@@ -133,7 +134,7 @@
                 <!-- card2 -->
                 <article class="pizza-menu__card" data-category="sea" data-js-pizza-card>
                     <div class="pizza-menu__card-hero">
-                        <img src="images/venecia-pizza.png" loading="lazy" alt="" width="159" height="157"
+                        <img src="{{ asset('images/venecia-pizza.png') }}" loading="lazy" alt="" width="159" height="157"
                             class="pizza-menu__image-pizza">
                         <h3 class="pizza-menu__name-pizza">Venecia</h3>
                         <p class="pizza-menu__description">Filling: shrimp, mussels, calamari, gorgonzola cheese, pesto sauce</p>
@@ -163,11 +164,11 @@
                         <div class="pizza-menu__in-total">
                             <button type="button" class="pizza-menu__button-reduce-the-number"
                                 title="Reduce by one pizza" aria-label="Reduce by one pizza"><img
-                                    src="icons/remove-icon.svg" alt="" loading="lazy" width="23"
+                                    src="{{ asset('icons/remove-icon.svg') }}" alt="" loading="lazy" width="23"
                                     height="23"></button></button>
                             <p class="pizza-menu__count">1</p>
                             <button type="button" class="pizza-menu__button-increase-the-number"
-                                aria-label="Add another pizza" title="Add another pizza"><img src="icons/add-icon.svg"
+                                aria-label="Add another pizza" title="Add another pizza"><img src="{{ asset('icons/add-icon.svg') }}"
                                     alt="" loading="lazy" width="23" height="23"></button>
                         </div>
                     </div>
@@ -176,7 +177,7 @@
                 <!-- card3 -->
                 <article class="pizza-menu__card" data-category="meat" data-js-pizza-card> 
                     <div class="pizza-menu__card-hero">
-                        <img src="images/meat-pizza.png" loading="lazy" alt="" width="159" height="157"
+                        <img src="{{ asset('images/meat-pizza.png') }}}" loading="lazy" alt="" width="159" height="157"
                             class="pizza-menu__image-pizza">
                         <h3 class="pizza-menu__name-pizza">Meat</h3>
                         <p class="pizza-menu__description">Filling: bacon, ham, pepperoni, chicken, cheddar cheese, BBQ sauce</p>
@@ -206,11 +207,11 @@
                         <div class="pizza-menu__in-total">
                             <button type="button" class="pizza-menu__button-reduce-the-number"
                                 title="Reduce by one pizza" aria-label="Reduce by one pizza"><img
-                                    src="icons/remove-icon.svg" alt="" loading="lazy" width="23"
+                                    src="{{ asset('icons/remove-icon.svg') }}" alt="" loading="lazy" width="23"
                                     height="23"></button></button>
                             <p class="pizza-menu__count">1</p>
                             <button type="button" class="pizza-menu__button-increase-the-number"
-                                aria-label="Add another pizza" title="Add another pizza"><img src="icons/add-icon.svg"
+                                aria-label="Add another pizza" title="Add another pizza"><img src="{{ asset('icons/add-icon.svg') }}"
                                     alt="" loading="lazy" width="23" height="23"></button>
                         </div>
                     </div>
@@ -219,7 +220,7 @@
                 <!-- card4 -->
                 <article class="pizza-menu__card" data-category="vegetarian" data-js-pizza-card>
                     <div class="pizza-menu__card-hero">
-                        <img src="images/cheese-pizza.png" loading="lazy" alt="" width="159" height="157"
+                        <img src="{{ asset('images/cheese-pizza.png') }}" loading="lazy" alt="" width="159" height="157"
                             class="pizza-menu__image-pizza">
                         <h3 class="pizza-menu__name-pizza">Cheese</h3>
                         <p class="pizza-menu__description">Filling: 4-cheese blend: mozzarella, parmesan, gorgonzola, cheddar</p>
@@ -249,11 +250,11 @@
                         <div class="pizza-menu__in-total">
                             <button type="button" class="pizza-menu__button-reduce-the-number"
                                 title="Reduce by one pizza" aria-label="Reduce by one pizza"><img
-                                    src="icons/remove-icon.svg" alt="" loading="lazy" width="23"
+                                    src="{{ asset('icons/remove-icon.svg') }}" alt="" loading="lazy" width="23"
                                     height="23"></button></button>
                             <p class="pizza-menu__count">1</p>
                             <button type="button" class="pizza-menu__button-increase-the-number"
-                                aria-label="Add another pizza" title="Add another pizza"><img src="icons/add-icon.svg"
+                                aria-label="Add another pizza" title="Add another pizza"><img src="{{ asset('icons/add-icon.svg') }}"
                                     alt="" loading="lazy" width="23" height="23"></button>
                         </div>
                     </div>
@@ -271,7 +272,7 @@
                 <article class="pizza-menu__card" data-category="meat" data-js-pizza-card>
                     <span class="pizza-menu__design-text-3 design-text">Menu</span>
                     <div class="pizza-menu__card-hero">
-                        <img src="images/argentina-pizza.png" loading="lazy" alt="" width="159" height="157"
+                        <img src="{{ asset('images/argentina-pizza.png') }}" loading="lazy" alt="" width="159" height="157"
                             class="pizza-menu__image-pizza">
                         <h3 class="pizza-menu__name-pizza">Argentina</h3>
                         <p class="pizza-menu__description">Filling: grilled beef, jalapeño peppers, corn, tomato sauce</p>
@@ -301,11 +302,11 @@
                         <div class="pizza-menu__in-total">
                             <button type="button" class="pizza-menu__button-reduce-the-number"
                                 title="Reduce by one pizza" aria-label="Reduce by one pizza"><img
-                                    src="icons/remove-icon.svg" alt="" loading="lazy" width="23"
+                                    src="{{ asset('icons/remove-icon.svg') }}" alt="" loading="lazy" width="23"
                                     height="23"></button></button>
                             <p class="pizza-menu__count">1</p>
                             <button type="button" class="pizza-menu__button-increase-the-number"
-                                aria-label="Add another pizza" title="Add another pizza"><img src="icons/add-icon.svg"
+                                aria-label="Add another pizza" title="Add another pizza"><img src="{{ asset('icons/add-icon.svg') }}"
                                     alt="" loading="lazy" width="23" height="23"></button>
                         </div>
                     </div>
@@ -314,7 +315,7 @@
                 <!-- card2 -->
                 <article class="pizza-menu__card" data-category="mushroom" data-js-pizza-card>
                     <div class="pizza-menu__card-hero">
-                        <img src="images/gribnaya-pizza.png" loading="lazy" alt="" width="159" height="157"
+                        <img src="{{ asset('images/gribnaya-pizza.png') }}" loading="lazy" alt="" width="159" height="157"
                             class="pizza-menu__image-pizza">
                         <h3 class="pizza-menu__name-pizza">Gribnaya</h3>
                         <p class="pizza-menu__description">Filling: champignon, oyster mushrooms, mozzarella, cream sauce, dill</p>
@@ -344,11 +345,11 @@
                         <div class="pizza-menu__in-total">
                             <button type="button" class="pizza-menu__button-reduce-the-number"
                                 title="Reduce by one pizza" aria-label="Reduce by one pizza"><img
-                                    src="icons/remove-icon.svg" alt="" loading="lazy" width="23"
+                                    src="{{ asset('icons/remove-icon.svg') }}" alt="" loading="lazy" width="23"
                                     height="23"></button></button>
                             <p class="pizza-menu__count">1</p>
                             <button type="button" class="pizza-menu__button-increase-the-number"
-                                aria-label="Add another pizza" title="Add another pizza"><img src="icons/add-icon.svg"
+                                aria-label="Add another pizza" title="Add another pizza"><img src="{{ asset('icons/add-icon.svg') }}"
                                     alt="" loading="lazy" width="23" height="23"></button>
                         </div>
                     </div>
@@ -357,7 +358,7 @@
                 <!-- card3 -->
                 <article class="pizza-menu__card" data-category="vegetarian" data-js-pizza-card>
                     <div class="pizza-menu__card-hero">
-                        <img src="images/tomato-pizza.png" loading="lazy" alt="" width="159" height="157"
+                        <img src="{{ asset('images/tomato-pizza.png') }}" loading="lazy" alt="" width="159" height="157"
                             class="pizza-menu__image-pizza">
                         <h3 class="pizza-menu__name-pizza">Tomato</h3>
                         <p class="pizza-menu__description">Filling: sun-dried tomatoes, fresh tomatoes, basil, mozzarella, olive oil</p>
@@ -387,11 +388,11 @@
                         <div class="pizza-menu__in-total">
                             <button type="button" class="pizza-menu__button-reduce-the-number"
                                 title="Reduce by one pizza" aria-label="Reduce by one pizza"><img
-                                    src="icons/remove-icon.svg" alt="" loading="lazy" width="23"
+                                    src="{{ asset('icons/remove-icon.svg') }}" alt="" loading="lazy" width="23"
                                     height="23"></button></button>
                             <p class="pizza-menu__count">1</p>
                             <button type="button" class="pizza-menu__button-increase-the-number"
-                                aria-label="Add another pizza" title="Add another pizza"><img src="icons/add-icon.svg"
+                                aria-label="Add another pizza" title="Add another pizza"><img src="{{ asset('icons/add-icon.svg') }}"
                                     alt="" loading="lazy" width="23" height="23"></button>
                         </div>
                     </div>
@@ -400,7 +401,7 @@
                 <!-- card4 -->
                 <article class="pizza-menu__card" data-category="meat mushroom" data-js-pizza-card>
                     <div class="pizza-menu__card-hero">
-                        <img src="images/italian-x2-pizza.png" loading="lazy" alt="" width="159" height="157"
+                        <img src="{{  asset('images/italian-x2-pizza.png') }}" loading="lazy" alt="" width="159" height="157"
                             class="pizza-menu__image-pizza">
                         <h3 class="pizza-menu__name-pizza">Italian x2</h3>
                         <p class="pizza-menu__description">Filling: Salami, portobello mushrooms, olives, cheese, tomato sauce</p>
@@ -430,11 +431,11 @@
                         <div class="pizza-menu__in-total">
                             <button type="button" class="pizza-menu__button-reduce-the-number"
                                 title="Reduce by one pizza" aria-label="Reduce by one pizza"><img
-                                    src="icons/remove-icon.svg" alt="" loading="lazy" width="23"
+                                    src="{{ asset('icons/remove-icon.svg') }}" alt="" loading="lazy" width="23"
                                     height="23"></button></button>
                             <p class="pizza-menu__count">1</p>
                             <button type="button" class="pizza-menu__button-increase-the-number"
-                                aria-label="Add another pizza" title="Add another pizza"><img src="icons/add-icon.svg"
+                                aria-label="Add another pizza" title="Add another pizza"><img src="{{ asset('icons/add-icon.svg') }}"
                                     alt="" loading="lazy" width="23" height="23"></button>
                         </div>
                     </div>
@@ -447,27 +448,27 @@
                 <h3 class="ingredients-popUp__title">Additional ingredients</h3>
                 <div class="ingredients-popUp__wrapper">
                     <div class="ingredients-popUp__box">
-                        <button type="button" class="ingredients-popUp__button-add" title="Add sausage" aria-label="Add sausage" data-name="sausage" data-price="55"><img src="images/kolbasa.webp" alt="Sausage" loading="lazy" width="100" height="100"></button>
+                        <button type="button" class="ingredients-popUp__button-add" title="Add sausage" aria-label="Add sausage" data-name="sausage" data-price="55"><img src="{{ asset('images/kolbasa.webp') }}" alt="Sausage" loading="lazy" width="100" height="100"></button>
                         <output class="ingredients-popUp__count">2 $</output>
                     </div>
                     <div class="ingredients-popUp__box">
-                        <button type="button" class="ingredients-popUp__button-add" title="Add ham" aria-label="Add ham" data-name="ham" data-price="80"><img src="images/vetchina.webp" alt="Ham" loading="lazy" width="100" height="100"></button>                       
+                        <button type="button" class="ingredients-popUp__button-add" title="Add ham" aria-label="Add ham" data-name="ham" data-price="80"><img src="{{ asset('images/vetchina.webp') }}" alt="Ham" loading="lazy" width="100" height="100"></button>                       
                         <output class="ingredients-popUp__count">3 $</output>
                     </div>
                     <div class="ingredients-popUp__box">
-                        <button type="button" class="ingredients-popUp__button-add" title="Add mozzarella" aria-label="Add mozzarella" data-name="mozzarella" data-price="129"><img src="images/mozarella.webp" alt="Mozzarella" loading="lazy" width="100" height="100"></button>
+                        <button type="button" class="ingredients-popUp__button-add" title="Add mozzarella" aria-label="Add mozzarella" data-name="mozzarella" data-price="129"><img src="{{ asset('images/mozarella.webp') }}" alt="Mozzarella" loading="lazy" width="100" height="100"></button>
                         <output class="ingredients-popUp__count">12 $</output>
                     </div>
                     <div class="ingredients-popUp__box">
-                        <button type="button" class="ingredients-popUp__button-add" title="Add mushrooms" aria-label="Add mushrooms" data-name="mushrooms" data-price="100"><img src="images/gribi.webp" alt="Mushrooms" loading="lazy" width="100" height="100"></button>  
+                        <button type="button" class="ingredients-popUp__button-add" title="Add mushrooms" aria-label="Add mushrooms" data-name="mushrooms" data-price="100"><img src="{{ asset('images/gribi.webp') }}" alt="Mushrooms" loading="lazy" width="100" height="100"></button>  
                         <output class="ingredients-popUp__count">4 $</output>
                     </div>
                     <div class="ingredients-popUp__box">
-                        <button type="button" class="ingredients-popUp__button-add" title="Add pepper" aria-label="Add pepper" data-name="pepper" data-price="39"><img src="images/halapen.webp" alt="Pepper" loading="lazy" width="100" height="100"></button>
+                        <button type="button" class="ingredients-popUp__button-add" title="Add pepper" aria-label="Add pepper" data-name="pepper" data-price="39"><img src="{{ asset('images/halapen.webp') }}" alt="Pepper" loading="lazy" width="100" height="100"></button>
                         <output class="ingredients-popUp__count">2 $</output>
                     </div>
                     <div class="ingredients-popUp__box">
-                        <button type="button" class="ingredients-popUp__button-add" title="Add pepper" aria-label="Add onion" data-name="onion" data-price="29"><img src="images/lok.webp" alt="onion" loading="lazy" width="100" height="100"></button>
+                        <button type="button" class="ingredients-popUp__button-add" title="Add pepper" aria-label="Add onion" data-name="onion" data-price="29"><img src="{{ asset('images/lok.webp') }}" alt="onion" loading="lazy" width="100" height="100"></button>
                         <output class="ingredients-popUp__count">1 $</output>
                     </div>
                 </div>
@@ -535,16 +536,16 @@
                     <p class="about-us__description">In just a couple of years, we have opened 6 outlets in different
                         cities: Kazan, Chelyabinsk, Ufa, Samara, Izhevsk, and in the future we plan to develop the
                         network in other major cities of Russia.</p>
-                    <img src="images/pizzas.png" alt="" loading="lazy" width="490" height="189"
+                    <img src="{{ asset('images/pizzas.png') }}" alt="" loading="lazy" width="490" height="189"
                         class="about-us__pizzas">
                 </div>
                 <p class="about-us__description">The kitchen of each point is at least: 400-500 sq. m. meters, hundreds
                     of employees, smoothly performing work in order to receive / prepare / form / deliver customer
                     orders on time.</p>
             </div>
-            <img src="icons/vector.svg" loading="lazy" alt="" aria-hidden="true" class="about-us__vector" width="88"
+            <img src="{{ asset('icons/vector.svg') }}" loading="lazy" alt="" aria-hidden="true" class="about-us__vector" width="88"
                 height="55">
-            <img src="images/about-pizza-poster.png" alt="" loading="lazy" width="812" height="783"
+            <img src="{{ asset('images/about-pizza-poster.png') }}" alt="" loading="lazy" width="812" height="783"
                 class="about-us__pizza-poster">
             <span class="about-us__design-text-2 design-text">About</span>
         </section>
@@ -591,11 +592,11 @@
             <a href="tel:+79373335533" class="footer__phone">+7 (937) 333-55-33</a>
             <div class="footer__popular-messengers">
                 <a href="#" class="footer__button-messenger" title="go to instagram" aria-label="go to instagram"><img
-                        src="icons/instagram.svg" alt="instagram" loading="lazy" width="30" height="30"></a>
+                        src="i{{ asset('icons/instagram.svg') }}" alt="instagram" loading="lazy" width="30" height="30"></a>
                 <a href="#" class="footer__link-messenger" title="go to twitter" aria-label="go to twitter"><img
-                        src="icons/twiter.svg" alt="twitter" loading="lazy" width="30" height="30"></a>
+                        src="{{ asset('icons/twiter.svg') }}" alt="twitter" loading="lazy" width="30" height="30"></a>
                 <a href="#" class="footer__link-messenger" title="go to facebook" aria-label="go to facebook"><img
-                        src="icons/facebook.svg" alt="facebook" loading="lazy" width="30" height="30"></a>
+                        src="{{ asset('icons/facebook.svg') }}" alt="facebook" loading="lazy" width="30" height="30"></a>
             </div>
         </div>
     </footer>
@@ -603,15 +604,15 @@
         <div class="block-popup hidden" data-js-popUp>
             <div class="container">
                 <button type="button" class="container__button-close" aria-label="Close the registration and login window"
-                    title="Close the registration and login window" data-js-close-button><img src="icons/close.svg" alt=""
+                    title="Close the registration and login window" data-js-close-button><img src="{{ asset('icons/close.svg') }}" alt=""
                         loading="lazy" class="container__close"></button>
                 <input type="checkbox" id="flip">
                 <div class="cover">
                     <div class="front">
-                        <img src="images\pizza-poster-login.jpg" alt="">
+                        <img src="{{ asset('images\pizza-poster-login.jpg') }}" alt="">
                     </div>
                     <div class="back">
-                        <img class="backImg" src="images/pizza-poster-login2.png" alt="">
+                        <img class="backImg" src="{{ asset('images/pizza-poster-login2.png') }}" alt="">
                     </div>
                 </div>
                 <div class="forms">
@@ -668,6 +669,7 @@
             </div>
         </div>
     </div>
+    @vite(['resources/js/app.js'])
 </body>
 
 </html>
