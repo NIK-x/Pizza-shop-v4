@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
     <title>PizzaShop</title>
     <link rel="stylesheet" href="styles/main.css">
     <script src="scripts/main.js" defer></script>
@@ -441,7 +441,43 @@
                     <button type="button" class="pizza-menu__add-to-favorites accent-button">Order Now</button>
                 </article>
             </div>
+            </div>
+            <div class="wrapper-ingr hidden">
+                 <div class="ingredients-popUp">
+                <h3 class="ingredients-popUp__title">Additional ingredients</h3>
+                <div class="ingredients-popUp__wrapper">
+                    <div class="ingredients-popUp__box">
+                        <button type="button" class="ingredients-popUp__button-add" title="Add sausage" aria-label="Add sausage" data-name="sausage" data-price="55"><img src="images/kolbasa.webp" alt="Sausage" loading="lazy" width="100" height="100"></button>
+                        <output class="ingredients-popUp__count">2 $</output>
+                    </div>
+                    <div class="ingredients-popUp__box">
+                        <button type="button" class="ingredients-popUp__button-add" title="Add ham" aria-label="Add ham" data-name="ham" data-price="80"><img src="images/vetchina.webp" alt="Ham" loading="lazy" width="100" height="100"></button>                       
+                        <output class="ingredients-popUp__count">3 $</output>
+                    </div>
+                    <div class="ingredients-popUp__box">
+                        <button type="button" class="ingredients-popUp__button-add" title="Add mozzarella" aria-label="Add mozzarella" data-name="mozzarella" data-price="129"><img src="images/mozarella.webp" alt="Mozzarella" loading="lazy" width="100" height="100"></button>
+                        <output class="ingredients-popUp__count">12 $</output>
+                    </div>
+                    <div class="ingredients-popUp__box">
+                        <button type="button" class="ingredients-popUp__button-add" title="Add mushrooms" aria-label="Add mushrooms" data-name="mushrooms" data-price="100"><img src="images/gribi.webp" alt="Mushrooms" loading="lazy" width="100" height="100"></button>  
+                        <output class="ingredients-popUp__count">4 $</output>
+                    </div>
+                    <div class="ingredients-popUp__box">
+                        <button type="button" class="ingredients-popUp__button-add" title="Add pepper" aria-label="Add pepper" data-name="pepper" data-price="39"><img src="images/halapen.webp" alt="Pepper" loading="lazy" width="100" height="100"></button>
+                        <output class="ingredients-popUp__count">2 $</output>
+                    </div>
+                    <div class="ingredients-popUp__box">
+                        <button type="button" class="ingredients-popUp__button-add" title="Add pepper" aria-label="Add onion" data-name="onion" data-price="29"><img src="images/lok.webp" alt="onion" loading="lazy" width="100" height="100"></button>
+                        <output class="ingredients-popUp__count">1 $</output>
+                    </div>
+                </div>
+                <div class="ingredients-popUp__total">
+                    <output class="ingredients-popUp__total-price"><spavn style="font-weight: 500;">Total amount</spavn><br>0</output>
+                    <button type="button" class="ingredients-popUp__button-order pizza-menu__add-to-favorites accent-button">Order Now</button>
+                </div>
+                
             </div>  
+            </div>
         </section>
         <section class="events" aria-labelledby="events__main-title">
             <span class="events__design-text design-text">Events</span>
@@ -566,8 +602,8 @@
     <div class="backdrop hidden" data-js-backdrop>
         <div class="block-popup hidden" data-js-popUp>
             <div class="container">
-                <button type="button" class="container__button-close" aria-label="Закрыть окно регистрации и логина"
-                    title="Закрыть окно регистрации и логина" data-js-close-button><img src="icons/close.svg" alt=""
+                <button type="button" class="container__button-close" aria-label="Close the registration and login window"
+                    title="Close the registration and login window" data-js-close-button><img src="icons/close.svg" alt=""
                         loading="lazy" class="container__close"></button>
                 <input type="checkbox" id="flip">
                 <div class="cover">
