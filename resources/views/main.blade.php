@@ -12,11 +12,11 @@
 
 <body>
     <header class="header header--sticky">
-        <a href="#" class="header__logo">pizzashop</a>
+        <a href="{{ url('/') }}" class="header__logo">pizzashop</a>
         <div class="header__overlay" data-js-header-overlay> <!-- Desctop: hidden-mobile -->
             <nav class="header__nav-menu">
                 <ul class="header__menu-list" data-js-menu-list>
-                    <li class="header__menu-item item item-home" data-js-item><a href="#" class="header__menu-link">Home</a></li>
+                    <li class="header__menu-item item item-home" data-js-item><a href="{{ url('/') }}" class="header__menu-link">Home</a></li>
                     <li class="header__menu-item item item-menu" data-js-item><a href="#menu" class="header__menu-link">Menu</a>
                     </li>
                     <li class="header__menu-item item item-events" data-js-item><a href="#events" class="header__menu-link header__events"
@@ -28,7 +28,7 @@
         </div>
         <div class="header__box">
             <button type="button" class="header__button-login accent-button" data-js-login-button>Log in</button>
-            <a href="favourites.html" class="header__button-favourites" aria-label="Add to Cart"
+            <a href="{{ route('favourites') }}" class="header__button-favourites" aria-label="Add to Cart"
                 title="Add to Cart"><img src="{{ asset('icons/favorites.svg') }}" alt="Add to Cart" loading="lazy" width="45"
                     height="45" class="header__icon-favorites"></a>
             <button type="button" class="burger-button visible-mobile" aria-label="View the site navigation"
@@ -552,7 +552,7 @@
     </main>
     <footer class="footer">
         <div class="footer__navigation">
-            <a href="#" class="footer__logo">pizzashop</a>
+            <a href="{{ url('/') }}" class="footer__logo">pizzashop</a>
             <div class="footer__links-block">
                 <div class="footer__inner">
                     <a href="#" class="footer__main-title">Home</a>
@@ -591,11 +591,11 @@
         <div class="footer__connection">
             <a href="tel:+79373335533" class="footer__phone">+7 (937) 333-55-33</a>
             <div class="footer__popular-messengers">
-                <a href="#" class="footer__button-messenger" title="go to instagram" aria-label="go to instagram"><img
+                <a href="{{ url('/') }}" class="footer__button-messenger" title="go to instagram" aria-label="go to instagram"><img
                         src="{{ asset('icons/instagram.svg') }}" alt="instagram" loading="lazy" width="30" height="30"></a>
-                <a href="#" class="footer__link-messenger" title="go to twitter" aria-label="go to twitter"><img
+                <a href="{{ url('/') }}" class="footer__link-messenger" title="go to twitter" aria-label="go to twitter"><img
                         src="{{ asset('icons/twiter.svg') }}" alt="twitter" loading="lazy" width="30" height="30"></a>
-                <a href="#" class="footer__link-messenger" title="go to facebook" aria-label="go to facebook"><img
+                <a href="{{ url('/') }}" class="footer__link-messenger" title="go to facebook" aria-label="go to facebook"><img
                         src="{{ asset('icons/facebook.svg') }}" alt="facebook" loading="lazy" width="30" height="30"></a>
             </div>
         </div>
@@ -629,7 +629,7 @@
                                         <i class="fas fa-lock"></i>
                                         <input type="password" placeholder="Enter your password" required>
                                     </div>
-                                    <div class="text"><a href="#">Forgot password?</a></div>
+                                    <div class="text"><a href="{{ url('/') }}">Forgot password?</a></div>
                                     <div class="button input-box">
                                         <input type="submit" value="Sumbit">
                                     </div>
@@ -669,7 +669,7 @@
             </div>
         </div>
     </div>
-    @vite(['resources/js/app.js'])
+    @vite(['resources/js/main.js'])
 </body>
 
 </html>
