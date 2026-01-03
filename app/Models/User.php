@@ -2,47 +2,65 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class User extends Authenticatable
 {
-    /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable;
+    use Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var list<string>
-     */
+    protected $primaryKey = 'id_users';
+    
     protected $fillable = [
-        'name',
-        'email',
-        'password',
+        'name_user',
+        'email_user', 
+        'password_user',
+        'phone_user',
+        'city_id'
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var list<string>
-     */
     protected $hidden = [
-        'password',
+        'password_user',
         'remember_token',
     ];
 
-    /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
-     */
-    protected function casts(): array
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
+
+    public function getAuthIdentifierName()
     {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ];
+        return 'id_users';
+    }
+
+    public function getAuthIdentifier()
+    {
+        return $this->id_users;
+    }
+
+    public function getAuthPassword()
+    {
+        return $this->password_user;
+    }
+
+    public function getEmailForPasswordReset()
+    {
+        return $this->email_user;
+    }
+
+    public function city(): BelongsTo
+    {
+        return $this->belongsTo(City::class, 'city_id', 'city_id');
+    }
+
+    public function favourites()
+    {
+        return $this->hasMany(Favourite::class, 'user_id', 'id_users');
+    }
+
+    public function cartItems()
+    {
+        return $this->hasMany(CartItem::class, 'user_id', 'id_users');
     }
 }
