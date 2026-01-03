@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class User extends Authenticatable
 {
@@ -29,6 +30,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    // Методы для совместимости с Laravel Auth
     public function getAuthIdentifierName()
     {
         return 'id_users';
@@ -49,17 +51,18 @@ class User extends Authenticatable
         return $this->email_user;
     }
 
+    // Отношения
     public function city(): BelongsTo
     {
         return $this->belongsTo(City::class, 'city_id', 'city_id');
     }
 
-    public function favourites()
+    public function favourites(): HasMany
     {
         return $this->hasMany(Favourite::class, 'user_id', 'id_users');
     }
 
-    public function cartItems()
+    public function cartItems(): HasMany
     {
         return $this->hasMany(CartItem::class, 'user_id', 'id_users');
     }

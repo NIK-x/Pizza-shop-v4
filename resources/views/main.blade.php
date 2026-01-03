@@ -40,6 +40,7 @@
         </div>
     </header>
     <main class="main">
+    @endphp
         <section class="hero" aria-labelledby="hero__title">
             <div class="hero__inner">
                 <div class="hero__description-block">
@@ -72,414 +73,412 @@
             alt="Вкусная пицца" 
             class="hero__pizza-poster">
         </section>
-        <section class="pizza-menu" aria-labelledby="pizza-menu__title">
-            <div class="pizza-menu__block">
-                <span class="pizza-menu__design-text-1 design-text">Menu</span>
-                <h2 class="pizza-menu__title" id="menu">Menu</h2>
-                <header class="pizza-menu__header">
-                    <button type="button" class="pizza-menu__button-show-all pizza-menu__button is-active" data-filter="all" data-js-button-filter>Show
-                        all</button>
-                    <button type="button" class="pizza-menu__button-meat pizza-menu__button" data-filter="meat" data-js-button-filter>Meat</button>
-                    <button type="button" class="pizza-menu__button-vegetarian pizza-menu__button" data-filter="vegetarian" data-js-button-filter>Vegetarian</button>
-                    <button type="button" class="pizza-menu__button-sea-products pizza-menu__button" data-filter="sea" data-js-button-filter>Sea
-                        products</button>
-                    <button type="button" class="pizza-menu__button-mushroom pizza-menu__button" data-filter="mushroom" data-js-button-filter>Mushroom</button>
-                </header>
-            </div>
-            <div class="all-pizza" data-js-all-pizza>
-                <div class="pizza-menu__cards all-cards" data-js-block-pizza>
-                <!-- card1 -->
-                <article class="pizza-menu__card" data-category="meat" data-js-pizza-card>
-                    <div class="pizza-menu__card-hero">
-                        <img src="{{ asset('images/italian-pizza.png') }}" loading="lazy" alt="" width="159" height="157"
-                            class="pizza-menu__image-pizza">
-                        <h3 class="pizza-menu__name-pizza">Italian</h3>
-                        <p class="pizza-menu__description">Filling: pepperoni, salami, mozzarella, tomato sauce, Italian herbs</p>
+       <section class="pizza-menu" aria-labelledby="pizza-menu__title">
+    <div class="pizza-menu__block">
+        <span class="pizza-menu__design-text-1 design-text">Menu</span>
+        <h2 class="pizza-menu__title" id="menu">Menu</h2>
+        <header class="pizza-menu__header">
+            <button type="button" class="pizza-menu__button-show-all pizza-menu__button is-active" data-filter="all" data-js-button-filter>Show all</button>
+            <button type="button" class="pizza-menu__button-meat pizza-menu__button" data-filter="meat" data-js-button-filter>Meat</button>
+            <button type="button" class="pizza-menu__button-vegetarian pizza-menu__button" data-filter="vegetarian" data-js-button-filter>Vegetarian</button>
+            <button type="button" class="pizza-menu__button-sea-products pizza-menu__button" data-filter="sea" data-js-button-filter>Sea products</button>
+            <button type="button" class="pizza-menu__button-mushroom pizza-menu__button" data-filter="mushroom" data-js-button-filter>Mushroom</button>
+        </header>
+    </div>
+    
+    <div class="all-pizza" data-js-all-pizza>
+        <!-- Обычные пиццы -->
+        <div class="pizza-menu__cards all-cards" data-js-block-pizza>
+            <!-- card1 Italian -->
+            <article class="pizza-menu__card" data-category="meat" data-js-pizza-card data-pizza-id="1">
+                <div class="pizza-menu__card-hero">
+                    <img src="{{ asset('images/italian-pizza.png') }}" loading="lazy" alt="Italian Pizza" width="159" height="157" class="pizza-menu__image-pizza">
+                    <h3 class="pizza-menu__name-pizza">Italian</h3>
+                    <p class="pizza-menu__description">Filling: pepperoni, salami, mozzarella, tomato sauce, Italian herbs</p>
+                </div>
+                <div class="pizza-menu__block-checkbox">
+                    <p class="pizza-menu__field">
+                        <input type="radio" name="size-italian" id="italian-small" class="pizza-menu__checkbox-smal pizza-menu__checkbox" aria-label="Pizza 22 cm" data-size-id="1" data-price="8.35" data-base-price="8.35">
+                    </p>
+                    <p class="pizza-menu__field">
+                        <input type="radio" name="size-italian" id="italian-normal" class="pizza-menu__checkbox-normal pizza-menu__checkbox" aria-label="Pizza 28 cm" data-size-id="2" data-price="10.35" data-base-price="8.35">
+                    </p>
+                    <p class="pizza-menu__field">
+                        <input type="radio" name="size-italian" id="italian-big" class="pizza-menu__checkbox-big pizza-menu__checkbox" aria-label="Pizza 33 cm" data-size-id="3" data-price="12.35" data-base-price="8.35">
+                    </p>
+                </div>
+                <button type="button" class="pizza-menu__button-add-ingredients" data-pizza-id="1">
+                    <span class="pizza-menu__text">+ Ingredients</span>
+                </button>
+                <div class="pizza-menu__box">
+                    <p class="pizza-menu__price" data-base-price="8.35">8,35 <sup>$</sup></p>
+                    <div class="pizza-menu__in-total">
+                        <button type="button" class="pizza-menu__button-reduce-the-number" title="Reduce by one pizza" aria-label="Reduce by one pizza" data-action="decrease">
+                            <img src="{{ asset('icons/remove-icon.svg') }}" alt="Reduce" loading="lazy" width="23" height="23">
+                        </button>
+                        <p class="pizza-menu__count">1</p>
+                        <button type="button" class="pizza-menu__button-increase-the-number" aria-label="Add another pizza" title="Add another pizza" data-action="increase">
+                            <img src="{{ asset('icons/add-icon.svg') }}" alt="Add" loading="lazy" width="23" height="23">
+                        </button>
                     </div>
-                    <div class="pizza-menu__block-checkbox">
-                        <p class="pizza-menu__field">
-                            <!-- <label for="italian-small" class="pizza-menu__label">22</label> -->
-                            <input type="checkbox" name="italian-small" id="italian-small"
-                                class="pizza-menu__checkbox-smal pizza-menu__checkbox" aria-label="Pizza 22 cm">
-                        </p>
-
-                        <p class="pizza-menu__field">
-                            <!-- <label for="italian-normal" class="pizza-menu__label">28</label> -->
-                            <input type="checkbox" name="italian-normal" id="italian-normal"
-                                class="pizza-menu__checkbox-normal pizza-menu__checkbox" aria-label="Pizza 28 cm">
-                        </p>
-                        <p class="pizza-menu__field">
-                            <!-- <label for="italian-big" class="pizza-menu__label">33</label> -->
-                            <input type="checkbox" name="italian-big" id="italian-big"
-                                class="pizza-menu__checkbox-big pizza-menu__checkbox" aria-label="Pizza 33 cm">
-                        </p>
-                    </div>
-                    <button type="button" class="pizza-menu__button-add-ingredients"><span class="pizza-menu__text">+
-                            Ingredients</span></button>
-                    <div class="pizza-menu__box">
-                        <p class="pizza-menu__price">8,35 <sup>$</sup></p>
-                        <div class="pizza-menu__in-total">
-                            <button type="button" class="pizza-menu__button-reduce-the-number"
-                                title="Reduce by one pizza" aria-label="Reduce by one pizza"><img
-                                    src="{{ asset('icons/remove-icon.svg') }}" alt="" loading="lazy" width="23"
-                                    height="23"></button></button>
-                            <p class="pizza-menu__count">1</p>
-                            <button type="button" class="pizza-menu__button-increase-the-number"
-                                aria-label="Add another pizza" title="Add another pizza"><img src="{{ asset('icons/add-icon.svg') }}"
-                                    alt="" loading="lazy" width="23" height="23"></button>
-                        </div>
-                    </div>
-                    <button type="button" class="pizza-menu__add-to-favorites accent-button">Order Now</button>
-                </article>
-                <!-- card2 -->
-                <article class="pizza-menu__card" data-category="sea" data-js-pizza-card>
-                    <div class="pizza-menu__card-hero">
-                        <img src="{{ asset('images/venecia-pizza.png') }}" loading="lazy" alt="" width="159" height="157"
-                            class="pizza-menu__image-pizza">
-                        <h3 class="pizza-menu__name-pizza">Venecia</h3>
-                        <p class="pizza-menu__description">Filling: shrimp, mussels, calamari, gorgonzola cheese, pesto sauce</p>
-                    </div>
-                    <div class="pizza-menu__block-checkbox">
-                        <p class="pizza-menu__field">
-                            <!-- <label for="venecia-small" class="pizza-menu__label">22</label> -->
-                            <input type="checkbox" name="venecia-small" id="venecia-small"
-                                class="pizza-menu__checkbox-smal pizza-menu__checkbox" aria-label="Pizza 22 cm">
-                        </p>
-
-                        <p class="pizza-menu__field">
-                            <!-- <label for="venecia-normal" class="pizza-menu__label">28</label> -->
-                            <input type="checkbox" name="venecia-normal" id="venecia-normal"
-                                class="pizza-menu__checkbox-normal pizza-menu__checkbox" aria-label="Pizza 28 cm">
-                        </p>
-                        <p class="pizza-menu__field">
-                            <!-- <label for="venecia-big" class="pizza-menu__label">33</label> -->
-                            <input type="checkbox" name="venecia-big" id="venecia-big"
-                                class="pizza-menu__checkbox-big pizza-menu__checkbox" aria-label="Pizza 33 cm">
-                        </p>
-                    </div>
-                    <button type="button" class="pizza-menu__button-add-ingredients"><span class="pizza-menu__text">+
-                            Ingredients</span></button>
-                    <div class="pizza-menu__box">
-                        <p class="pizza-menu__price">7,35 <sup>$</sup></p>
-                        <div class="pizza-menu__in-total">
-                            <button type="button" class="pizza-menu__button-reduce-the-number"
-                                title="Reduce by one pizza" aria-label="Reduce by one pizza"><img
-                                    src="{{ asset('icons/remove-icon.svg') }}" alt="" loading="lazy" width="23"
-                                    height="23"></button></button>
-                            <p class="pizza-menu__count">1</p>
-                            <button type="button" class="pizza-menu__button-increase-the-number"
-                                aria-label="Add another pizza" title="Add another pizza"><img src="{{ asset('icons/add-icon.svg') }}"
-                                    alt="" loading="lazy" width="23" height="23"></button>
-                        </div>
-                    </div>
-                    <button type="button" class="pizza-menu__add-to-favorites accent-button">Order Now</button>
-                </article>
-                <!-- card3 -->
-                <article class="pizza-menu__card" data-category="meat" data-js-pizza-card> 
-                    <div class="pizza-menu__card-hero">
-                        <img src="{{ asset('images/meat-pizza.png') }}" loading="lazy" alt="" width="159" height="157"
-                            class="pizza-menu__image-pizza">
-                        <h3 class="pizza-menu__name-pizza">Meat</h3>
-                        <p class="pizza-menu__description">Filling: bacon, ham, pepperoni, chicken, cheddar cheese, BBQ sauce</p>
-                    </div>
-                    <div class="pizza-menu__block-checkbox">
-                        <p class="pizza-menu__field">
-                            <!-- <label for="meat-small" class="pizza-menu__label">22</label> -->
-                            <input type="checkbox" name="meat-small" id="meat-small"
-                                class="pizza-menu__checkbox-smal pizza-menu__checkbox" aria-label="Pizza 22 cm">
-                        </p>
-
-                        <p class="pizza-menu__field">
-                            <!-- <label for="meat-normal" class="pizza-menu__label">28</label> -->
-                            <input type="checkbox" name="meat-normal" id="meat-normal"
-                                class="pizza-menu__checkbox-normal pizza-menu__checkbox" aria-label="Pizza 28 cm">
-                        </p>
-                        <p class="pizza-menu__field">
-                            <!-- <label for="meat-big" class="pizza-menu__label">33</label> -->
-                            <input type="checkbox" name="meat-big" id="meat-big"
-                                class="pizza-menu__checkbox-big pizza-menu__checkbox" aria-label="Pizza 33 cm">
-                        </p>
-                    </div>
-                    <button type="button" class="pizza-menu__button-add-ingredients"><span class="pizza-menu__text">+
-                            Ingredients</span></button>
-                    <div class="pizza-menu__box">
-                        <p class="pizza-menu__price">9,35 <sup>$</sup></p>
-                        <div class="pizza-menu__in-total">
-                            <button type="button" class="pizza-menu__button-reduce-the-number"
-                                title="Reduce by one pizza" aria-label="Reduce by one pizza"><img
-                                    src="{{ asset('icons/remove-icon.svg') }}" alt="" loading="lazy" width="23"
-                                    height="23"></button></button>
-                            <p class="pizza-menu__count">1</p>
-                            <button type="button" class="pizza-menu__button-increase-the-number"
-                                aria-label="Add another pizza" title="Add another pizza"><img src="{{ asset('icons/add-icon.svg') }}"
-                                    alt="" loading="lazy" width="23" height="23"></button>
-                        </div>
-                    </div>
-                    <button type="button" class="pizza-menu__add-to-favorites accent-button">Order Now</button>
-                </article>
-                <!-- card4 -->
-                <article class="pizza-menu__card" data-category="vegetarian" data-js-pizza-card>
-                    <div class="pizza-menu__card-hero">
-                        <img src="{{ asset('images/cheese-pizza.png') }}" loading="lazy" alt="" width="159" height="157"
-                            class="pizza-menu__image-pizza">
-                        <h3 class="pizza-menu__name-pizza">Cheese</h3>
-                        <p class="pizza-menu__description">Filling: 4-cheese blend: mozzarella, parmesan, gorgonzola, cheddar</p>
-                    </div>
-                    <div class="pizza-menu__block-checkbox">
-                        <p class="pizza-menu__field">
-                            <!-- <label for="cheese-small" class="pizza-menu__label">22</label> -->
-                            <input type="checkbox" name="cheese-small" id="cheese-small"
-                                class="pizza-menu__checkbox-smal pizza-menu__checkbox" aria-label="Pizza 22 cm">
-                        </p>
-
-                        <p class="pizza-menu__field">
-                            <!-- <label for="cheese-normal" class="pizza-menu__label">28</label> -->
-                            <input type="checkbox" name="cheese-normal" id="cheese-normal"
-                                class="pizza-menu__checkbox-normal pizza-menu__checkbox" aria-label="Pizza 28 cm">
-                        </p>
-                        <p class="pizza-menu__field">
-                            <!-- <label for="cheese-big" class="pizza-menu__label">33</label> -->
-                            <input type="checkbox" name="cheese-big" id="cheese-big"
-                                class="pizza-menu__checkbox-big pizza-menu__checkbox" aria-label="Pizza 33 cm"> 
-                        </p>
-                    </div>
-                    <button type="button" class="pizza-menu__button-add-ingredients"><span class="pizza-menu__text">+
-                            Ingredients</span></button>
-                    <div class="pizza-menu__box">
-                        <p class="pizza-menu__price">8,35 <sup>$</sup></p>
-                        <div class="pizza-menu__in-total">
-                            <button type="button" class="pizza-menu__button-reduce-the-number"
-                                title="Reduce by one pizza" aria-label="Reduce by one pizza"><img
-                                    src="{{ asset('icons/remove-icon.svg') }}" alt="" loading="lazy" width="23"
-                                    height="23"></button></button>
-                            <p class="pizza-menu__count">1</p>
-                            <button type="button" class="pizza-menu__button-increase-the-number"
-                                aria-label="Add another pizza" title="Add another pizza"><img src="{{ asset('icons/add-icon.svg') }}"
-                                    alt="" loading="lazy" width="23" height="23"></button>
-                        </div>
-                    </div>
-                    <button type="button" class="pizza-menu__add-to-favorites accent-button">Order Now</button>
-                </article>
-            </div>
-            <article class="popular-block" data-js-popular>
-                <span class="pizza-menu__design-text-2 design-text">Menu</span>
-                <h3 class="popular-block__title">most popular pizza</h3>
+                </div>
+                <button type="button" class="pizza-menu__add-to-favorites accent-button" data-pizza-id="1">Order Now</button>
             </article>
-            <!--              most popular pizza              -->
-
-            <div class="pizza-menu__cards pizza-menu__popular-cards all-cards" data-js-block-pizza>
-                <!-- card1 -->
-                <article class="pizza-menu__card" data-category="meat" data-js-pizza-card>
-                    <span class="pizza-menu__design-text-3 design-text">Menu</span>
-                    <div class="pizza-menu__card-hero">
-                        <img src="{{ asset('images/argentina-pizza.png') }}" loading="lazy" alt="" width="159" height="157"
-                            class="pizza-menu__image-pizza">
-                        <h3 class="pizza-menu__name-pizza">Argentina</h3>
-                        <p class="pizza-menu__description">Filling: grilled beef, jalapeño peppers, corn, tomato sauce</p>
-                    </div>
-                    <div class="pizza-menu__block-checkbox">
-                        <p class="pizza-menu__field">
-                            <!-- <label for="argentina-small" class="pizza-menu__label">22</label> -->
-                            <input type="checkbox" name="argentina-small" id="argentina-small"
-                                class="pizza-menu__checkbox-smal pizza-menu__checkbox" aria-label="Pizza 22 cm">
-                        </p>
-
-                        <p class="pizza-menu__field">
-                            <!-- <label for="argentina-normal" class="pizza-menu__label">28</label> -->
-                            <input type="checkbox" name="argentina-normal" id="argentina-normal"
-                                class="pizza-menu__checkbox-normal pizza-menu__checkbox" aria-label="Pizza 28 cm">
-                        </p>
-                        <p class="pizza-menu__field">
-                            <!-- <label for="argentina-big" class="pizza-menu__label">33</label> -->
-                            <input type="checkbox" name="big" id="argentina-big"
-                                class="pizza-menu__checkbox-big pizza-menu__checkbox" aria-label="Pizza 33 cm">
-                        </p>
-                    </div>
-                    <button type="button" class="pizza-menu__button-add-ingredients"><span class="pizza-menu__text">+
-                            Ingredients</span></button>
-                    <div class="pizza-menu__box">
-                        <p class="pizza-menu__price">7,35 <sup>$</sup></p>
-                        <div class="pizza-menu__in-total">
-                            <button type="button" class="pizza-menu__button-reduce-the-number"
-                                title="Reduce by one pizza" aria-label="Reduce by one pizza"><img
-                                    src="{{ asset('icons/remove-icon.svg') }}" alt="" loading="lazy" width="23"
-                                    height="23"></button></button>
-                            <p class="pizza-menu__count">1</p>
-                            <button type="button" class="pizza-menu__button-increase-the-number"
-                                aria-label="Add another pizza" title="Add another pizza"><img src="{{ asset('icons/add-icon.svg') }}"
-                                    alt="" loading="lazy" width="23" height="23"></button>
-                        </div>
-                    </div>
-                    <button type="button" class="pizza-menu__add-to-favorites accent-button">Order Now</button>
-                </article>
-                <!-- card2 -->
-                <article class="pizza-menu__card" data-category="mushroom" data-js-pizza-card>
-                    <div class="pizza-menu__card-hero">
-                        <img src="{{ asset('images/gribnaya-pizza.png') }}" loading="lazy" alt="" width="159" height="157"
-                            class="pizza-menu__image-pizza">
-                        <h3 class="pizza-menu__name-pizza">Gribnaya</h3>
-                        <p class="pizza-menu__description">Filling: champignon, oyster mushrooms, mozzarella, cream sauce, dill</p>
-                    </div>
-                    <div class="pizza-menu__block-checkbox">
-                        <p class="pizza-menu__field">
-                            <!-- <label for="gribnaya-small" class="pizza-menu__label">22</label> -->
-                            <input type="checkbox" name="gribnaya-small" id="gribnaya-small"
-                                class="pizza-menu__checkbox-smal pizza-menu__checkbox" aria-label="Pizza 22 cm">
-                        </p>
-
-                        <p class="pizza-menu__field">
-                            <!-- <label for="gribnaya-normal" class="pizza-menu__label">28</label> -->
-                            <input type="checkbox" name="gribnaya-normal" id="gribnaya-normal"
-                                class="pizza-menu__checkbox-normal pizza-menu__checkbox" aria-label="Pizza 28 cm">
-                        </p>
-                        <p class="pizza-menu__field">
-                            <!-- <label for="gribnaya-big" class="pizza-menu__label">33</label> -->
-                            <input type="checkbox" name="gribnaya-big" id="gribnaya-big"
-                                class="pizza-menu__checkbox-big pizza-menu__checkbox" aria-label="Pizza 33 cm">
-                        </p>
-                    </div>
-                    <button type="button" class="pizza-menu__button-add-ingredients"><span class="pizza-menu__text">+
-                            Ingredients</span></button>
-                    <div class="pizza-menu__box">
-                        <p class="pizza-menu__price">6,35 <sup>$</sup></p>
-                        <div class="pizza-menu__in-total">
-                            <button type="button" class="pizza-menu__button-reduce-the-number"
-                                title="Reduce by one pizza" aria-label="Reduce by one pizza"><img
-                                    src="{{ asset('icons/remove-icon.svg') }}" alt="" loading="lazy" width="23"
-                                    height="23"></button></button>
-                            <p class="pizza-menu__count">1</p>
-                            <button type="button" class="pizza-menu__button-increase-the-number"
-                                aria-label="Add another pizza" title="Add another pizza"><img src="{{ asset('icons/add-icon.svg') }}"
-                                    alt="" loading="lazy" width="23" height="23"></button>
-                        </div>
-                    </div>
-                    <button type="button" class="pizza-menu__add-to-favorites accent-button">Order Now</button>
-                </article>
-                <!-- card3 -->
-                <article class="pizza-menu__card" data-category="vegetarian" data-js-pizza-card>
-                    <div class="pizza-menu__card-hero">
-                        <img src="{{ asset('images/tomato-pizza.png') }}" loading="lazy" alt="" width="159" height="157"
-                            class="pizza-menu__image-pizza">
-                        <h3 class="pizza-menu__name-pizza">Tomato</h3>
-                        <p class="pizza-menu__description">Filling: sun-dried tomatoes, fresh tomatoes, basil, mozzarella, olive oil</p>
-                    </div>
-                    <div class="pizza-menu__block-checkbox">
-                        <p class="pizza-menu__field">
-                            <!-- <label for="tomato-small" class="pizza-menu__label">22</label> -->
-                            <input type="checkbox" name="tomato-small" id="tomato-small"
-                                class="pizza-menu__checkbox-smal pizza-menu__checkbox" aria-label="Pizza 22 cm">
-                        </p>
-
-                        <p class="pizza-menu__field">
-                            <!-- <label for="tomato-normal" class="pizza-menu__label">28</label> -->
-                            <input type="checkbox" name="tomato-normal" id="tomato-normal"
-                                class="pizza-menu__checkbox-normal pizza-menu__checkbox" aria-label="Pizza 28 cm">
-                        </p>
-                        <p class="pizza-menu__field">
-                            <!-- <label for="tomato-big" class="pizza-menu__label">33</label> -->
-                            <input type="checkbox" name="tomato-big" id="tomato-big"
-                                class="pizza-menu__checkbox-big pizza-menu__checkbox" aria-label="Pizza 33 cm">
-                        </p>
-                    </div>
-                    <button type="button" class="pizza-menu__button-add-ingredients"><span class="pizza-menu__text">+
-                            Ingredients</span></button>
-                    <div class="pizza-menu__box">
-                        <p class="pizza-menu__price">7,35 <sup>$</sup></p>
-                        <div class="pizza-menu__in-total">
-                            <button type="button" class="pizza-menu__button-reduce-the-number"
-                                title="Reduce by one pizza" aria-label="Reduce by one pizza"><img
-                                    src="{{ asset('icons/remove-icon.svg') }}" alt="" loading="lazy" width="23"
-                                    height="23"></button></button>
-                            <p class="pizza-menu__count">1</p>
-                            <button type="button" class="pizza-menu__button-increase-the-number"
-                                aria-label="Add another pizza" title="Add another pizza"><img src="{{ asset('icons/add-icon.svg') }}"
-                                    alt="" loading="lazy" width="23" height="23"></button>
-                        </div>
-                    </div>
-                    <button type="button" class="pizza-menu__add-to-favorites accent-button">Order Now</button>
-                </article>
-                <!-- card4 -->
-                <article class="pizza-menu__card" data-category="meat mushroom" data-js-pizza-card>
-                    <div class="pizza-menu__card-hero">
-                        <img src="{{  asset('images/italian-x2-pizza.png') }}" loading="lazy" alt="" width="159" height="157"
-                            class="pizza-menu__image-pizza">
-                        <h3 class="pizza-menu__name-pizza">Italian x2</h3>
-                        <p class="pizza-menu__description">Filling: Salami, portobello mushrooms, olives, cheese, tomato sauce</p>
-                    </div>
-                    <div class="pizza-menu__block-checkbox">
-                        <p class="pizza-menu__field">
-                            <!-- <label for="italian-two-small" class="pizza-menu__label">22</label> -->
-                            <input type="checkbox" name="italian-two-small" id="italian-two-small"
-                                class="pizza-menu__checkbox-smal pizza-menu__checkbox" aria-label="Pizza 22 cm">
-                        </p>
-
-                        <p class="pizza-menu__field">
-                            <!-- <label for="italian-two-normal" class="pizza-menu__label">28</label> -->
-                            <input type="checkbox" name="italian-two-normal" id="italian-two-normal"
-                                class="pizza-menu__checkbox-normal pizza-menu__checkbox" aria-label="Pizza 28 cm">
-                        </p>
-                        <p class="pizza-menu__field">
-                            <!-- <label for="italian-two-big" class="pizza-menu__label">33</label> -->
-                            <input type="checkbox" name="italian-two-big" id="italian-two-big"
-                                class="pizza-menu__checkbox-big pizza-menu__checkbox" aria-label="Pizza 33 cm">
-                        </p>
-                    </div>
-                    <button type="button" class="pizza-menu__button-add-ingredients"><span class="pizza-menu__text">+
-                            Ingredients</span></button>
-                    <div class="pizza-menu__box">
-                        <p class="pizza-menu__price">8,35 <sup>$</sup></p>
-                        <div class="pizza-menu__in-total">
-                            <button type="button" class="pizza-menu__button-reduce-the-number"
-                                title="Reduce by one pizza" aria-label="Reduce by one pizza"><img
-                                    src="{{ asset('icons/remove-icon.svg') }}" alt="" loading="lazy" width="23"
-                                    height="23"></button></button>
-                            <p class="pizza-menu__count">1</p>
-                            <button type="button" class="pizza-menu__button-increase-the-number"
-                                aria-label="Add another pizza" title="Add another pizza"><img src="{{ asset('icons/add-icon.svg') }}"
-                                    alt="" loading="lazy" width="23" height="23"></button>
-                        </div>
-                    </div>
-                    <button type="button" class="pizza-menu__add-to-favorites accent-button">Order Now</button>
-                </article>
-            </div>
-            </div>
-            <div class="wrapper-ingr hidden">
-                 <div class="ingredients-popUp">
-                <h3 class="ingredients-popUp__title">Additional ingredients</h3>
-                <div class="ingredients-popUp__wrapper">
-                    <div class="ingredients-popUp__box">
-                        <button type="button" class="ingredients-popUp__button-add" title="Add sausage" aria-label="Add sausage" data-name="sausage" data-price="55"><img src="{{ asset('images/kolbasa.webp') }}" alt="Sausage" loading="lazy" width="100" height="100"></button>
-                        <output class="ingredients-popUp__count">2 $</output>
-                    </div>
-                    <div class="ingredients-popUp__box">
-                        <button type="button" class="ingredients-popUp__button-add" title="Add ham" aria-label="Add ham" data-name="ham" data-price="80"><img src="{{ asset('images/vetchina.webp') }}" alt="Ham" loading="lazy" width="100" height="100"></button>                       
-                        <output class="ingredients-popUp__count">3 $</output>
-                    </div>
-                    <div class="ingredients-popUp__box">
-                        <button type="button" class="ingredients-popUp__button-add" title="Add mozzarella" aria-label="Add mozzarella" data-name="mozzarella" data-price="129"><img src="{{ asset('images/mozarella.webp') }}" alt="Mozzarella" loading="lazy" width="100" height="100"></button>
-                        <output class="ingredients-popUp__count">12 $</output>
-                    </div>
-                    <div class="ingredients-popUp__box">
-                        <button type="button" class="ingredients-popUp__button-add" title="Add mushrooms" aria-label="Add mushrooms" data-name="mushrooms" data-price="100"><img src="{{ asset('images/gribi.webp') }}" alt="Mushrooms" loading="lazy" width="100" height="100"></button>  
-                        <output class="ingredients-popUp__count">4 $</output>
-                    </div>
-                    <div class="ingredients-popUp__box">
-                        <button type="button" class="ingredients-popUp__button-add" title="Add pepper" aria-label="Add pepper" data-name="pepper" data-price="39"><img src="{{ asset('images/halapen.webp') }}" alt="Pepper" loading="lazy" width="100" height="100"></button>
-                        <output class="ingredients-popUp__count">2 $</output>
-                    </div>
-                    <div class="ingredients-popUp__box">
-                        <button type="button" class="ingredients-popUp__button-add" title="Add pepper" aria-label="Add onion" data-name="onion" data-price="29"><img src="{{ asset('images/lok.webp') }}" alt="onion" loading="lazy" width="100" height="100"></button>
-                        <output class="ingredients-popUp__count">1 $</output>
+            
+            <!-- card2 Venecia -->
+            <article class="pizza-menu__card" data-category="sea" data-js-pizza-card data-pizza-id="2">
+                <div class="pizza-menu__card-hero">
+                    <img src="{{ asset('images/venecia-pizza.png') }}" loading="lazy" alt="Venecia Pizza" width="159" height="157" class="pizza-menu__image-pizza">
+                    <h3 class="pizza-menu__name-pizza">Venecia</h3>
+                    <p class="pizza-menu__description">Filling: shrimp, mussels, calamari, gorgonzola cheese, pesto sauce</p>
+                </div>
+                <div class="pizza-menu__block-checkbox">
+                    <p class="pizza-menu__field">
+                        <input type="radio" name="size-venecia" id="venecia-small" class="pizza-menu__checkbox-smal pizza-menu__checkbox" aria-label="Pizza 22 cm" data-size-id="1" data-price="7.35" data-base-price="7.35">
+                    </p>
+                    <p class="pizza-menu__field">
+                        <input type="radio" name="size-venecia" id="venecia-normal" class="pizza-menu__checkbox-normal pizza-menu__checkbox" aria-label="Pizza 28 cm" data-size-id="2" data-price="9.35" data-base-price="7.35">
+                    </p>
+                    <p class="pizza-menu__field">
+                        <input type="radio" name="size-venecia" id="venecia-big" class="pizza-menu__checkbox-big pizza-menu__checkbox" aria-label="Pizza 33 cm" data-size-id="3" data-price="11.35" data-base-price="7.35">
+                    </p>
+                </div>
+                <button type="button" class="pizza-menu__button-add-ingredients" data-pizza-id="2">
+                    <span class="pizza-menu__text">+ Ingredients</span>
+                </button>
+                <div class="pizza-menu__box">
+                    <p class="pizza-menu__price" data-base-price="7.35">7,35 <sup>$</sup></p>
+                    <div class="pizza-menu__in-total">
+                        <button type="button" class="pizza-menu__button-reduce-the-number" title="Reduce by one pizza" aria-label="Reduce by one pizza" data-action="decrease">
+                            <img src="{{ asset('icons/remove-icon.svg') }}" alt="Reduce" loading="lazy" width="23" height="23">
+                        </button>
+                        <p class="pizza-menu__count">1</p>
+                        <button type="button" class="pizza-menu__button-increase-the-number" aria-label="Add another pizza" title="Add another pizza" data-action="increase">
+                            <img src="{{ asset('icons/add-icon.svg') }}" alt="Add" loading="lazy" width="23" height="23">
+                        </button>
                     </div>
                 </div>
-                <div class="ingredients-popUp__total">
-                    <output class="ingredients-popUp__total-price"><spavn style="font-weight: 500;">Total amount</spavn><br>0</output>
-                    <button type="button" class="ingredients-popUp__button-order pizza-menu__add-to-favorites accent-button">Order Now</button>
+                <button type="button" class="pizza-menu__add-to-favorites accent-button" data-pizza-id="2">Order Now</button>
+            </article>
+            
+            <!-- card3 Meat -->
+            <article class="pizza-menu__card" data-category="meat" data-js-pizza-card data-pizza-id="3">
+                <div class="pizza-menu__card-hero">
+                    <img src="{{ asset('images/meat-pizza.png') }}" loading="lazy" alt="Meat Pizza" width="159" height="157" class="pizza-menu__image-pizza">
+                    <h3 class="pizza-menu__name-pizza">Meat</h3>
+                    <p class="pizza-menu__description">Filling: bacon, ham, pepperoni, chicken, cheddar cheese, BBQ sauce</p>
                 </div>
-                
-            </div>  
+                <div class="pizza-menu__block-checkbox">
+                    <p class="pizza-menu__field">
+                        <input type="radio" name="size-meat" id="meat-small" class="pizza-menu__checkbox-smal pizza-menu__checkbox" aria-label="Pizza 22 cm" data-size-id="1" data-price="9.35" data-base-price="9.35">
+                    </p>
+                    <p class="pizza-menu__field">
+                        <input type="radio" name="size-meat" id="meat-normal" class="pizza-menu__checkbox-normal pizza-menu__checkbox" aria-label="Pizza 28 cm" data-size-id="2" data-price="11.35" data-base-price="9.35">
+                    </p>
+                    <p class="pizza-menu__field">
+                        <input type="radio" name="size-meat" id="meat-big" class="pizza-menu__checkbox-big pizza-menu__checkbox" aria-label="Pizza 33 cm" data-size-id="3" data-price="13.35" data-base-price="9.35">
+                    </p>
+                </div>
+                <button type="button" class="pizza-menu__button-add-ingredients" data-pizza-id="3">
+                    <span class="pizza-menu__text">+ Ingredients</span>
+                </button>
+                <div class="pizza-menu__box">
+                    <p class="pizza-menu__price" data-base-price="9.35">9,35 <sup>$</sup></p>
+                    <div class="pizza-menu__in-total">
+                        <button type="button" class="pizza-menu__button-reduce-the-number" title="Reduce by one pizza" aria-label="Reduce by one pizza" data-action="decrease">
+                            <img src="{{ asset('icons/remove-icon.svg') }}" alt="Reduce" loading="lazy" width="23" height="23">
+                        </button>
+                        <p class="pizza-menu__count">1</p>
+                        <button type="button" class="pizza-menu__button-increase-the-number" aria-label="Add another pizza" title="Add another pizza" data-action="increase">
+                            <img src="{{ asset('icons/add-icon.svg') }}" alt="Add" loading="lazy" width="23" height="23">
+                        </button>
+                    </div>
+                </div>
+                <button type="button" class="pizza-menu__add-to-favorites accent-button" data-pizza-id="3">Order Now</button>
+            </article>
+            
+            <!-- card4 Cheese -->
+            <article class="pizza-menu__card" data-category="vegetarian" data-js-pizza-card data-pizza-id="4">
+                <div class="pizza-menu__card-hero">
+                    <img src="{{ asset('images/cheese-pizza.png') }}" loading="lazy" alt="Cheese Pizza" width="159" height="157" class="pizza-menu__image-pizza">
+                    <h3 class="pizza-menu__name-pizza">Cheese</h3>
+                    <p class="pizza-menu__description">Filling: 4-cheese blend: mozzarella, parmesan, gorgonzola, cheddar</p>
+                </div>
+                <div class="pizza-menu__block-checkbox">
+                    <p class="pizza-menu__field">
+                        <input type="radio" name="size-cheese" id="cheese-small" class="pizza-menu__checkbox-smal pizza-menu__checkbox" aria-label="Pizza 22 cm" data-size-id="1" data-price="8.35" data-base-price="8.35">
+                    </p>
+                    <p class="pizza-menu__field">
+                        <input type="radio" name="size-cheese" id="cheese-normal" class="pizza-menu__checkbox-normal pizza-menu__checkbox" aria-label="Pizza 28 cm" data-size-id="2" data-price="10.35" data-base-price="8.35">
+                    </p>
+                    <p class="pizza-menu__field">
+                        <input type="radio" name="size-cheese" id="cheese-big" class="pizza-menu__checkbox-big pizza-menu__checkbox" aria-label="Pizza 33 cm" data-size-id="3" data-price="12.35" data-base-price="8.35">
+                    </p>
+                </div>
+                <button type="button" class="pizza-menu__button-add-ingredients" data-pizza-id="4">
+                    <span class="pizza-menu__text">+ Ingredients</span>
+                </button>
+                <div class="pizza-menu__box">
+                    <p class="pizza-menu__price" data-base-price="8.35">8,35 <sup>$</sup></p>
+                    <div class="pizza-menu__in-total">
+                        <button type="button" class="pizza-menu__button-reduce-the-number" title="Reduce by one pizza" aria-label="Reduce by one pizza" data-action="decrease">
+                            <img src="{{ asset('icons/remove-icon.svg') }}" alt="Reduce" loading="lazy" width="23" height="23">
+                        </button>
+                        <p class="pizza-menu__count">1</p>
+                        <button type="button" class="pizza-menu__button-increase-the-number" aria-label="Add another pizza" title="Add another pizza" data-action="increase">
+                            <img src="{{ asset('icons/add-icon.svg') }}" alt="Add" loading="lazy" width="23" height="23">
+                        </button>
+                    </div>
+                </div>
+                <button type="button" class="pizza-menu__add-to-favorites accent-button" data-pizza-id="4">Order Now</button>
+            </article>
+        </div>
+        
+        <!-- Популярные пиццы -->
+        <article class="popular-block" data-js-popular>
+            <span class="pizza-menu__design-text-2 design-text">Menu</span>
+            <h3 class="popular-block__title">most popular pizza</h3>
+        </article>
+        
+        <div class="pizza-menu__cards pizza-menu__popular-cards all-cards" data-js-block-pizza>
+            <!-- card5 Argentina -->
+            <article class="pizza-menu__card" data-category="meat" data-js-pizza-card data-pizza-id="5">
+                <span class="pizza-menu__design-text-3 design-text">Menu</span>
+                <div class="pizza-menu__card-hero">
+                    <img src="{{ asset('images/argentina-pizza.png') }}" loading="lazy" alt="Argentina Pizza" width="159" height="157" class="pizza-menu__image-pizza">
+                    <h3 class="pizza-menu__name-pizza">Argentina</h3>
+                    <p class="pizza-menu__description">Filling: grilled beef, jalapeño peppers, corn, tomato sauce</p>
+                </div>
+                <div class="pizza-menu__block-checkbox">
+                    <p class="pizza-menu__field">
+                        <input type="radio" name="size-argentina" id="argentina-small" class="pizza-menu__checkbox-smal pizza-menu__checkbox" aria-label="Pizza 22 cm" data-size-id="1" data-price="7.35" data-base-price="7.35">
+                    </p>
+                    <p class="pizza-menu__field">
+                        <input type="radio" name="size-argentina" id="argentina-normal" class="pizza-menu__checkbox-normal pizza-menu__checkbox" aria-label="Pizza 28 cm" data-size-id="2" data-price="9.35" data-base-price="7.35">
+                    </p>
+                    <p class="pizza-menu__field">
+                        <input type="radio" name="size-argentina" id="argentina-big" class="pizza-menu__checkbox-big pizza-menu__checkbox" aria-label="Pizza 33 cm" data-size-id="3" data-price="11.35" data-base-price="7.35">
+                    </p>
+                </div>
+                <button type="button" class="pizza-menu__button-add-ingredients" data-pizza-id="5">
+                    <span class="pizza-menu__text">+ Ingredients</span>
+                </button>
+                <div class="pizza-menu__box">
+                    <p class="pizza-menu__price" data-base-price="7.35">7,35 <sup>$</sup></p>
+                    <div class="pizza-menu__in-total">
+                        <button type="button" class="pizza-menu__button-reduce-the-number" title="Reduce by one pizza" aria-label="Reduce by one pizza" data-action="decrease">
+                            <img src="{{ asset('icons/remove-icon.svg') }}" alt="Reduce" loading="lazy" width="23" height="23">
+                        </button>
+                        <p class="pizza-menu__count">1</p>
+                        <button type="button" class="pizza-menu__button-increase-the-number" aria-label="Add another pizza" title="Add another pizza" data-action="increase">
+                            <img src="{{ asset('icons/add-icon.svg') }}" alt="Add" loading="lazy" width="23" height="23">
+                        </button>
+                    </div>
+                </div>
+                <button type="button" class="pizza-menu__add-to-favorites accent-button" data-pizza-id="5">Order Now</button>
+            </article>
+            
+            <!-- card6 Gribnaya -->
+            <article class="pizza-menu__card" data-category="mushroom" data-js-pizza-card data-pizza-id="6">
+                <div class="pizza-menu__card-hero">
+                    <img src="{{ asset('images/gribnaya-pizza.png') }}" loading="lazy" alt="Gribnaya Pizza" width="159" height="157" class="pizza-menu__image-pizza">
+                    <h3 class="pizza-menu__name-pizza">Gribnaya</h3>
+                    <p class="pizza-menu__description">Filling: champignon, oyster mushrooms, mozzarella, cream sauce, dill</p>
+                </div>
+                <div class="pizza-menu__block-checkbox">
+                    <p class="pizza-menu__field">
+                        <input type="radio" name="size-gribnaya" id="gribnaya-small" class="pizza-menu__checkbox-smal pizza-menu__checkbox" aria-label="Pizza 22 cm" data-size-id="1" data-price="6.35" data-base-price="6.35">
+                    </p>
+                    <p class="pizza-menu__field">
+                        <input type="radio" name="size-gribnaya" id="gribnaya-normal" class="pizza-menu__checkbox-normal pizza-menu__checkbox" aria-label="Pizza 28 cm" data-size-id="2" data-price="8.35" data-base-price="6.35">
+                    </p>
+                    <p class="pizza-menu__field">
+                        <input type="radio" name="size-gribnaya" id="gribnaya-big" class="pizza-menu__checkbox-big pizza-menu__checkbox" aria-label="Pizza 33 cm" data-size-id="3" data-price="10.35" data-base-price="6.35">
+                    </p>
+                </div>
+                <button type="button" class="pizza-menu__button-add-ingredients" data-pizza-id="6">
+                    <span class="pizza-menu__text">+ Ingredients</span>
+                </button>
+                <div class="pizza-menu__box">
+                    <p class="pizza-menu__price" data-base-price="6.35">6,35 <sup>$</sup></p>
+                    <div class="pizza-menu__in-total">
+                        <button type="button" class="pizza-menu__button-reduce-the-number" title="Reduce by one pizza" aria-label="Reduce by one pizza" data-action="decrease">
+                            <img src="{{ asset('icons/remove-icon.svg') }}" alt="Reduce" loading="lazy" width="23" height="23">
+                        </button>
+                        <p class="pizza-menu__count">1</p>
+                        <button type="button" class="pizza-menu__button-increase-the-number" aria-label="Add another pizza" title="Add another pizza" data-action="increase">
+                            <img src="{{ asset('icons/add-icon.svg') }}" alt="Add" loading="lazy" width="23" height="23">
+                        </button>
+                    </div>
+                </div>
+                <button type="button" class="pizza-menu__add-to-favorites accent-button" data-pizza-id="6">Order Now</button>
+            </article>
+            
+            <!-- card7 Tomato -->
+            <article class="pizza-menu__card" data-category="vegetarian" data-js-pizza-card data-pizza-id="7">
+                <div class="pizza-menu__card-hero">
+                    <img src="{{ asset('images/tomato-pizza.png') }}" loading="lazy" alt="Tomato Pizza" width="159" height="157" class="pizza-menu__image-pizza">
+                    <h3 class="pizza-menu__name-pizza">Tomato</h3>
+                    <p class="pizza-menu__description">Filling: sun-dried tomatoes, fresh tomatoes, basil, mozzarella, olive oil</p>
+                </div>
+                <div class="pizza-menu__block-checkbox">
+                    <p class="pizza-menu__field">
+                        <input type="radio" name="size-tomato" id="tomato-small" class="pizza-menu__checkbox-smal pizza-menu__checkbox" aria-label="Pizza 22 cm" data-size-id="1" data-price="7.35" data-base-price="7.35">
+                    </p>
+                    <p class="pizza-menu__field">
+                        <input type="radio" name="size-tomato" id="tomato-normal" class="pizza-menu__checkbox-normal pizza-menu__checkbox" aria-label="Pizza 28 cm" data-size-id="2" data-price="9.35" data-base-price="7.35">
+                    </p>
+                    <p class="pizza-menu__field">
+                        <input type="radio" name="size-tomato" id="tomato-big" class="pizza-menu__checkbox-big pizza-menu__checkbox" aria-label="Pizza 33 cm" data-size-id="3" data-price="11.35" data-base-price="7.35">
+                    </p>
+                </div>
+                <button type="button" class="pizza-menu__button-add-ingredients" data-pizza-id="7">
+                    <span class="pizza-menu__text">+ Ingredients</span>
+                </button>
+                <div class="pizza-menu__box">
+                    <p class="pizza-menu__price" data-base-price="7.35">7,35 <sup>$</sup></p>
+                    <div class="pizza-menu__in-total">
+                        <button type="button" class="pizza-menu__button-reduce-the-number" title="Reduce by one pizza" aria-label="Reduce by one pizza" data-action="decrease">
+                            <img src="{{ asset('icons/remove-icon.svg') }}" alt="Reduce" loading="lazy" width="23" height="23">
+                        </button>
+                        <p class="pizza-menu__count">1</p>
+                        <button type="button" class="pizza-menu__button-increase-the-number" aria-label="Add another pizza" title="Add another pizza" data-action="increase">
+                            <img src="{{ asset('icons/add-icon.svg') }}" alt="Add" loading="lazy" width="23" height="23">
+                        </button>
+                    </div>
+                </div>
+                <button type="button" class="pizza-menu__add-to-favorites accent-button" data-pizza-id="7">Order Now</button>
+            </article>
+            
+            <!-- card8 Italian x2 -->
+            <article class="pizza-menu__card" data-category="meat mushroom" data-js-pizza-card data-pizza-id="8">
+                <div class="pizza-menu__card-hero">
+                    <img src="{{ asset('images/italian-x2-pizza.png') }}" loading="lazy" alt="Italian x2 Pizza" width="159" height="157" class="pizza-menu__image-pizza">
+                    <h3 class="pizza-menu__name-pizza">Italian x2</h3>
+                    <p class="pizza-menu__description">Filling: Salami, portobello mushrooms, olives, cheese, tomato sauce</p>
+                </div>
+                <div class="pizza-menu__block-checkbox">
+                    <p class="pizza-menu__field">
+                        <input type="radio" name="size-italian-two" id="italian-two-small" class="pizza-menu__checkbox-smal pizza-menu__checkbox" aria-label="Pizza 22 cm" data-size-id="1" data-price="8.35" data-base-price="8.35">
+                    </p>
+                    <p class="pizza-menu__field">
+                        <input type="radio" name="size-italian-two" id="italian-two-normal" class="pizza-menu__checkbox-normal pizza-menu__checkbox" aria-label="Pizza 28 cm" data-size-id="2" data-price="10.35" data-base-price="8.35">
+                    </p>
+                    <p class="pizza-menu__field">
+                        <input type="radio" name="size-italian-two" id="italian-two-big" class="pizza-menu__checkbox-big pizza-menu__checkbox" aria-label="Pizza 33 cm" data-size-id="3" data-price="12.35" data-base-price="8.35">
+                    </p>
+                </div>
+                <button type="button" class="pizza-menu__button-add-ingredients" data-pizza-id="8">
+                    <span class="pizza-menu__text">+ Ingredients</span>
+                </button>
+                <div class="pizza-menu__box">
+                    <p class="pizza-menu__price" data-base-price="8.35">8,35 <sup>$</sup></p>
+                    <div class="pizza-menu__in-total">
+                        <button type="button" class="pizza-menu__button-reduce-the-number" title="Reduce by one pizza" aria-label="Reduce by one pizza" data-action="decrease">
+                            <img src="{{ asset('icons/remove-icon.svg') }}" alt="Reduce" loading="lazy" width="23" height="23">
+                        </button>
+                        <p class="pizza-menu__count">1</p>
+                        <button type="button" class="pizza-menu__button-increase-the-number" aria-label="Add another pizza" title="Add another pizza" data-action="increase">
+                            <img src="{{ asset('icons/add-icon.svg') }}" alt="Add" loading="lazy" width="23" height="23">
+                        </button>
+                    </div>
+                </div>
+                <button type="button" class="pizza-menu__add-to-favorites accent-button" data-pizza-id="8">Order Now</button>
+            </article>
+        </div>
+    </div>
+    
+    <!-- Попап дополнительных ингредиентов -->
+    <div class="wrapper-ingr hidden" data-js-ingredients-popup>
+        <div class="ingredients-popUp">
+            <button type="button" class="ingredients-popUp__close" aria-label="Close ingredients popup" data-js-close-ingredients>
+                <img src="{{ asset('icons/close.svg') }}" alt="Close" width="24" height="24">
+            </button>
+            <h3 class="ingredients-popUp__title">Additional ingredients</h3>
+            <div class="ingredients-popUp__wrapper">
+                <div class="ingredients-popUp__box">
+                    <button type="button" class="ingredients-popUp__button-add" title="Add sausage" aria-label="Add sausage" data-name="sausage" data-price="2" data-ingredient-id="1">
+                        <img src="{{ asset('images/kolbasa.webp') }}" alt="Sausage" loading="lazy" width="100" height="100">
+                        <span class="ingredients-popUp__ingredient-name">Sausage</span>
+                    </button>
+                    <div class="ingredients-popUp__counter">
+                        <button type="button" class="ingredients-popUp__button-remove" data-ingredient-id="1">-</button>
+                        <output class="ingredients-popUp__count" data-ingredient-id="1">0</output>
+                        <button type="button" class="ingredients-popUp__button-add-count" data-ingredient-id="1">+</button>
+                    </div>
+                    <div class="ingredients-popUp__price">2 $</div>
+                </div>
+                <div class="ingredients-popUp__box">
+                    <button type="button" class="ingredients-popUp__button-add" title="Add ham" aria-label="Add ham" data-name="ham" data-price="3" data-ingredient-id="2">
+                        <img src="{{ asset('images/vetchina.webp') }}" alt="Ham" loading="lazy" width="100" height="100">
+                        <span class="ingredients-popUp__ingredient-name">Ham</span>
+                    </button>
+                    <div class="ingredients-popUp__counter">
+                        <button type="button" class="ingredients-popUp__button-remove" data-ingredient-id="2">-</button>
+                        <output class="ingredients-popUp__count" data-ingredient-id="2">0</output>
+                        <button type="button" class="ingredients-popUp__button-add-count" data-ingredient-id="2">+</button>
+                    </div>
+                    <div class="ingredients-popUp__price">3 $</div>
+                </div>
+                <div class="ingredients-popUp__box">
+                    <button type="button" class="ingredients-popUp__button-add" title="Add mozzarella" aria-label="Add mozzarella" data-name="mozzarella" data-price="12" data-ingredient-id="3">
+                        <img src="{{ asset('images/mozarella.webp') }}" alt="Mozzarella" loading="lazy" width="100" height="100">
+                        <span class="ingredients-popUp__ingredient-name">Mozzarella</span>
+                    </button>
+                    <div class="ingredients-popUp__counter">
+                        <button type="button" class="ingredients-popUp__button-remove" data-ingredient-id="3">-</button>
+                        <output class="ingredients-popUp__count" data-ingredient-id="3">0</output>
+                        <button type="button" class="ingredients-popUp__button-add-count" data-ingredient-id="3">+</button>
+                    </div>
+                    <div class="ingredients-popUp__price">12 $</div>
+                </div>
+                <div class="ingredients-popUp__box">
+                    <button type="button" class="ingredients-popUp__button-add" title="Add mushrooms" aria-label="Add mushrooms" data-name="mushrooms" data-price="4" data-ingredient-id="4">
+                        <img src="{{ asset('images/gribi.webp') }}" alt="Mushrooms" loading="lazy" width="100" height="100">
+                        <span class="ingredients-popUp__ingredient-name">Mushrooms</span>
+                    </button>
+                    <div class="ingredients-popUp__counter">
+                        <button type="button" class="ingredients-popUp__button-remove" data-ingredient-id="4">-</button>
+                        <output class="ingredients-popUp__count" data-ingredient-id="4">0</output>
+                        <button type="button" class="ingredients-popUp__button-add-count" data-ingredient-id="4">+</button>
+                    </div>
+                    <div class="ingredients-popUp__price">4 $</div>
+                </div>
+                <div class="ingredients-popUp__box">
+                    <button type="button" class="ingredients-popUp__button-add" title="Add pepper" aria-label="Add pepper" data-name="pepper" data-price="2" data-ingredient-id="5">
+                        <img src="{{ asset('images/halapen.webp') }}" alt="Pepper" loading="lazy" width="100" height="100">
+                        <span class="ingredients-popUp__ingredient-name">Pepper</span>
+                    </button>
+                    <div class="ingredients-popUp__counter">
+                        <button type="button" class="ingredients-popUp__button-remove" data-ingredient-id="5">-</button>
+                        <output class="ingredients-popUp__count" data-ingredient-id="5">0</output>
+                        <button type="button" class="ingredients-popUp__button-add-count" data-ingredient-id="5">+</button>
+                    </div>
+                    <div class="ingredients-popUp__price">2 $</div>
+                </div>
+                <div class="ingredients-popUp__box">
+                    <button type="button" class="ingredients-popUp__button-add" title="Add onion" aria-label="Add onion" data-name="onion" data-price="1" data-ingredient-id="6">
+                        <img src="{{ asset('images/lok.webp') }}" alt="Onion" loading="lazy" width="100" height="100">
+                        <span class="ingredients-popUp__ingredient-name">Onion</span>
+                    </button>
+                    <div class="ingredients-popUp__counter">
+                        <button type="button" class="ingredients-popUp__button-remove" data-ingredient-id="6">-</button>
+                        <output class="ingredients-popUp__count" data-ingredient-id="6">0</output>
+                        <button type="button" class="ingredients-popUp__button-add-count" data-ingredient-id="6">+</button>
+                    </div>
+                    <div class="ingredients-popUp__price">1 $</div>
+                </div>
             </div>
-        </section>
+            <div class="ingredients-popUp__total">
+                <output class="ingredients-popUp__total-price">
+                    <span style="font-weight: 500;">Total amount:</span> 
+                    <span class="ingredients-popUp__total-amount">0.00 $</span>
+                </output>
+                <button type="button" class="ingredients-popUp__button-order pizza-menu__add-to-favorites accent-button">Add to Order</button>
+            </div>
+        </div>  
+    </div>
+</section>
         <section class="events" aria-labelledby="events__main-title">
             <span class="events__design-text design-text">Events</span>
             <div class="events__first-box events__box">

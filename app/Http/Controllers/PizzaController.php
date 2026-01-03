@@ -51,4 +51,27 @@ class PizzaController extends Controller
             'ingredients' => $ingredients
         ]);
     }
+    
+    public function filter($filter)
+    {
+        $query = Pizza::with(['category', 'sizes']);
+        
+        if ($filter !== 'all') {
+            $query->whereHas('category', function($q) use ($filter) {
+                $q->where('category_slug', $filter);
+            });
+        }
+        
+        $pizzas = $query->get();
+        
+        $regularPizzas = $pizzas->where('pizza_popular', false);
+        $popularPizzas = $pizzas->where('pizza_popular', true);
+        
+        return response()->json([
+            'success' => true,
+            'regularPizzas' => $regularPizzas,
+            'popularPizzas' => $popularPizzas,
+            'filter' => $filter
+        ]);
+    }
 }

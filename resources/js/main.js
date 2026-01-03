@@ -238,3 +238,311 @@ class More {
 }
 
 new More().init();
+
+class PizzaMenu {
+    selectors = {
+        sizeCheckboxes: '.pizza-menu__checkbox',
+        quantityButtons: '[data-action="increase"], [data-action="decrease"]',
+        ingredientsButtons: '.pizza-menu__button-add-ingredients',
+        ingredientsPopup: '[data-js-ingredients-popup]',
+        closeIngredientsButton: '[data-js-close-ingredients]',
+        orderButtons: '.pizza-menu__add-to-favorites',
+        ingredientAddButtons: '.ingredients-popUp__button-add',
+        ingredientRemoveButtons: '.ingredients-popUp__button-remove',
+        ingredientAddCountButtons: '.ingredients-popUp__button-add-count',
+        ingredientCounts: '.ingredients-popUp__count',
+        totalAmount: '.ingredients-popUp__total-amount',
+        addToOrderButton: '.ingredients-popUp__button-order'
+    }
+
+    constructor() {
+        this.currentPizzaId = null;
+        this.selectedIngredients = {};
+        this.init();
+    }
+
+    init() {
+        this.bindEvents();
+    }
+
+    bindEvents() {
+        // Выбор размера пиццы
+        document.addEventListener('change', (e) => {
+            if (e.target.matches(this.selectors.sizeCheckboxes)) {
+                this.updatePriceForSelectedSize(e.target);
+            }
+        });
+
+        // Изменение количества
+        document.addEventListener('click', (e) => {
+            if (e.target.closest(this.selectors.quantityButtons)) {
+                const button = e.target.closest(this.selectors.quantityButtons);
+                const action = button.dataset.action;
+                this.updateQuantity(button, action);
+            }
+        });
+
+        // Открытие попапа ингредиентов
+        document.addEventListener('click', (e) => {
+            if (e.target.closest(this.selectors.ingredientsButtons)) {
+                const button = e.target.closest(this.selectors.ingredientsButtons);
+                this.currentPizzaId = button.dataset.pizzaId;
+                this.openIngredientsPopup();
+            }
+        });
+
+        // Закрытие попапа ингредиентов
+        document.addEventListener('click', (e) => {
+            if (e.target.closest(this.selectors.closeIngredientsButton) || 
+                (e.target.closest(this.selectors.ingredientsPopup) && 
+                 e.target === document.querySelector(this.selectors.ingredientsPopup))) {
+                this.closeIngredientsPopup();
+            }
+        });
+
+        // Добавление ингредиентов
+        document.addEventListener('click', (e) => {
+            if (e.target.closest(this.selectors.ingredientAddButtons)) {
+                const button = e.target.closest(this.selectors.ingredientAddButtons);
+                this.addIngredient(button);
+            }
+            
+            if (e.target.closest(this.selectors.ingredientRemoveButtons)) {
+                const button = e.target.closest(this.selectors.ingredientRemoveButtons);
+                this.removeIngredient(button);
+            }
+            
+            if (e.target.closest(this.selectors.ingredientAddCountButtons)) {
+                const button = e.target.closest(this.selectors.ingredientAddCountButtons);
+                this.addIngredientCount(button);
+            }
+        });
+
+        // Кнопка "Add to Order" в попапе
+        document.addEventListener('click', (e) => {
+            if (e.target.closest(this.selectors.addToOrderButton)) {
+                this.addIngredientsToPizza();
+            }
+        });
+
+        // Кнопка "Order Now"
+        document.addEventListener('click', (e) => {
+            if (e.target.closest(this.selectors.orderButtons)) {
+                e.preventDefault();
+                this.addToCart(e.target);
+            }
+        });
+    }
+
+    updatePriceForSelectedSize(checkbox) {
+        const card = checkbox.closest('[data-js-pizza-card]');
+        const priceElement = card.querySelector('.pizza-menu__price');
+        const basePrice = parseFloat(priceElement.dataset.basePrice);
+        const selectedPrice = parseFloat(checkbox.dataset.price);
+        const quantity = parseInt(card.querySelector('.pizza-menu__count').textContent);
+        
+        // Обновляем цену
+        const totalPrice = selectedPrice * quantity;
+        priceElement.innerHTML = `${totalPrice.toFixed(2)} <sup>$</sup>`;
+        
+        // Сохраняем выбранный размер
+        card.dataset.selectedSizeId = checkbox.dataset.sizeId;
+        card.dataset.selectedSizePrice = selectedPrice;
+    }
+
+    updateQuantity(button, action) {
+        const card = button.closest('[data-js-pizza-card]');
+        const countElement = card.querySelector('.pizza-menu__count');
+        const priceElement = card.querySelector('.pizza-menu__price');
+        const basePrice = parseFloat(priceElement.dataset.basePrice);
+        
+        let count = parseInt(countElement.textContent);
+        
+        if (action === 'increase') {
+            count++;
+        } else if (action === 'decrease' && count > 1) {
+            count--;
+        }
+        
+        countElement.textContent = count;
+        
+        // Обновляем цену
+        const selectedCheckbox = card.querySelector(`${this.selectors.sizeCheckboxes}:checked`);
+        if (selectedCheckbox) {
+            const selectedPrice = parseFloat(selectedCheckbox.dataset.price);
+            const totalPrice = selectedPrice * count;
+            priceElement.innerHTML = `${totalPrice.toFixed(2)} <sup>$</sup>`;
+        } else {
+            // Если размер не выбран, используем базовую цену
+            const totalPrice = basePrice * count;
+            priceElement.innerHTML = `${totalPrice.toFixed(2)} <sup>$</sup>`;
+        }
+    }
+
+    openIngredientsPopup() {
+        const popup = document.querySelector(this.selectors.ingredientsPopup);
+        if (popup) {
+            popup.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+            this.resetIngredients();
+        }
+    }
+
+    closeIngredientsPopup() {
+        const popup = document.querySelector(this.selectors.ingredientsPopup);
+        if (popup) {
+            popup.classList.add('hidden');
+            document.body.style.overflow = '';
+            this.currentPizzaId = null;
+        }
+    }
+
+    addIngredient(button) {
+        const ingredientId = button.dataset.ingredientId;
+        const price = parseFloat(button.dataset.price);
+        const name = button.dataset.name;
+        
+        if (!this.selectedIngredients[ingredientId]) {
+            this.selectedIngredients[ingredientId] = {
+                name: name,
+                price: price,
+                quantity: 1
+            };
+        } else {
+            this.selectedIngredients[ingredientId].quantity++;
+        }
+        
+        this.updateIngredientCount(ingredientId);
+        this.updateTotalAmount();
+    }
+
+    removeIngredient(button) {
+        const ingredientId = button.dataset.ingredientId;
+        
+        if (this.selectedIngredients[ingredientId] && this.selectedIngredients[ingredientId].quantity > 0) {
+            this.selectedIngredients[ingredientId].quantity--;
+            
+            if (this.selectedIngredients[ingredientId].quantity === 0) {
+                delete this.selectedIngredients[ingredientId];
+            }
+            
+            this.updateIngredientCount(ingredientId);
+            this.updateTotalAmount();
+        }
+    }
+
+    addIngredientCount(button) {
+        const ingredientId = button.dataset.ingredientId;
+        const ingredientElement = button.closest('.ingredients-popUp__box');
+        const addButton = ingredientElement.querySelector('.ingredients-popUp__button-add');
+        const price = parseFloat(addButton.dataset.price);
+        const name = addButton.dataset.name;
+        
+        if (!this.selectedIngredients[ingredientId]) {
+            this.selectedIngredients[ingredientId] = {
+                name: name,
+                price: price,
+                quantity: 1
+            };
+        } else {
+            this.selectedIngredients[ingredientId].quantity++;
+        }
+        
+        this.updateIngredientCount(ingredientId);
+        this.updateTotalAmount();
+    }
+
+    updateIngredientCount(ingredientId) {
+        const countElement = document.querySelector(`.ingredients-popUp__count[data-ingredient-id="${ingredientId}"]`);
+        if (countElement) {
+            const quantity = this.selectedIngredients[ingredientId] ? this.selectedIngredients[ingredientId].quantity : 0;
+            countElement.textContent = quantity;
+        }
+    }
+
+    updateTotalAmount() {
+        let total = 0;
+        Object.values(this.selectedIngredients).forEach(ingredient => {
+            total += ingredient.price * ingredient.quantity;
+        });
+        
+        const totalElement = document.querySelector(this.selectors.totalAmount);
+        if (totalElement) {
+            totalElement.textContent = `${total.toFixed(2)} $`;
+        }
+    }
+
+    resetIngredients() {
+        this.selectedIngredients = {};
+        
+        // Сбрасываем счетчики
+        document.querySelectorAll(this.selectors.ingredientCounts).forEach(element => {
+            element.textContent = '0';
+        });
+        
+        // Сбрасываем общую сумму
+        const totalElement = document.querySelector(this.selectors.totalAmount);
+        if (totalElement) {
+            totalElement.textContent = '0.00 $';
+        }
+    }
+
+    addIngredientsToPizza() {
+        if (this.currentPizzaId) {
+            // Здесь можно сохранить выбранные ингредиенты для текущей пиццы
+            console.log('Ingredients for pizza', this.currentPizzaId, ':', this.selectedIngredients);
+            this.closeIngredientsPopup();
+            alert('Ingredients added to pizza!');
+        }
+    }
+
+    async addToCart(orderButton) {
+        const card = orderButton.closest('[data-js-pizza-card]');
+        const pizzaId = card.dataset.pizzaId;
+        const selectedSizeId = card.dataset.selectedSizeId;
+        const quantity = parseInt(card.querySelector('.pizza-menu__count').textContent);
+        
+        if (!selectedSizeId) {
+            alert('Please select a pizza size first!');
+            return;
+        }
+        
+        // Подготовка данных для отправки
+        const cartData = {
+            pizza_id: pizzaId,
+            size_id: selectedSizeId,
+            quantity: quantity,
+            extra_ingredients: Object.entries(this.selectedIngredients).map(([id, data]) => ({
+                id: parseInt(id),
+                quantity: data.quantity
+            }))
+        };
+        
+        try {
+            const response = await fetch('/api/cart/add', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+                },
+                body: JSON.stringify(cartData)
+            });
+            
+            const result = await response.json();
+            
+            if (result.success) {
+                alert('Pizza added to cart successfully!');
+            } else {
+                alert('Error adding to cart: ' + (result.message || 'Unknown error'));
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Network error. Please try again.');
+        }
+    }
+}
+
+// Инициализация при загрузке страницы
+document.addEventListener('DOMContentLoaded', () => {
+    new PizzaMenu();
+});
