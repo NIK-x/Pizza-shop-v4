@@ -1,15 +1,13 @@
 // resources/js/cart.js
+console.log('cart.js loading...');
 
 class Cart {
     constructor() {
         this.cartKey = 'plus_pizza_cart';
+        this.promoKey = 'plus_pizza_promo';
         this.cart = this.loadCart();
-        this.init();
-    }
-
-    init() {
-        this.updateCartCount();
-        this.saveCart();
+        this.activePromo = this.loadPromo();
+        console.log('Cart initialized:', this.cart);
     }
 
     loadCart() {
@@ -17,19 +15,34 @@ class Cart {
             const cartData = localStorage.getItem(this.cartKey);
             return cartData ? JSON.parse(cartData) : [];
         } catch (error) {
-            console.error('Error loading cart from localStorage:', error);
+            console.error('Error loading cart:', error);
             return [];
         }
     }
 
-    saveCart() {
+    loadPromo() {
         try {
-            localStorage.setItem(this.cartKey, JSON.stringify(this.cart));
-            this.updateCartCount();
-            this.dispatchCartUpdate();
+            const promoData = localStorage.getItem(this.promoKey);
+            return promoData ? JSON.parse(promoData) : null;
         } catch (error) {
-            console.error('Error saving cart to localStorage:', error);
+            console.error('Error loading promo:', error);
+            return null;
         }
+    }
+
+    saveCart() {
+        localStorage.setItem(this.cartKey, JSON.stringify(this.cart));
+        this.updateCartCount();
+        this.dispatchCartUpdate();
+    }
+
+    savePromo() {
+        if (this.activePromo) {
+            localStorage.setItem(this.promoKey, JSON.stringify(this.activePromo));
+        } else {
+            localStorage.removeItem(this.promoKey);
+        }
+        this.dispatchCartUpdate();
     }
 
     updateCartCount() {
@@ -47,91 +60,51 @@ class Cart {
     }
 
     dispatchCartUpdate() {
-        const event = new CustomEvent('cartUpdated', { 
-            detail: { 
-                cart: this.cart,
-                totalItems: this.getTotalItems(),
-                totalAmount: this.getTotalAmount()
-            } 
-        });
+        const event = new Event('cartUpdated');
         document.dispatchEvent(event);
     }
 
     addPizza(pizzaData) {
-        try {
-            console.log('Adding pizza to cart:', pizzaData);
-            
-            const { 
-                pizzaId, 
-                pizzaName, 
-                description, 
-                price, 
-                sizeId, 
-                sizeName, 
-                extraIngredients = [],
-                quantity = 1
-            } = pizzaData;
+        console.log('Adding pizza:', pizzaData);
+        
+        const { 
+            pizzaId, 
+            pizzaName, 
+            description, 
+            price, 
+            sizeId, 
+            sizeName, 
+            extraIngredients = [],
+            quantity = 1
+        } = pizzaData;
 
-            // Рассчитываем общую стоимость
-            const ingredientsTotal = this.calculateIngredientsTotal(extraIngredients);
-            const totalPrice = (parseFloat(price) + ingredientsTotal) * quantity;
-            
-            // Создаем объект CartItem
-            const cartItem = {
-                id: Date.now() + Math.random().toString(36).substr(2, 9),
-                pizza_id: parseInt(pizzaId),
-                pizza_name: pizzaName,
-                description: description,
-                price: parseFloat(price),
-                size_id: parseInt(sizeId),
-                size_name: sizeName,
-                quantity: quantity,
-                extra_ingredients: extraIngredients || [],
-                total_price: totalPrice,
-                created_at: new Date().toISOString()
-            };
+        // Рассчитываем стоимость
+        const ingredientsTotal = this.calculateIngredientsTotal(extraIngredients);
+        const totalPrice = (parseFloat(price) + ingredientsTotal) * quantity;
+        
+        // Создаем элемент корзины
+        const cartItem = {
+            id: Date.now(),
+            pizza_id: parseInt(pizzaId),
+            pizza_name: pizzaName,
+            description: description,
+            price: parseFloat(price),
+            size_id: parseInt(sizeId),
+            size_name: sizeName,
+            quantity: quantity,
+            extra_ingredients: extraIngredients,
+            total_price: totalPrice
+        };
 
-            // Проверяем, есть ли уже такая пицца в корзине (с теми же параметрами)
-            const existingItemIndex = this.findExistingItem(cartItem);
-            
-            if (existingItemIndex !== -1) {
-                // Обновляем существующий элемент
-                const existingItem = this.cart[existingItemIndex];
-                existingItem.quantity += quantity;
-                existingItem.total_price = (existingItem.price + this.calculateIngredientsTotal(existingItem.extra_ingredients)) * existingItem.quantity;
-            } else {
-                // Добавляем новый элемент
-                this.cart.push(cartItem);
-            }
-
-            this.saveCart();
-            console.log('Cart after addition:', this.cart);
-            return true;
-            
-        } catch (error) {
-            console.error('Error adding pizza to cart:', error);
-            return false;
-        }
-    }
-
-    findExistingItem(newItem) {
-        return this.cart.findIndex(item => 
-            item.pizza_id === newItem.pizza_id &&
-            item.size_id === newItem.size_id &&
-            JSON.stringify(item.extra_ingredients || []) === JSON.stringify(newItem.extra_ingredients || [])
-        );
+        this.cart.push(cartItem);
+        this.saveCart();
+        
+        return true;
     }
 
     calculateIngredientsTotal(ingredients) {
-        if (!ingredients || !Array.isArray(ingredients) || ingredients.length === 0) {
-            return 0;
-        }
-        
-        return ingredients.reduce((sum, ing) => {
-            const price = parseFloat(ing.price) || 0;
-            const quantity = parseInt(ing.quantity) || 1;
-            return sum + (price * quantity);
-        }, 0);
+        if (!ingredients || !Array.isArray(ingredients)) return 0;
+        return ingredients.reduce((sum, ing) => sum + (ing.price * ing.quantity), 0);
     }
 
     removeItem(itemId) {
@@ -140,14 +113,14 @@ class Cart {
     }
 
     updateQuantity(itemId, newQuantity) {
-        const itemIndex = this.cart.findIndex(item => item.id === itemId);
-        if (itemIndex !== -1) {
+        const item = this.cart.find(item => item.id === itemId);
+        if (item) {
             if (newQuantity <= 0) {
                 this.removeItem(itemId);
             } else {
-                const item = this.cart[itemIndex];
                 item.quantity = newQuantity;
-                item.total_price = (item.price + this.calculateIngredientsTotal(item.extra_ingredients)) * newQuantity;
+                const ingredientsTotal = this.calculateIngredientsTotal(item.extra_ingredients);
+                item.total_price = (item.price + ingredientsTotal) * newQuantity;
                 this.saveCart();
             }
         }
@@ -159,9 +132,7 @@ class Cart {
     }
 
     getTotalAmount() {
-        return this.cart.reduce((total, item) => {
-            return total + (item.total_price || 0);
-        }, 0).toFixed(2);
+        return this.cart.reduce((total, item) => total + (item.total_price || 0), 0);
     }
 
     getItemCount() {
@@ -171,12 +142,63 @@ class Cart {
     getCart() {
         return [...this.cart];
     }
+
+    // Промокоды
+    applyPromoCode(code) {
+        const promoCodes = {
+            'TEST10': { name: 'Test 10%', discount: 0.10 },
+            'PIZZA20': { name: 'Pizza 20%', discount: 0.20 },
+            'WELCOME15': { name: 'Welcome 15%', discount: 0.15 }
+        };
+
+        const promoCode = code.toUpperCase().trim();
+        
+        if (!promoCodes[promoCode]) {
+            return { success: false, message: 'Invalid promo code' };
+        }
+
+        this.activePromo = {
+            code: promoCode,
+            ...promoCodes[promoCode]
+        };
+
+        this.savePromo();
+        
+        return { 
+            success: true, 
+            message: `Promo code "${this.activePromo.name}" applied!`,
+            promo: this.activePromo 
+        };
+    }
+
+    removePromoCode() {
+        this.activePromo = null;
+        this.savePromo();
+        return { success: true, message: 'Promo code removed' };
+    }
+
+    getDiscountAmount() {
+        if (!this.activePromo) return 0;
+        const subtotal = this.getTotalAmount();
+        return subtotal * this.activePromo.discount;
+    }
+
+    getTotalWithDiscount() {
+        const subtotal = this.getTotalAmount();
+        const discount = this.getDiscountAmount();
+        return subtotal - discount;
+    }
 }
 
-// Создаем глобальный экземпляр корзины
-window.CartManager = new Cart();
+// Проверяем, не создан ли уже CartManager
+if (!window.CartManager) {
+    window.CartManager = new Cart();
+    console.log('CartManager created:', window.CartManager);
+}
 
-// Инициализируем при загрузке страницы
+// Инициализируем счетчик
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('CartManager initialized');
+    if (window.CartManager) {
+        window.CartManager.updateCartCount();
+    }
 });

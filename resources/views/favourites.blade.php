@@ -33,8 +33,8 @@
             <a href="{{ url('/') }}#menu" class="main__link-menu">Go to the menu</a>
         </div>
         
-        <!-- Итоговая сумма (скрывается при пустой корзине) -->
-        <table class="main__table" data-js-total-section style="display: none;">
+        <!-- Итоговая сумма -->
+        <table class="main__table" data-js-total-section>
             <tr>
                 <th>Total amount</th>
             </tr>
@@ -43,70 +43,61 @@
             </tr>
         </table>
         
-    
-        <input class="main__input-promocode" type="text" placeholder="Enter a promo code" data-js-input-promocode style="display: none;">
+        <!-- Промокод -->
+        <input class="main__input-promocode" type="text" placeholder="Enter a promo code" data-js-input-promocode>
         
-     
-        <button class="main__buy-button" data-js-button-place-an-order style="display: none;">Place an order</button>
+        <!-- Кнопка заказа -->
+        <button class="main__buy-button" data-js-button-place-an-order>Place an order</button>
     </main>
     
     <script>
-        // Подключаем CartManager из cart.js
-        document.addEventListener('DOMContentLoaded', () => {
+        document.addEventListener('DOMContentLoaded', function() {
             console.log('Cart page loaded');
             
             // Проверяем доступность CartManager
             if (!window.CartManager) {
-                console.error('CartManager is not available on cart page');
+                console.error('ERROR: CartManager is not available!');
+                alert('Error: Cart system not loaded. Please refresh the page.');
                 return;
             }
             
-            const favouritesManager = new FavouritesManager();
-            favouritesManager.init();
+            console.log('CartManager found:', window.CartManager);
+            
+            const manager = new CartPageManager();
+            manager.init();
         });
 
-        class FavouritesManager {
+        class CartPageManager {
             constructor() {
                 this.cart = window.CartManager;
-                this.selectors = {
-                    cartItems: '[data-js-cart-items]',
-                    emptyCart: '[data-js-empty-cart]',
-                    totalAmount: '[data-js-total-amount]',
-                    totalSection: '[data-js-total-section]',
-                    clearButton: '[data-js-button-clean]',
-                    orderButton: '[data-js-button-place-an-order]',
-                    promocodeInput: '[data-js-input-promocode]'
-                };
-                
+                this.elements = {};
                 this.initElements();
             }
             
             initElements() {
-                this.cartItemsElement = document.querySelector(this.selectors.cartItems);
-                this.emptyCartElement = document.querySelector(this.selectors.emptyCart);
-                this.totalAmountElement = document.querySelector(this.selectors.totalAmount);
-                this.totalSectionElement = document.querySelector(this.selectors.totalSection);
-                this.clearButton = document.querySelector(this.selectors.clearButton);
-                this.orderButton = document.querySelector(this.selectors.orderButton);
-                this.promocodeInput = document.querySelector(this.selectors.promocodeInput);
+                // Находим все элементы
+                this.elements.cartItems = document.querySelector('[data-js-cart-items]');
+                this.elements.emptyCart = document.querySelector('[data-js-empty-cart]');
+                this.elements.totalAmount = document.querySelector('[data-js-total-amount]');
+                this.elements.totalSection = document.querySelector('[data-js-total-section]');
+                this.elements.clearButton = document.querySelector('[data-js-button-clean]');
+                this.elements.orderButton = document.querySelector('[data-js-button-place-an-order]');
+                this.elements.promocodeInput = document.querySelector('[data-js-input-promocode]');
                 
-                console.log('Elements initialized:', {
-                    cartItemsElement: !!this.cartItemsElement,
-                    emptyCartElement: !!this.emptyCartElement,
-                    totalAmountElement: !!this.totalAmountElement,
-                    cartItems: this.cart?.getCart()?.length || 0
-                });
+                console.log('Elements found:', this.elements);
             }
             
             init() {
-                console.log('Initializing FavouritesManager with cart:', this.cart.getCart());
+                console.log('Initializing cart page...');
+                console.log('Cart items:', this.cart.getCart());
+                
                 this.renderCart();
                 this.updateUI();
                 this.bindEvents();
                 
                 // Слушаем обновления корзины
                 document.addEventListener('cartUpdated', () => {
-                    console.log('Cart updated event received on cart page');
+                    console.log('Cart updated event received');
                     this.renderCart();
                     this.updateUI();
                 });
@@ -114,23 +105,22 @@
             
             renderCart() {
                 const cartItems = this.cart.getCart();
-                console.log('Rendering cart items:', cartItems);
+                const container = this.elements.cartItems;
                 
-                if (!this.cartItemsElement) {
-                    console.error('Cart items element not found');
+                if (!container) {
+                    console.error('Cart container not found');
                     return;
                 }
                 
-                this.cartItemsElement.innerHTML = '';
+                container.innerHTML = '';
                 
                 if (cartItems.length === 0) {
-                    console.log('Cart is empty, not rendering items');
                     return;
                 }
                 
                 cartItems.forEach(item => {
                     const itemElement = this.createCartItemElement(item);
-                    this.cartItemsElement.appendChild(itemElement);
+                    container.appendChild(itemElement);
                 });
             }
             
@@ -139,67 +129,32 @@
                 article.className = 'main__favourites-pizza-card';
                 article.dataset.itemId = item.id;
                 
-                // Определяем путь к изображению
-                const getImagePath = (pizzaId) => {
-                    const images = {
-                        1: 'images/italian-pizza.png',
-                        2: 'images/venecia-pizza.png',
-                        3: 'images/meat-pizza.png',
-                        4: 'images/cheese-pizza.png',
-                        5: 'images/argentina-pizza.png',
-                        6: 'images/gribnaya-pizza.png',
-                        7: 'images/tomato-pizza.png',
-                        8: 'images/italian-x2-pizza.png'
-                    };
-                    return images[pizzaId] || 'images/argentina-pizza.png';
-                };
-                
-                const imagePath = getImagePath(item.pizza_id);
-                const imageUrl = `{{ asset('${imagePath}') }}`;
-                
+                // Простая карточка товара
                 article.innerHTML = `
                     <div class="main__wrapper">
-                        <img src="${imageUrl}" loading="lazy" alt="${item.pizza_name}" class="main__pizza-img" width="200" height="200">
+                        <img src="{{ asset('images/argentina-pizza.png') }}" loading="lazy" alt="${item.pizza_name}" class="main__pizza-img" width="200" height="200">
                         <div class="main__container">
                             <div class="main__favourites-pizza-container">
                                 <h3 class="main__favourites-pizza-name">${item.pizza_name}</h3>
                                 <p class="main__favourites-pizza-description">${item.description}</p>
                                 <p class="main__size">Size: ${item.size_name}</p>
-                                ${this.createIngredientsHTML(item.extra_ingredients)}
                             </div>
                             <div class="main__content">
-                                <p class="main__price" data-js-price>${item.total_price.toFixed(2)} $</p>
+                                <p class="main__price">${item.total_price.toFixed(2)} $</p>
                                 <div class="main__quantity-content">
-                                    <button type="button" class="main__reduce-pizza" title="Remove one pizza" aria-label="Remove one pizza" data-action="decrease">
-                                        <img src="{{ asset('icons/remove-icon.svg') }}" class="main__reduce-pizza-svg" loading="lazy" alt="Remove" width="25" height="25">
-                                    </button>
-                                    <p class="main__quantity" data-js-count>${item.quantity}</p>
-                                    <button type="button" class="main__add-pizza" title="Add one pizza" aria-label="Add one pizza" data-action="increase">
-                                        <img src="{{ asset('icons/add-icon.svg') }}" class="main__add-pizza-svg" loading="lazy" alt="Add" width="25" height="25">
-                                    </button>
-                                    <button type="button" class="main__remove-pizza" title="Remove pizza" aria-label="Remove pizza" data-action="remove">
-                                        <img src="{{ asset('icons/udalit_6hf5y934pji2 (1).svg') }}" loading="lazy" alt="Remove" width="20" height="20">
-                                    </button>
+                                    <button type="button" class="main__reduce-pizza" data-action="decrease"><img src="{{ asset('icons/remove-icon.svg') }}" class="main__reduce-pizza-svg" loading="lazy" alt="Remove" width="25" height="25"></button>
+                                    <p class="main__quantity">${item.quantity}</p>
+                                    <button type="button" class="main__add-pizza" data-action="increase"><img src="{{ asset('icons/add-icon.svg') }}" class="main__add-pizza-svg" loading="lazy" alt="Add" width="25" height="25"></button>
+                                    <button type="button" class="main__remove-pizza" data-action="remove"> <img src="{{ asset('icons/udalit_6hf5y934pji2 (1).svg') }}" loading="lazy" alt="Remove" width="20" height="20"></button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 `;
                 
+                // Добавляем обработчики
                 this.bindItemEvents(article, item.id);
                 return article;
-            }
-            
-            createIngredientsHTML(ingredients) {
-                if (!ingredients || !Array.isArray(ingredients) || ingredients.length === 0) {
-                    return '';
-                }
-                
-                const ingredientsList = ingredients.map(ing => 
-                    `${ing.name} (${ing.quantity}x)`
-                ).join(', ');
-                
-                return `<p class="main__ingredients">Extra: ${ingredientsList}</p>`;
             }
             
             bindItemEvents(element, itemId) {
@@ -218,76 +173,131 @@
                     const item = this.cart.getCart().find(item => item.id === itemId);
                     if (item && item.quantity > 1) {
                         this.cart.updateQuantity(itemId, item.quantity - 1);
-                    } else if (item && item.quantity === 1) {
-                        if (confirm('Remove this item from cart?')) {
-                            this.cart.removeItem(itemId);
-                        }
                     }
                 });
                 
                 removeBtn?.addEventListener('click', () => {
-                    if (confirm('Remove this item from cart?')) {
+                    if (confirm('Remove this item?')) {
                         this.cart.removeItem(itemId);
                     }
                 });
             }
             
+            updateUI() {
+                const hasItems = this.cart.getItemCount() > 0;
+                
+                console.log('Updating UI, hasItems:', hasItems);
+                
+                // Блок пустой корзины
+                if (this.elements.emptyCart) {
+                    this.elements.emptyCart.style.display = hasItems ? 'none' : 'block';
+                }
+                
+                // Итоговая сумма
+                if (this.elements.totalSection) {
+                    this.elements.totalSection.style.display = hasItems ? 'table' : 'none';
+                }
+                
+                // Промокод
+                if (this.elements.promocodeInput) {
+                    this.elements.promocodeInput.style.display = hasItems ? 'block' : 'none';
+                    
+                    // Обновляем placeholder
+                    if (this.cart.activePromo) {
+                        this.elements.promocodeInput.placeholder = this.cart.activePromo.name;
+                        this.elements.promocodeInput.value = this.cart.activePromo.code;
+                    } else {
+                        this.elements.promocodeInput.placeholder = 'Enter a promo code';
+                        this.elements.promocodeInput.value = '';
+                    }
+                }
+                
+                // Кнопка заказа
+                if (this.elements.orderButton) {
+                    this.elements.orderButton.style.display = hasItems ? 'block' : 'none';
+                }
+                
+                // Обновляем сумму
+                this.updateTotalAmount();
+            }
+            
+            updateTotalAmount() {
+                if (!this.elements.totalAmount) return;
+                
+                const total = this.cart.getTotalAmount();
+                const discount = this.cart.getDiscountAmount();
+                const finalTotal = total - discount;
+                
+                if (this.cart.activePromo) {
+                    this.elements.totalAmount.innerHTML = `
+                        <div>
+                            <div style="text-decoration: line-through; color: #999;">${total.toFixed(2)} $</div>
+                            <div style="color: #FF6B35; font-size: 18px;">${finalTotal.toFixed(2)} $</div>
+                            <div style="font-size: 12px; color: green;">Promo: ${this.cart.activePromo.name}</div>
+                        </div>
+                    `;
+                } else {
+                    this.elements.totalAmount.textContent = total.toFixed(2) + ' $';
+                }
+            }
+            
             bindEvents() {
                 // Очистка корзины
-                this.clearButton?.addEventListener('click', () => {
+                this.elements.clearButton?.addEventListener('click', () => {
                     if (this.cart.getItemCount() === 0) {
                         alert('Cart is already empty!');
                         return;
                     }
                     
-                    if (confirm('Are you sure you want to clear your cart?')) {
+                    if (confirm('Clear cart?')) {
                         this.cart.clearCart();
                     }
                 });
                 
                 // Оформление заказа
-                this.orderButton?.addEventListener('click', () => {
+                this.elements.orderButton?.addEventListener('click', () => {
                     if (this.cart.getItemCount() === 0) {
-                        alert('Your cart is empty!');
+                        alert('Cart is empty!');
                         return;
                     }
                     
-                    // Здесь можно добавить логику оформления заказа
-                    const total = this.cart.getTotalAmount();
-                    alert(`Order placed successfully! Total: ${total} $`);
+                    const total = this.cart.getTotalWithDiscount();
+                    alert(`Order placed! Total: ${total.toFixed(2)} $`);
                     this.cart.clearCart();
+                    this.cart.removePromoCode();
+                });
+                
+                // Промокод
+                this.elements.promocodeInput?.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        this.handlePromoCode();
+                    }
                 });
             }
             
-            updateUI() {
-                const hasItems = this.cart.getItemCount() > 0;
-                console.log('Updating UI, hasItems:', hasItems, 'item count:', this.cart.getItemCount());
+            handlePromoCode() {
+                const code = this.elements.promocodeInput.value.trim();
                 
-                // Показываем/скрываем блок пустой корзины
-                if (this.emptyCartElement) {
-                    this.emptyCartElement.style.display = hasItems ? 'none' : 'block';
-                    console.log('Empty cart display:', this.emptyCartElement.style.display);
+                if (!code) {
+                    // Если input пустой и есть промокод - удаляем его
+                    if (this.cart.activePromo) {
+                        if (confirm(`Remove ${this.cart.activePromo.name}?`)) {
+                            this.cart.removePromoCode();
+                            this.updateUI();
+                        }
+                    }
+                    return;
                 }
                 
-                // Показываем/скрываем итоговую сумму
-                if (this.totalSectionElement) {
-                    this.totalSectionElement.style.display = hasItems ? 'table' : 'none';
-                }
+                const result = this.cart.applyPromoCode(code);
                 
-                // Показываем/скрываем промокод
-                if (this.promocodeInput) {
-                    this.promocodeInput.style.display = hasItems ? 'block' : 'none';
-                }
-                
-                // Показываем/скрываем кнопку заказа
-                if (this.orderButton) {
-                    this.orderButton.style.display = hasItems ? 'block' : 'none';
-                    this.orderButton.disabled = !hasItems;
-                }
-                
-                // Обновляем общую сумму
-                if (this.totalAmountElement) {
-                    this.totalAmountElement.textContent = this.cart.getTotalAmount() + ' $';
+                if (result.success) {
+                    alert(result.message);
+                    this.updateUI();
+                } else {
+                    alert(result.message);
+                    this.elements.promocodeInput.value = '';
+                    this.elements.promocodeInput.focus();
                 }
             }
         }

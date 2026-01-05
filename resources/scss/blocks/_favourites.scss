@@ -64,7 +64,9 @@ body {
         padding: fluid(30, 15);
         border-radius: 25px;
         flex-direction: column;
-        @include flex-center;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;  
         row-gap: rem(10);
         width: clamp(200px, 35%, 45%);
 
