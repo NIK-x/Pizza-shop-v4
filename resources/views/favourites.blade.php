@@ -183,24 +183,72 @@
                 });
             }
             
+            // updateUI() {
+            //     const hasItems = this.cart.getItemCount() > 0;
+                
+            //     console.log('Updating UI, hasItems:', hasItems);
+                
+            //     // Блок пустой корзины
+            //     if (this.elements.emptyCart) {
+            //         this.elements.emptyCart.style.display = hasItems ? 'none' : 'block';
+            //     }
+                
+            //     // Итоговая сумма
+            //     if (this.elements.totalSection) {
+            //         this.elements.totalSection.style.display = hasItems ? 'table' : 'none';
+            //     }
+                
+            //     // Промокод
+            //     if (this.elements.promocodeInput) {
+            //         this.elements.promocodeInput.style.display = hasItems ? 'block' : 'none';
+                    
+            //         // Обновляем placeholder
+            //         if (this.cart.activePromo) {
+            //             this.elements.promocodeInput.placeholder = this.cart.activePromo.name;
+            //             this.elements.promocodeInput.value = this.cart.activePromo.code;
+            //         } else {
+            //             this.elements.promocodeInput.placeholder = 'Enter a promo code';
+            //             this.elements.promocodeInput.value = '';
+            //         }
+            //     }
+                
+            //     // Кнопка заказа
+            //     if (this.elements.orderButton) {
+            //         this.elements.orderButton.style.display = hasItems ? 'block' : 'none';
+            //     }
+                
+            //     // Обновляем сумму
+            //     this.updateTotalAmount();
+            // }
+
             updateUI() {
                 const hasItems = this.cart.getItemCount() > 0;
                 
-                console.log('Updating UI, hasItems:', hasItems);
-                
-                // Блок пустой корзины
+                // Блок пустой корзины - используем классы
                 if (this.elements.emptyCart) {
-                    this.elements.emptyCart.style.display = hasItems ? 'none' : 'block';
+                    if (hasItems) {
+                        this.elements.emptyCart.classList.add('hidden');
+                    } else {
+                        this.elements.emptyCart.classList.remove('hidden');
+                    }
                 }
                 
                 // Итоговая сумма
                 if (this.elements.totalSection) {
-                    this.elements.totalSection.style.display = hasItems ? 'table' : 'none';
+                    if (hasItems) {
+                        this.elements.totalSection.classList.remove('hidden');
+                    } else {
+                        this.elements.totalSection.classList.add('hidden');
+                    }
                 }
                 
                 // Промокод
                 if (this.elements.promocodeInput) {
-                    this.elements.promocodeInput.style.display = hasItems ? 'block' : 'none';
+                    if (hasItems) {
+                        this.elements.promocodeInput.classList.remove('hidden');
+                    } else {
+                        this.elements.promocodeInput.classList.add('hidden');
+                    }
                     
                     // Обновляем placeholder
                     if (this.cart.activePromo) {
@@ -214,13 +262,17 @@
                 
                 // Кнопка заказа
                 if (this.elements.orderButton) {
-                    this.elements.orderButton.style.display = hasItems ? 'block' : 'none';
+                    if (hasItems) {
+                        this.elements.orderButton.classList.remove('hidden');
+                    } else {
+                        this.elements.orderButton.classList.add('hidden');
+                    }
                 }
                 
                 // Обновляем сумму
                 this.updateTotalAmount();
             }
-            
+                        
             updateTotalAmount() {
                 if (!this.elements.totalAmount) return;
                 

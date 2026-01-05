@@ -48,6 +48,7 @@
 .hidden {
   opacity: 0;
   visibility: hidden;
+  position: absolute;
   transition: all 0.4s ease 0s;
   display: none !important;
 }
