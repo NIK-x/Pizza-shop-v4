@@ -1,3 +1,5 @@
+import './cart.js';
+
 class Header {
     selectors = {
         burgerButton: "[data-js-burger-button]",
@@ -39,7 +41,7 @@ class Header {
     // }
 
 
-    
+
 
     burgerMenu() {
         this.burgerButton.addEventListener("click", () => {
@@ -197,7 +199,7 @@ class More {
         this.moreButtons.forEach((button) => {
             const buttonCategoryValue = button.dataset.category;
             button.addEventListener("click", () => {
-                switch(buttonCategoryValue) {
+                switch (buttonCategoryValue) {
                     case "coocking":
                         this.title.textContent = "How we coocking";
                         this.description.textContent = this.categoryes.coocking;
@@ -266,14 +268,14 @@ class PizzaMenu {
     }
 
     bindEvents() {
-        // Выбор размера пиццы
+
         document.addEventListener('change', (e) => {
             if (e.target.matches(this.selectors.sizeCheckboxes)) {
                 this.updatePriceForSelectedSize(e.target);
             }
         });
 
-        // Изменение количества
+
         document.addEventListener('click', (e) => {
             if (e.target.closest(this.selectors.quantityButtons)) {
                 const button = e.target.closest(this.selectors.quantityButtons);
@@ -282,7 +284,6 @@ class PizzaMenu {
             }
         });
 
-        // Открытие попапа ингредиентов
         document.addEventListener('click', (e) => {
             if (e.target.closest(this.selectors.ingredientsButtons)) {
                 const button = e.target.closest(this.selectors.ingredientsButtons);
@@ -291,41 +292,41 @@ class PizzaMenu {
             }
         });
 
-        // Закрытие попапа ингредиентов
+
         document.addEventListener('click', (e) => {
-            if (e.target.closest(this.selectors.closeIngredientsButton) || 
-                (e.target.closest(this.selectors.ingredientsPopup) && 
-                 e.target === document.querySelector(this.selectors.ingredientsPopup))) {
+            if (e.target.closest(this.selectors.closeIngredientsButton) ||
+                (e.target.closest(this.selectors.ingredientsPopup) &&
+                    e.target === document.querySelector(this.selectors.ingredientsPopup))) {
                 this.closeIngredientsPopup();
             }
         });
 
-        // Добавление ингредиентов
+
         document.addEventListener('click', (e) => {
             if (e.target.closest(this.selectors.ingredientAddButtons)) {
                 const button = e.target.closest(this.selectors.ingredientAddButtons);
                 this.addIngredient(button);
             }
-            
+
             if (e.target.closest(this.selectors.ingredientRemoveButtons)) {
                 const button = e.target.closest(this.selectors.ingredientRemoveButtons);
                 this.removeIngredient(button);
             }
-            
+
             if (e.target.closest(this.selectors.ingredientAddCountButtons)) {
                 const button = e.target.closest(this.selectors.ingredientAddCountButtons);
                 this.addIngredientCount(button);
             }
         });
 
-        // Кнопка "Add to Order" в попапе
+
         document.addEventListener('click', (e) => {
             if (e.target.closest(this.selectors.addToOrderButton)) {
                 this.addIngredientsToPizza();
             }
         });
 
-        // Кнопка "Order Now"
+
         document.addEventListener('click', (e) => {
             if (e.target.closest(this.selectors.orderButtons)) {
                 e.preventDefault();
@@ -340,12 +341,11 @@ class PizzaMenu {
         const basePrice = parseFloat(priceElement.dataset.basePrice);
         const selectedPrice = parseFloat(checkbox.dataset.price);
         const quantity = parseInt(card.querySelector('.pizza-menu__count').textContent);
-        
-        // Обновляем цену
+
+
         const totalPrice = selectedPrice * quantity;
         priceElement.innerHTML = `${totalPrice.toFixed(2)} <sup>$</sup>`;
-        
-        // Сохраняем выбранный размер
+
         card.dataset.selectedSizeId = checkbox.dataset.sizeId;
         card.dataset.selectedSizePrice = selectedPrice;
     }
@@ -355,25 +355,25 @@ class PizzaMenu {
         const countElement = card.querySelector('.pizza-menu__count');
         const priceElement = card.querySelector('.pizza-menu__price');
         const basePrice = parseFloat(priceElement.dataset.basePrice);
-        
+
         let count = parseInt(countElement.textContent);
-        
+
         if (action === 'increase') {
             count++;
         } else if (action === 'decrease' && count > 1) {
             count--;
         }
-        
+
         countElement.textContent = count;
-        
-        // Обновляем цену
+
+
         const selectedCheckbox = card.querySelector(`${this.selectors.sizeCheckboxes}:checked`);
         if (selectedCheckbox) {
             const selectedPrice = parseFloat(selectedCheckbox.dataset.price);
             const totalPrice = selectedPrice * count;
             priceElement.innerHTML = `${totalPrice.toFixed(2)} <sup>$</sup>`;
         } else {
-            // Если размер не выбран, используем базовую цену
+
             const totalPrice = basePrice * count;
             priceElement.innerHTML = `${totalPrice.toFixed(2)} <sup>$</sup>`;
         }
@@ -401,7 +401,7 @@ class PizzaMenu {
         const ingredientId = button.dataset.ingredientId;
         const price = parseFloat(button.dataset.price);
         const name = button.dataset.name;
-        
+
         if (!this.selectedIngredients[ingredientId]) {
             this.selectedIngredients[ingredientId] = {
                 name: name,
@@ -411,21 +411,21 @@ class PizzaMenu {
         } else {
             this.selectedIngredients[ingredientId].quantity++;
         }
-        
+
         this.updateIngredientCount(ingredientId);
         this.updateTotalAmount();
     }
 
     removeIngredient(button) {
         const ingredientId = button.dataset.ingredientId;
-        
+
         if (this.selectedIngredients[ingredientId] && this.selectedIngredients[ingredientId].quantity > 0) {
             this.selectedIngredients[ingredientId].quantity--;
-            
+
             if (this.selectedIngredients[ingredientId].quantity === 0) {
                 delete this.selectedIngredients[ingredientId];
             }
-            
+
             this.updateIngredientCount(ingredientId);
             this.updateTotalAmount();
         }
@@ -437,7 +437,7 @@ class PizzaMenu {
         const addButton = ingredientElement.querySelector('.ingredients-popUp__button-add');
         const price = parseFloat(addButton.dataset.price);
         const name = addButton.dataset.name;
-        
+
         if (!this.selectedIngredients[ingredientId]) {
             this.selectedIngredients[ingredientId] = {
                 name: name,
@@ -447,7 +447,7 @@ class PizzaMenu {
         } else {
             this.selectedIngredients[ingredientId].quantity++;
         }
-        
+
         this.updateIngredientCount(ingredientId);
         this.updateTotalAmount();
     }
@@ -465,7 +465,7 @@ class PizzaMenu {
         Object.values(this.selectedIngredients).forEach(ingredient => {
             total += ingredient.price * ingredient.quantity;
         });
-        
+
         const totalElement = document.querySelector(this.selectors.totalAmount);
         if (totalElement) {
             totalElement.textContent = `${total.toFixed(2)} $`;
@@ -474,13 +474,13 @@ class PizzaMenu {
 
     resetIngredients() {
         this.selectedIngredients = {};
-        
-        // Сбрасываем счетчики
+
+
         document.querySelectorAll(this.selectors.ingredientCounts).forEach(element => {
             element.textContent = '0';
         });
-        
-        // Сбрасываем общую сумму
+
+
         const totalElement = document.querySelector(this.selectors.totalAmount);
         if (totalElement) {
             totalElement.textContent = '0.00 $';
@@ -489,7 +489,7 @@ class PizzaMenu {
 
     addIngredientsToPizza() {
         if (this.currentPizzaId) {
-            // Здесь можно сохранить выбранные ингредиенты для текущей пиццы
+
             console.log('Ingredients for pizza', this.currentPizzaId, ':', this.selectedIngredients);
             this.closeIngredientsPopup();
             alert('Ingredients added to pizza!');
@@ -497,52 +497,125 @@ class PizzaMenu {
     }
 
     async addToCart(orderButton) {
-        const card = orderButton.closest('[data-js-pizza-card]');
-        const pizzaId = card.dataset.pizzaId;
-        const selectedSizeId = card.dataset.selectedSizeId;
-        const quantity = parseInt(card.querySelector('.pizza-menu__count').textContent);
-        
-        if (!selectedSizeId) {
-            alert('Please select a pizza size first!');
-            return;
-        }
-        
-        // Подготовка данных для отправки
-        const cartData = {
-            pizza_id: pizzaId,
-            size_id: selectedSizeId,
-            quantity: quantity,
-            extra_ingredients: Object.entries(this.selectedIngredients).map(([id, data]) => ({
-                id: parseInt(id),
-                quantity: data.quantity
-            }))
-        };
-        
         try {
-            const response = await fetch('/api/cart/add', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
-                },
-                body: JSON.stringify(cartData)
-            });
-            
-            const result = await response.json();
-            
-            if (result.success) {
-                alert('Pizza added to cart successfully!');
-            } else {
-                alert('Error adding to cart: ' + (result.message || 'Unknown error'));
+            console.log('addToCart method called');
+
+            const card = orderButton.closest('[data-js-pizza-card]');
+            if (!card) {
+                console.error('Card element not found');
+                return;
             }
+
+            const pizzaId = card.dataset.pizzaId;
+            console.log('Pizza ID:', pizzaId);
+
+            if (!pizzaId) {
+                console.error('Pizza ID not found in data-pizza-id attribute');
+                return;
+            }
+
+            const pizzaName = card.querySelector('.pizza-menu__name-pizza')?.textContent;
+            const description = card.querySelector('.pizza-menu__description')?.textContent;
+
+            if (!pizzaName) {
+                console.error('Pizza name not found');
+                return;
+            }
+
+            // Получаем выбранный размер
+            const selectedSizeInput = card.querySelector(`${this.selectors.sizeCheckboxes}:checked`);
+            if (!selectedSizeInput) {
+                alert('Please select a pizza size first!');
+                return;
+            }
+
+            const sizeId = selectedSizeInput.dataset.sizeId;
+            const sizeName = selectedSizeInput.getAttribute('aria-label')?.replace('Pizza ', '') + ' cm';
+            const price = selectedSizeInput.dataset.price;
+            const quantity = card.querySelector('.pizza-menu__count')?.textContent || '1';
+
+            console.log('Cart data:', {
+                pizzaId, pizzaName, description, sizeId, sizeName, price, quantity
+            });
+
+            // Получаем дополнительные ингредиенты
+            const extraIngredients = Object.entries(this.selectedIngredients).map(([id, data]) => ({
+                id: parseInt(id),
+                name: data.name,
+                price: data.price,
+                quantity: data.quantity
+            }));
+
+            console.log('Extra ingredients:', extraIngredients);
+
+            // Создаем объект с данными пиццы
+            const pizzaData = {
+                pizzaId: parseInt(pizzaId),
+                pizzaName,
+                description,
+                price: parseFloat(price),
+                sizeId: parseInt(sizeId),
+                sizeName,
+                extraIngredients,
+                quantity: parseInt(quantity)
+            };
+
+            console.log('Pizza data for cart:', pizzaData);
+
+            // Проверяем, что CartManager доступен
+            if (!window.CartManager) {
+                console.error('CartManager is not available');
+                alert('Cart system is not available. Please refresh the page.');
+                return;
+            }
+
+            // Добавляем в корзину
+            const success = CartManager.addPizza(pizzaData);
+
+            if (success) {
+                console.log('Pizza successfully added to cart');
+
+                // Показываем сообщение
+                alert(`Added ${quantity} ${pizzaName} to cart!`);
+
+                // Сбрасываем выбор
+                this.resetPizzaCard(card);
+            } else {
+                alert('Failed to add to cart. Please try again.');
+            }
+
         } catch (error) {
-            console.error('Error:', error);
-            alert('Network error. Please try again.');
+            console.error('Error in addToCart:', error);
+            alert('An error occurred while adding to cart. Please try again.');
         }
+    }
+
+    resetPizzaCard(card) {
+        // Сбрасываем счетчик
+        const countElement = card.querySelector('.pizza-menu__count');
+        if (countElement) {
+            countElement.textContent = '1';
+        }
+
+        // Сбрасываем выбор размера
+        const sizeInputs = card.querySelectorAll(this.selectors.sizeCheckboxes);
+        sizeInputs.forEach(input => {
+            input.checked = false;
+        });
+
+        // Сбрасываем цену на базовую
+        const priceElement = card.querySelector('.pizza-menu__price');
+        if (priceElement && priceElement.dataset.basePrice) {
+            const basePrice = parseFloat(priceElement.dataset.basePrice);
+            priceElement.innerHTML = `${basePrice.toFixed(2)} <sup>$</sup>`;
+        }
+
+        // Сбрасываем ингредиенты
+        this.selectedIngredients = {};
     }
 }
 
-// Инициализация при загрузке страницы
+
 document.addEventListener('DOMContentLoaded', () => {
     new PizzaMenu();
 });

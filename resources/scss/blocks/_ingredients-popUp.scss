@@ -19,14 +19,18 @@
     justify-content: space-between;
     align-items: center;
     flex-direction: column;
-    row-gap: fluid(65, 10);
+    row-gap: fluid(35, 10);
     width: fluid(500, 280);
-    height: fluid(650, 450);
+    height: fluid(800, 900);
     background-color: var(--color-light);
     border: rem(2) solid var(--color-light);
     border-radius: 25px;
     padding: fluid(20, 10);
 
+
+    &__price {
+        color: var(--color-dark);
+    }
     &__title {
         font-size: fluid(30, 25);
         color: var(--color-dark);
@@ -80,5 +84,104 @@
             font-weight: 600;
             font-size: fluid(20, 18);
         }
+    }
+}
+
+
+
+@media (max-width: rem(1260)) {
+    .wrapper-ingr {
+        padding: 10px;
+    }
+    
+    .ingredients-popUp__wrapper {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 15px !important;
+    }
+    
+    .ingredients-popUp__box {
+        padding: 10px;
+    }
+
+    .ingredients-popUp__button-add img {
+        width: 70px;
+        height: 70px;
+    }
+    
+    .ingredients-popUp__ingredient-name {
+        font-size: rem(14);
+    }
+    .ingredients-popUp__button-add {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    .ingredients-popUp__price {
+        font-size: rem(14);
+    }
+    
+    .ingredients-popUp__counter button {
+        width: 25px;
+        height: 25px;
+        font-size: rem(16);
+    }
+    
+    .ingredients-popUp__count {
+        font-size: rem(16);
+        min-width: 30px;
+    }
+    
+    .ingredients-popUp__total {
+        flex-direction: column;
+        gap: rem(15);
+    }
+    
+    .ingredients-popUp__button-order {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .ingredients-popUp__wrapper {
+        grid-template-columns: 1fr !important;
+        gap: rem(7) !important;
+    }
+    
+    .ingredients-popUp__box {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: rem(10);
+    }
+    
+    .ingredients-popUp__button-add {
+        flex-direction: row;
+        align-items: center;
+        gap: rem(10);
+        text-align: left;
+    }
+    
+    .ingredients-popUp__button-add img {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .ingredients-popUp__counter {
+        order: 3;
+    }
+    
+    .ingredients-popUp__price {
+        order: 2;
+        font-weight: bold;
+    }
+    
+    .ingredients-popUp__title {
+        font-size: rem(20);
+        margin-bottom: rem(10);
+    }
+    
+    .ingredients-popUp__close {
+        top: 10px;
     }
 }

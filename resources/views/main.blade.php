@@ -40,7 +40,6 @@
         </div>
     </header>
     <main class="main">
-    @endphp
         <section class="hero" aria-labelledby="hero__title">
             <div class="hero__inner">
                 <div class="hero__description-block">
@@ -390,94 +389,105 @@
     
     <!-- Попап дополнительных ингредиентов -->
     <div class="wrapper-ingr hidden" data-js-ingredients-popup>
-        <div class="ingredients-popUp">
-            <button type="button" class="ingredients-popUp__close" aria-label="Close ingredients popup" data-js-close-ingredients>
-                <img src="{{ asset('icons/close.svg') }}" alt="Close" width="24" height="24">
-            </button>
-            <h3 class="ingredients-popUp__title">Additional ingredients</h3>
-            <div class="ingredients-popUp__wrapper">
-                <div class="ingredients-popUp__box">
-                    <button type="button" class="ingredients-popUp__button-add" title="Add sausage" aria-label="Add sausage" data-name="sausage" data-price="2" data-ingredient-id="1">
-                        <img src="{{ asset('images/kolbasa.webp') }}" alt="Sausage" loading="lazy" width="100" height="100">
-                        <span class="ingredients-popUp__ingredient-name">Sausage</span>
-                    </button>
-                    <div class="ingredients-popUp__counter">
-                        <button type="button" class="ingredients-popUp__button-remove" data-ingredient-id="1">-</button>
-                        <output class="ingredients-popUp__count" data-ingredient-id="1">0</output>
-                        <button type="button" class="ingredients-popUp__button-add-count" data-ingredient-id="1">+</button>
-                    </div>
-                    <div class="ingredients-popUp__price">2 $</div>
+    <div class="ingredients-popUp">
+        <button type="button" class="ingredients-popUp__close" aria-label="Close ingredients popup" data-js-close-ingredients>
+            <img src="{{ asset('icons/close.svg') }}" alt="Close" width="24" height="24">
+        </button>
+        <h3 class="ingredients-popUp__title">Additional ingredients</h3>
+        <div class="ingredients-popUp__wrapper">
+            <!-- Ингредиент 1 -->
+            <div class="ingredients-popUp__box">
+                <button type="button" class="ingredients-popUp__button-add" title="Add sausage" aria-label="Add sausage" data-name="sausage" data-price="2" data-ingredient-id="1">
+                    <img src="{{ asset('images/kolbasa.webp') }}" alt="Sausage" loading="lazy" width="100" height="100">
+                    <span class="ingredients-popUp__ingredient-name">Sausage</span>
+                </button>
+                <div class="ingredients-popUp__counter">
+                    <button type="button" class="ingredients-popUp__button-remove" data-ingredient-id="1">-</button>
+                    <output class="ingredients-popUp__count" data-ingredient-id="1">0</output>
+                    <button type="button" class="ingredients-popUp__button-add-count" data-ingredient-id="1">+</button>
                 </div>
-                <div class="ingredients-popUp__box">
-                    <button type="button" class="ingredients-popUp__button-add" title="Add ham" aria-label="Add ham" data-name="ham" data-price="3" data-ingredient-id="2">
-                        <img src="{{ asset('images/vetchina.webp') }}" alt="Ham" loading="lazy" width="100" height="100">
-                        <span class="ingredients-popUp__ingredient-name">Ham</span>
-                    </button>
-                    <div class="ingredients-popUp__counter">
-                        <button type="button" class="ingredients-popUp__button-remove" data-ingredient-id="2">-</button>
-                        <output class="ingredients-popUp__count" data-ingredient-id="2">0</output>
-                        <button type="button" class="ingredients-popUp__button-add-count" data-ingredient-id="2">+</button>
-                    </div>
-                    <div class="ingredients-popUp__price">3 $</div>
-                </div>
-                <div class="ingredients-popUp__box">
-                    <button type="button" class="ingredients-popUp__button-add" title="Add mozzarella" aria-label="Add mozzarella" data-name="mozzarella" data-price="12" data-ingredient-id="3">
-                        <img src="{{ asset('images/mozarella.webp') }}" alt="Mozzarella" loading="lazy" width="100" height="100">
-                        <span class="ingredients-popUp__ingredient-name">Mozzarella</span>
-                    </button>
-                    <div class="ingredients-popUp__counter">
-                        <button type="button" class="ingredients-popUp__button-remove" data-ingredient-id="3">-</button>
-                        <output class="ingredients-popUp__count" data-ingredient-id="3">0</output>
-                        <button type="button" class="ingredients-popUp__button-add-count" data-ingredient-id="3">+</button>
-                    </div>
-                    <div class="ingredients-popUp__price">12 $</div>
-                </div>
-                <div class="ingredients-popUp__box">
-                    <button type="button" class="ingredients-popUp__button-add" title="Add mushrooms" aria-label="Add mushrooms" data-name="mushrooms" data-price="4" data-ingredient-id="4">
-                        <img src="{{ asset('images/gribi.webp') }}" alt="Mushrooms" loading="lazy" width="100" height="100">
-                        <span class="ingredients-popUp__ingredient-name">Mushrooms</span>
-                    </button>
-                    <div class="ingredients-popUp__counter">
-                        <button type="button" class="ingredients-popUp__button-remove" data-ingredient-id="4">-</button>
-                        <output class="ingredients-popUp__count" data-ingredient-id="4">0</output>
-                        <button type="button" class="ingredients-popUp__button-add-count" data-ingredient-id="4">+</button>
-                    </div>
-                    <div class="ingredients-popUp__price">4 $</div>
-                </div>
-                <div class="ingredients-popUp__box">
-                    <button type="button" class="ingredients-popUp__button-add" title="Add pepper" aria-label="Add pepper" data-name="pepper" data-price="2" data-ingredient-id="5">
-                        <img src="{{ asset('images/halapen.webp') }}" alt="Pepper" loading="lazy" width="100" height="100">
-                        <span class="ingredients-popUp__ingredient-name">Pepper</span>
-                    </button>
-                    <div class="ingredients-popUp__counter">
-                        <button type="button" class="ingredients-popUp__button-remove" data-ingredient-id="5">-</button>
-                        <output class="ingredients-popUp__count" data-ingredient-id="5">0</output>
-                        <button type="button" class="ingredients-popUp__button-add-count" data-ingredient-id="5">+</button>
-                    </div>
-                    <div class="ingredients-popUp__price">2 $</div>
-                </div>
-                <div class="ingredients-popUp__box">
-                    <button type="button" class="ingredients-popUp__button-add" title="Add onion" aria-label="Add onion" data-name="onion" data-price="1" data-ingredient-id="6">
-                        <img src="{{ asset('images/lok.webp') }}" alt="Onion" loading="lazy" width="100" height="100">
-                        <span class="ingredients-popUp__ingredient-name">Onion</span>
-                    </button>
-                    <div class="ingredients-popUp__counter">
-                        <button type="button" class="ingredients-popUp__button-remove" data-ingredient-id="6">-</button>
-                        <output class="ingredients-popUp__count" data-ingredient-id="6">0</output>
-                        <button type="button" class="ingredients-popUp__button-add-count" data-ingredient-id="6">+</button>
-                    </div>
-                    <div class="ingredients-popUp__price">1 $</div>
-                </div>
+                <p class="ingredients-popUp__price">2 $</p>
             </div>
-            <div class="ingredients-popUp__total">
-                <output class="ingredients-popUp__total-price">
-                    <span style="font-weight: 500;">Total amount:</span> 
-                    <span class="ingredients-popUp__total-amount">0.00 $</span>
-                </output>
-                <button type="button" class="ingredients-popUp__button-order pizza-menu__add-to-favorites accent-button">Add to Order</button>
+            
+            <!-- Ингредиент 2 -->
+            <div class="ingredients-popUp__box">
+                <button type="button" class="ingredients-popUp__button-add" title="Add ham" aria-label="Add ham" data-name="ham" data-price="3" data-ingredient-id="2">
+                    <img src="{{ asset('images/vetchina.webp') }}" alt="Ham" loading="lazy" width="100" height="100">
+                    <span class="ingredients-popUp__ingredient-name">Ham</span>
+                </button>
+                <div class="ingredients-popUp__counter">
+                    <button type="button" class="ingredients-popUp__button-remove" data-ingredient-id="2">-</button>
+                    <output class="ingredients-popUp__count" data-ingredient-id="2">0</output>
+                    <button type="button" class="ingredients-popUp__button-add-count" data-ingredient-id="2">+</button>
+                </div>
+                <p class="ingredients-popUp__price">3 $</p>
             </div>
-        </div>  
-    </div>
+            
+            <!-- Ингредиент 3 -->
+            <div class="ingredients-popUp__box">
+                <button type="button" class="ingredients-popUp__button-add" title="Add mozzarella" aria-label="Add mozzarella" data-name="mozzarella" data-price="12" data-ingredient-id="3">
+                    <img src="{{ asset('images/mozarella.webp') }}" alt="Mozzarella" loading="lazy" width="100" height="100">
+                    <span class="ingredients-popUp__ingredient-name">Mozzarella</span>
+                </button>
+                <div class="ingredients-popUp__counter">
+                    <button type="button" class="ingredients-popUp__button-remove" data-ingredient-id="3">-</button>
+                    <output class="ingredients-popUp__count" data-ingredient-id="3">0</output>
+                    <button type="button" class="ingredients-popUp__button-add-count" data-ingredient-id="3">+</button>
+                </div>
+                <p class="ingredients-popUp__price">12 $</p>
+            </div>
+            
+            <!-- Ингредиент 4 -->
+            <div class="ingredients-popUp__box">
+                <button type="button" class="ingredients-popUp__button-add" title="Add mushrooms" aria-label="Add mushrooms" data-name="mushrooms" data-price="4" data-ingredient-id="4">
+                    <img src="{{ asset('images/gribi.webp') }}" alt="Mushrooms" loading="lazy" width="100" height="100">
+                    <span class="ingredients-popUp__ingredient-name">Mushrooms</span>
+                </button>
+                <div class="ingredients-popUp__counter">
+                    <button type="button" class="ingredients-popUp__button-remove" data-ingredient-id="4">-</button>
+                    <output class="ingredients-popUp__count" data-ingredient-id="4">0</output>
+                    <button type="button" class="ingredients-popUp__button-add-count" data-ingredient-id="4">+</button>
+                </div>
+                <p class="ingredients-popUp__price">4 $</p>
+            </div>
+            
+            <!-- Ингредиент 5 -->
+            <div class="ingredients-popUp__box">
+                <button type="button" class="ingredients-popUp__button-add" title="Add pepper" aria-label="Add pepper" data-name="pepper" data-price="2" data-ingredient-id="5">
+                    <img src="{{ asset('images/halapen.webp') }}" alt="Pepper" loading="lazy" width="100" height="100">
+                    <span class="ingredients-popUp__ingredient-name">Pepper</span>
+                </button>
+                <div class="ingredients-popUp__counter">
+                    <button type="button" class="ingredients-popUp__button-remove" data-ingredient-id="5">-</button>
+                    <output class="ingredients-popUp__count" data-ingredient-id="5">0</output>
+                    <button type="button" class="ingredients-popUp__button-add-count" data-ingredient-id="5">+</button>
+                </div>
+                <p class="ingredients-popUp__price">2 $</p>
+            </div>
+            
+            <!-- Ингредиент 6 -->
+            <div class="ingredients-popUp__box">
+                <button type="button" class="ingredients-popUp__button-add" title="Add onion" aria-label="Add onion" data-name="onion" data-price="1" data-ingredient-id="6">
+                    <img src="{{ asset('images/lok.webp') }}" alt="Onion" loading="lazy" width="100" height="100">
+                    <span class="ingredients-popUp__ingredient-name">Onion</span>
+                </button>
+                <div class="ingredients-popUp__counter">
+                    <button type="button" class="ingredients-popUp__button-remove" data-ingredient-id="6">-</button>
+                    <output class="ingredients-popUp__count" data-ingredient-id="6">0</output>
+                    <button type="button" class="ingredients-popUp__button-add-count" data-ingredient-id="6">+</button>
+                </div>
+                <p class="ingredients-popUp__price">1 $</p>
+            </div>
+        </div>
+        <div class="ingredients-popUp__total">
+            <output class="ingredients-popUp__total-price">
+                <span style="font-weight: 500;">Total amount:</span> 
+                <span class="ingredients-popUp__total-amount">0.00 $</span>
+            </output>
+            <button type="button" class="ingredients-popUp__button-order pizza-menu__add-to-favorites accent-button">Add to Order</button>
+        </div>
+    </div>  
+</div>
 </section>
         <section class="events" aria-labelledby="events__main-title">
             <span class="events__design-text design-text">Events</span>

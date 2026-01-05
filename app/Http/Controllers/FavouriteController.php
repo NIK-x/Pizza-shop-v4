@@ -3,68 +3,64 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Favourite;
+use App\Models\Pizza;
 use Illuminate\Support\Facades\Auth;
 
 class FavouriteController extends Controller
 {
+
     public function index()
     {
         return view('favourites');
     }
-    
+
     public function toggle(Request $request)
     {
-        $data = $request->validate([
-            'pizza_id' => 'required|integer|exists:pizzas,pizza_id',
-        ]);
-        
-        $userId = Auth::id();
-        
-        if (!$userId) {
+        if (!Auth::check()) {
             return response()->json([
                 'success' => false,
-                'message' => 'User not authenticated'
+                'message' => 'Please login to use favourites'
             ], 401);
         }
         
-        $favourite = Favourite::where('user_id', $userId)
-            ->where('pizza_id', $data['pizza_id'])
-            ->first();
+        $request->validate([
+            'pizza_id' => 'required|integer|exists:pizzas,pizza_id'
+        ]);
         
-        if ($favourite) {
-            $favourite->delete();
-            $added = false;
+        $user = Auth::user();
+        $pizza = Pizza::findOrFail($request->pizza_id);
+        
+        if ($user->favourites()->where('pizza_id', $pizza->pizza_id)->exists()) {
+            $user->favourites()->detach($pizza);
+            $message = 'Removed from favourites';
+            $isFavourite = false;
         } else {
-            Favourite::create([
-                'user_id' => $userId,
-                'pizza_id' => $data['pizza_id']
-            ]);
-            $added = true;
+            $user->favourites()->attach($pizza);
+            $message = 'Added to favourites';
+            $isFavourite = true;
         }
         
         return response()->json([
             'success' => true,
-            'message' => 'Favourite updated',
-            'added' => $added
+            'message' => $message,
+            'is_favourite' => $isFavourite
         ]);
     }
     
-    public function list()
+    /**
+     * API: Получить список избранного
+     */
+    public function list(Request $request)
     {
-        $userId = Auth::id();
-        
-        if (!$userId) {
+        if (!Auth::check()) {
             return response()->json([
                 'success' => false,
-                'message' => 'User not authenticated'
+                'message' => 'Please login to view favourites'
             ], 401);
         }
         
-        $favourites = Favourite::with('pizza')
-            ->where('user_id', $userId)
-            ->get()
-            ->pluck('pizza');
+        $user = Auth::user();
+        $favourites = $user->favourites()->with(['category', 'sizes'])->get();
         
         return response()->json([
             'success' => true,

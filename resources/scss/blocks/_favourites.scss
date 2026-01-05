@@ -46,6 +46,19 @@ body {
     flex-direction: column;
     row-gap: fluid(100, 70);
 
+    &__remove-pizza {
+        background-color: transparent;
+        border: none;
+        transition: filter 0.2s ease-in 0s;
+
+        @include hover {
+            & {
+                filter: hue-rotate(-20deg);
+                transition: filter 0.2s ease-in 0s;
+            }
+        }
+    }
+
     &__favourites {
         border: rem(2) dashed var(--color-dark);
         padding: fluid(30, 15);
@@ -220,7 +233,6 @@ body {
     &__buy-button {
         color: var(--color-red);
         border: rem(2) solid var(--color-red);
-        border-bottom: none;
         font-weight: 500;
         font-size: rem(22);
         padding: rem(5) rem(10);
