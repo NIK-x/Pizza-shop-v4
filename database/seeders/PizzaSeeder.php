@@ -9,7 +9,7 @@ class PizzaSeeder extends Seeder
 {
     public function run()
     {
-        // Проверяем, есть ли уже пиццы
+        
         if (DB::table('pizzas')->count() == 0) {
             $this->createPizzas();
         }
@@ -17,15 +17,13 @@ class PizzaSeeder extends Seeder
     
     private function createPizzas()
     {
-        // Получаем ID категорий
+ 
         $meatCat = DB::table('categories')->where('category_slug', 'meat')->first();
         $vegCat = DB::table('categories')->where('category_slug', 'vegetarian')->first();
         $seaCat = DB::table('categories')->where('category_slug', 'sea')->first();
         $mushCat = DB::table('categories')->where('category_slug', 'mushroom')->first();
         
-        // Пиццы
         $pizzas = [
-            // Обычные пиццы
             [
                 'pizza_name' => 'Italian',
                 'pizza_description' => 'Filling: pepperoni, salami, mozzarella, tomato sauce, Italian herbs',
@@ -58,7 +56,7 @@ class PizzaSeeder extends Seeder
                 'pizza_price' => 8.35,
                 'pizza_image' => 'images/cheese-pizza.png'
             ],
-            // Популярные пиццы
+       
             [
                 'pizza_name' => 'Argentina',
                 'pizza_description' => 'Filling: grilled beef, jalapeño peppers, corn, tomato sauce',
@@ -96,10 +94,10 @@ class PizzaSeeder extends Seeder
         foreach ($pizzas as $pizzaData) {
             $pizzaId = DB::table('pizzas')->insertGetId($pizzaData);
             
-            // Связываем пиццу с размерами
+
             $this->linkPizzaSizes($pizzaId, $pizzaData['pizza_price']);
             
-            // Связываем пиццу с базовыми ингредиентами
+
             $this->linkPizzaIngredients($pizzaId, $pizzaData['pizza_name']);
         }
     }

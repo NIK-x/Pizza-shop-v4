@@ -17,6 +17,12 @@
         display: flex;
         flex-direction: column;
         row-gap: rem(48);
+
+        @include mobile {
+            @include flex-center;
+            padding: 0px;
+            text-align: center;
+        }
     }
 
     &__hero {

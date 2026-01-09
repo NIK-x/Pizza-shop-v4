@@ -13,7 +13,7 @@
 <body>
     <header class="header header--sticky">
         <a href="{{ url('/') }}" class="header__logo">pizzashop</a>
-        <div class="header__overlay" data-js-header-overlay> <!-- Desctop: hidden-mobile -->
+        <div class="header__overlay" data-js-header-overlay> 
             <nav class="header__nav-menu">
                 <ul class="header__menu-list" data-js-menu-list>
                     <li class="header__menu-item item item-home" data-js-item><a href="{{ url('/') }}" class="header__menu-link">Home</a></li>
@@ -86,9 +86,8 @@
     </div>
     
     <div class="all-pizza" data-js-all-pizza>
-        <!-- Обычные пиццы -->
         <div class="pizza-menu__cards all-cards" data-js-block-pizza>
-            <!-- card1 Italian -->
+        
             <article class="pizza-menu__card" data-category="meat" data-js-pizza-card data-pizza-id="1">
                 <div class="pizza-menu__card-hero">
                     <img src="{{ asset('images/italian-pizza.png') }}" loading="lazy" alt="Italian Pizza" width="159" height="157" class="pizza-menu__image-pizza">
@@ -124,7 +123,7 @@
                 <button type="button" class="pizza-menu__add-to-favorites accent-button" data-pizza-id="1">Order Now</button>
             </article>
             
-            <!-- card2 Venecia -->
+   
             <article class="pizza-menu__card" data-category="sea" data-js-pizza-card data-pizza-id="2">
                 <div class="pizza-menu__card-hero">
                     <img src="{{ asset('images/venecia-pizza.png') }}" loading="lazy" alt="Venecia Pizza" width="159" height="157" class="pizza-menu__image-pizza">
@@ -160,7 +159,7 @@
                 <button type="button" class="pizza-menu__add-to-favorites accent-button" data-pizza-id="2">Order Now</button>
             </article>
             
-            <!-- card3 Meat -->
+       
             <article class="pizza-menu__card" data-category="meat" data-js-pizza-card data-pizza-id="3">
                 <div class="pizza-menu__card-hero">
                     <img src="{{ asset('images/meat-pizza.png') }}" loading="lazy" alt="Meat Pizza" width="159" height="157" class="pizza-menu__image-pizza">
@@ -196,7 +195,7 @@
                 <button type="button" class="pizza-menu__add-to-favorites accent-button" data-pizza-id="3">Order Now</button>
             </article>
             
-            <!-- card4 Cheese -->
+  
             <article class="pizza-menu__card" data-category="vegetarian" data-js-pizza-card data-pizza-id="4">
                 <div class="pizza-menu__card-hero">
                     <img src="{{ asset('images/cheese-pizza.png') }}" loading="lazy" alt="Cheese Pizza" width="159" height="157" class="pizza-menu__image-pizza">
@@ -233,14 +232,14 @@
             </article>
         </div>
         
-        <!-- Популярные пиццы -->
+   
         <article class="popular-block" data-js-popular>
             <span class="pizza-menu__design-text-2 design-text">Menu</span>
             <h3 class="popular-block__title">most popular pizza</h3>
         </article>
         
         <div class="pizza-menu__cards pizza-menu__popular-cards all-cards" data-js-block-pizza>
-            <!-- card5 Argentina -->
+       
             <article class="pizza-menu__card" data-category="meat" data-js-pizza-card data-pizza-id="5">
                 <span class="pizza-menu__design-text-3 design-text">Menu</span>
                 <div class="pizza-menu__card-hero">
@@ -277,7 +276,7 @@
                 <button type="button" class="pizza-menu__add-to-favorites accent-button" data-pizza-id="5">Order Now</button>
             </article>
             
-            <!-- card6 Gribnaya -->
+        
             <article class="pizza-menu__card" data-category="mushroom" data-js-pizza-card data-pizza-id="6">
                 <div class="pizza-menu__card-hero">
                     <img src="{{ asset('images/gribnaya-pizza.png') }}" loading="lazy" alt="Gribnaya Pizza" width="159" height="157" class="pizza-menu__image-pizza">
@@ -313,7 +312,7 @@
                 <button type="button" class="pizza-menu__add-to-favorites accent-button" data-pizza-id="6">Order Now</button>
             </article>
             
-            <!-- card7 Tomato -->
+         
             <article class="pizza-menu__card" data-category="vegetarian" data-js-pizza-card data-pizza-id="7">
                 <div class="pizza-menu__card-hero">
                     <img src="{{ asset('images/tomato-pizza.png') }}" loading="lazy" alt="Tomato Pizza" width="159" height="157" class="pizza-menu__image-pizza">
@@ -349,7 +348,6 @@
                 <button type="button" class="pizza-menu__add-to-favorites accent-button" data-pizza-id="7">Order Now</button>
             </article>
             
-            <!-- card8 Italian x2 -->
             <article class="pizza-menu__card" data-category="meat mushroom" data-js-pizza-card data-pizza-id="8">
                 <div class="pizza-menu__card-hero">
                     <img src="{{ asset('images/italian-x2-pizza.png') }}" loading="lazy" alt="Italian x2 Pizza" width="159" height="157" class="pizza-menu__image-pizza">
@@ -387,7 +385,6 @@
         </div>
     </div>
     
-    <!-- Попап дополнительных ингредиентов -->
     <div class="wrapper-ingr hidden" data-js-ingredients-popup>
     <div class="ingredients-popUp">
         <button type="button" class="ingredients-popUp__close" aria-label="Close ingredients popup" data-js-close-ingredients>
@@ -395,7 +392,7 @@
         </button>
         <h3 class="ingredients-popUp__title">Additional ingredients</h3>
         <div class="ingredients-popUp__wrapper">
-            <!-- Ингредиент 1 -->
+          
             <div class="ingredients-popUp__box">
                 <button type="button" class="ingredients-popUp__button-add" title="Add sausage" aria-label="Add sausage" data-name="sausage" data-price="2" data-ingredient-id="1">
                     <img src="{{ asset('images/kolbasa.webp') }}" alt="Sausage" loading="lazy" width="100" height="100">
@@ -409,7 +406,7 @@
                 <p class="ingredients-popUp__price">2 $</p>
             </div>
             
-            <!-- Ингредиент 2 -->
+            
             <div class="ingredients-popUp__box">
                 <button type="button" class="ingredients-popUp__button-add" title="Add ham" aria-label="Add ham" data-name="ham" data-price="3" data-ingredient-id="2">
                     <img src="{{ asset('images/vetchina.webp') }}" alt="Ham" loading="lazy" width="100" height="100">
@@ -423,7 +420,7 @@
                 <p class="ingredients-popUp__price">3 $</p>
             </div>
             
-            <!-- Ингредиент 3 -->
+           
             <div class="ingredients-popUp__box">
                 <button type="button" class="ingredients-popUp__button-add" title="Add mozzarella" aria-label="Add mozzarella" data-name="mozzarella" data-price="12" data-ingredient-id="3">
                     <img src="{{ asset('images/mozarella.webp') }}" alt="Mozzarella" loading="lazy" width="100" height="100">
@@ -437,7 +434,7 @@
                 <p class="ingredients-popUp__price">12 $</p>
             </div>
             
-            <!-- Ингредиент 4 -->
+   
             <div class="ingredients-popUp__box">
                 <button type="button" class="ingredients-popUp__button-add" title="Add mushrooms" aria-label="Add mushrooms" data-name="mushrooms" data-price="4" data-ingredient-id="4">
                     <img src="{{ asset('images/gribi.webp') }}" alt="Mushrooms" loading="lazy" width="100" height="100">
@@ -451,7 +448,7 @@
                 <p class="ingredients-popUp__price">4 $</p>
             </div>
             
-            <!-- Ингредиент 5 -->
+            
             <div class="ingredients-popUp__box">
                 <button type="button" class="ingredients-popUp__button-add" title="Add pepper" aria-label="Add pepper" data-name="pepper" data-price="2" data-ingredient-id="5">
                     <img src="{{ asset('images/halapen.webp') }}" alt="Pepper" loading="lazy" width="100" height="100">
@@ -465,7 +462,7 @@
                 <p class="ingredients-popUp__price">2 $</p>
             </div>
             
-            <!-- Ингредиент 6 -->
+       
             <div class="ingredients-popUp__box">
                 <button type="button" class="ingredients-popUp__button-add" title="Add onion" aria-label="Add onion" data-name="onion" data-price="1" data-ingredient-id="6">
                     <img src="{{ asset('images/lok.webp') }}" alt="Onion" loading="lazy" width="100" height="100">

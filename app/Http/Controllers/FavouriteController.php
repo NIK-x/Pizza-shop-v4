@@ -47,9 +47,7 @@ class FavouriteController extends Controller
         ]);
     }
     
-    /**
-     * API: Получить список избранного
-     */
+
     public function list(Request $request)
     {
         if (!Auth::check()) {

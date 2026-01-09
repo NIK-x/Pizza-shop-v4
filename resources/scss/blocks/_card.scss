@@ -6,7 +6,18 @@
 
     &.filter {
         display: flex;
-        gap: fluid(40, 22);
+        column-gap: fluid(40, 22);
+        row-gap: rem(90);
+
+         @include custom-laptop-s {
+            display: grid;
+            grid-template-columns: repeat(2, auto);
+            column-gap: fluid(144, 24);
+        }
+
+        @include custom-mobile {
+            grid-template-columns: repeat(1, auto);
+        }
     }
 }
 .all-cards {

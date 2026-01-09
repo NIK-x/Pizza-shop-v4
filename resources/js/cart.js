@@ -1,6 +1,3 @@
-// resources/js/cart.js
-console.log('cart.js loading...');
-
 class Cart {
     constructor() {
         this.cartKey = 'plus_pizza_cart';
@@ -78,11 +75,11 @@ class Cart {
             quantity = 1
         } = pizzaData;
 
-        // Рассчитываем стоимость
+      
         const ingredientsTotal = this.calculateIngredientsTotal(extraIngredients);
         const totalPrice = (parseFloat(price) + ingredientsTotal) * quantity;
         
-        // Создаем элемент корзины
+       
         const cartItem = {
             id: Date.now(),
             pizza_id: parseInt(pizzaId),
@@ -143,7 +140,7 @@ class Cart {
         return [...this.cart];
     }
 
-    // Промокоды
+   
     applyPromoCode(code) {
         const promoCodes = {
             'TEST10': { name: 'Test 10%', discount: 0.10 },
@@ -190,13 +187,12 @@ class Cart {
     }
 }
 
-// Проверяем, не создан ли уже CartManager
 if (!window.CartManager) {
     window.CartManager = new Cart();
     console.log('CartManager created:', window.CartManager);
 }
 
-// Инициализируем счетчик
+
 document.addEventListener('DOMContentLoaded', () => {
     if (window.CartManager) {
         window.CartManager.updateCartCount();

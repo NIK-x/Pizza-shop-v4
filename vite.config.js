@@ -10,7 +10,6 @@ export default defineConfig({
                 'resources/scss/favourites.scss', 
                 'resources/js/main.js',
                 'resources/js/favourites.js',
-                'resources/js/cart.js',
             ],
             refresh: true,
         }),

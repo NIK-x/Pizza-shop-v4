@@ -30,7 +30,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    // Методы для совместимости с Laravel Auth
+
     public function getAuthIdentifierName()
     {
         return 'id_users';
@@ -51,7 +51,6 @@ class User extends Authenticatable
         return $this->email_user;
     }
 
-    // Отношения
     public function city(): BelongsTo
     {
         return $this->belongsTo(City::class, 'city_id', 'city_id');

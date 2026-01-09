@@ -13,17 +13,12 @@ use Illuminate\Support\Facades\Session;
 
 class CartController extends Controller
 {
-    /**
-     * Показать страницу корзины
-     */
     public function index()
     {
-        return view('favourites'); // Используем тот же шаблон, что и для favourites
+        return view('favourites'); 
     }
     
-    /**
-     * API: Получить содержимое корзины
-     */
+  
     public function getCart(Request $request)
     {
         $sessionId = $this->getSessionId($request);
@@ -45,9 +40,7 @@ class CartController extends Controller
         ]);
     }
     
-    /**
-     * API: Добавить товар в корзину
-     */
+
     public function add(Request $request)
     {
         $request->validate([
@@ -61,7 +54,7 @@ class CartController extends Controller
             $pizza = Pizza::findOrFail($request->pizza_id);
             $size = Size::findOrFail($request->size_id);
             
-            // Получаем цену размера из pivot таблицы
+       
             $pizzaSize = $pizza->sizes()->where('sizes.id_sizes', $size->id_sizes)->first();
             
             if (!$pizzaSize) {
@@ -72,8 +65,7 @@ class CartController extends Controller
             }
             
             $sizePrice = $pizzaSize->pivot->price;
-            
-            // Рассчитываем стоимость дополнительных ингредиентов
+           
             $ingredientsTotal = 0;
             $extraIngredients = [];
             
@@ -95,7 +87,7 @@ class CartController extends Controller
             
             $totalPrice = ($sizePrice + $ingredientsTotal) * $request->quantity;
             
-            // Проверяем, есть ли уже такой товар в корзине
+      
             $existingCartItem = Cart::where('session_id', $this->getSessionId($request))
                 ->where('pizza_id', $pizza->pizza_id)
                 ->where('size_id', $size->id_sizes)
@@ -103,14 +95,14 @@ class CartController extends Controller
                 ->first();
             
             if ($existingCartItem) {
-                // Обновляем существующий товар
+             
                 $existingCartItem->quantity += $request->quantity;
                 $existingCartItem->total_price += $totalPrice;
                 $existingCartItem->save();
                 
                 $cartItem = $existingCartItem;
             } else {
-                // Создаем новый товар в корзине
+   
                 $cartItem = Cart::create([
                     'user_id' => Auth::id(),
                     'session_id' => $this->getSessionId($request),
@@ -137,9 +129,7 @@ class CartController extends Controller
         }
     }
     
-    /**
-     * API: Обновить количество товара
-     */
+
     public function update(Request $request, $id)
     {
         $request->validate([
@@ -149,7 +139,7 @@ class CartController extends Controller
         try {
             $cartItem = Cart::findOrFail($id);
             
-            // Проверяем, что пользователь имеет доступ к этой корзине
+          
             if (!$this->checkCartAccess($cartItem, $request)) {
                 return response()->json([
                     'success' => false,
@@ -157,7 +147,7 @@ class CartController extends Controller
                 ], 403);
             }
             
-            // Пересчитываем стоимость
+      
             $pizza = $cartItem->pizza;
             $sizePrice = $pizza->sizes()->where('sizes.id_sizes', $cartItem->size_id)->first()->pivot->price;
             
@@ -188,15 +178,12 @@ class CartController extends Controller
         }
     }
     
-    /**
-     * API: Удалить товар из корзины
-     */
     public function remove($id, Request $request)
     {
         try {
             $cartItem = Cart::findOrFail($id);
             
-            // Проверяем, что пользователь имеет доступ к этой корзине
+
             if (!$this->checkCartAccess($cartItem, $request)) {
                 return response()->json([
                     'success' => false,
@@ -218,10 +205,7 @@ class CartController extends Controller
             ], 500);
         }
     }
-    
-    /**
-     * API: Очистить корзину
-     */
+
     public function clear(Request $request)
     {
         try {
@@ -249,9 +233,6 @@ class CartController extends Controller
         }
     }
     
-    /**
-     * Проверка доступа к элементу корзины
-     */
     private function checkCartAccess($cartItem, $request)
     {
         $sessionId = $this->getSessionId($request);
@@ -264,9 +245,6 @@ class CartController extends Controller
         }
     }
     
-    /**
-     * Получить ID сессии для корзины
-     */
     private function getSessionId($request)
     {
         if (!Session::has('cart_session_id')) {

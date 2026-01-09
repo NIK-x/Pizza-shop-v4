@@ -522,7 +522,7 @@ class PizzaMenu {
                 return;
             }
 
-            // Получаем выбранный размер
+     
             const selectedSizeInput = card.querySelector(`${this.selectors.sizeCheckboxes}:checked`);
             if (!selectedSizeInput) {
                 alert('Please select a pizza size first!');
@@ -530,7 +530,7 @@ class PizzaMenu {
             }
 
             const sizeId = selectedSizeInput.dataset.sizeId;
-            const sizeName = selectedSizeInput.getAttribute('aria-label')?.replace('Pizza ', '') + ' cm';
+            const sizeName = selectedSizeInput.getAttribute('aria-label')?.replace('Pizza ', '');
             const price = selectedSizeInput.dataset.price;
             const quantity = card.querySelector('.pizza-menu__count')?.textContent || '1';
 
@@ -538,7 +538,7 @@ class PizzaMenu {
                 pizzaId, pizzaName, description, sizeId, sizeName, price, quantity
             });
 
-            // Получаем дополнительные ингредиенты
+         
             const extraIngredients = Object.entries(this.selectedIngredients).map(([id, data]) => ({
                 id: parseInt(id),
                 name: data.name,
@@ -548,7 +548,7 @@ class PizzaMenu {
 
             console.log('Extra ingredients:', extraIngredients);
 
-            // Создаем объект с данными пиццы
+          
             const pizzaData = {
                 pizzaId: parseInt(pizzaId),
                 pizzaName,
@@ -562,23 +562,23 @@ class PizzaMenu {
 
             console.log('Pizza data for cart:', pizzaData);
 
-            // Проверяем, что CartManager доступен
+   
             if (!window.CartManager) {
                 console.error('CartManager is not available');
                 alert('Cart system is not available. Please refresh the page.');
                 return;
             }
 
-            // Добавляем в корзину
+      
             const success = CartManager.addPizza(pizzaData);
 
             if (success) {
                 console.log('Pizza successfully added to cart');
 
-                // Показываем сообщение
+            
                 alert(`Added ${quantity} ${pizzaName} to cart!`);
 
-                // Сбрасываем выбор
+          
                 this.resetPizzaCard(card);
             } else {
                 alert('Failed to add to cart. Please try again.');
@@ -591,26 +591,25 @@ class PizzaMenu {
     }
 
     resetPizzaCard(card) {
-        // Сбрасываем счетчик
+
         const countElement = card.querySelector('.pizza-menu__count');
         if (countElement) {
             countElement.textContent = '1';
         }
 
-        // Сбрасываем выбор размера
         const sizeInputs = card.querySelectorAll(this.selectors.sizeCheckboxes);
         sizeInputs.forEach(input => {
             input.checked = false;
         });
 
-        // Сбрасываем цену на базовую
+
         const priceElement = card.querySelector('.pizza-menu__price');
         if (priceElement && priceElement.dataset.basePrice) {
             const basePrice = parseFloat(priceElement.dataset.basePrice);
             priceElement.innerHTML = `${basePrice.toFixed(2)} <sup>$</sup>`;
         }
 
-        // Сбрасываем ингредиенты
+       
         this.selectedIngredients = {};
     }
 }
